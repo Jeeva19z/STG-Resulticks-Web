@@ -363,13 +363,13 @@ function subscribeNewsletterForm() {
 				"ProfileID": getProfileId()
             }
 
-            let url = "https://resu.io/Subscription/IndexInsertAPI";
+            let url = "https://formapiv5.resul.io/Subscription/IndexInsertAPI";
             let options = {
                 method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: JSON.stringify(reqPayload)
+				 headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: new URLSearchParams(reqPayload).toString()
             }
             fetch(url, options).then((res) => {
                 if (res.ok) {
