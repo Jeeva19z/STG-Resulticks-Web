@@ -1,0 +1,15 @@
+$list1: #{$fontName}thin;
+$list2: #{$fontName}extralight;
+$list3: #{$fontName}light;
+$list4: #{$fontName}regular;
+$list5: #{$fontName}medium;
+$list6: #{$fontName}semibold;
+$list7: #{$fontName}bold;
+
+@include font-face($list1,"#{$fontpath}/#{$list1}");
+@include font-face($list2,"#{$fontpath}/#{$list2}");
+@include font-face($list3,"#{$fontpath}/#{$list3}");
+@include font-face($list4,"#{$fontpath}/#{$list4}");
+@include font-face($list5,"#{$fontpath}/#{$list5}");
+@include font-face($list6,"#{$fontpath}/#{$list6}");
+@include font-face($list7,"#{$fontpath}/#{$list7}");

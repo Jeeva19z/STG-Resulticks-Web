@@ -1,0 +1,50 @@
+$breakpoint-xs: 320px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 991.98px;
+$breakpoint-xl: 1199.98px;
+$breakpoint-xxl: 1366.98px;
+
+// @include screen(md) { //your code }
+// @include screen(custom, min, 1000) { //your code }
+
+@mixin screen($size, $type: max, $pixels: $breakpoint-xs) {
+  @if $size == 'xs' {
+    @media screen and ($type + -width: $breakpoint-xs) {
+        @content;
+    }
+  }
+  @else if $size == 'md' {
+    @media screen and ($type + -width: $breakpoint-md) {
+        @content;
+    }
+  }
+  @else if $size == 'sm' {
+    @media screen and ($type + -width: $breakpoint-sm) {
+        @content;
+    }
+  }
+  @else if $size == 'lg' {
+    @media screen and ($type + -width: $breakpoint-lg) {
+        @content;
+    }
+  }
+ @else if $size == 'xl' {
+    @media screen and ($type + -width: $breakpoint-xl) {
+        @content;
+    }
+  }
+ @else if $size == 'xxl' {
+    @media screen and ($type + -width: $breakpoint-xxl) {
+        @content;
+    }
+  }
+  @else if $size == 'custom' {
+    @media screen and ($type + -width: $pixels + px) {
+     @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}

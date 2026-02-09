@@ -1,0 +1,49 @@
+
+// Image path
+$image: '../images/';
+
+// Font family
+// $fontpath: '../fonts/averta';
+// $fontName: AvertaStd;
+$fontpath: '../fonts/Mukta';
+$fontName: Mukta-;
+
+$rs-font-thin: '#{$fontName}Thin', sans-serif;
+$rs-font-light: '#{$fontName}Light', sans-serif;
+$rs-font-regular: '#{$fontName}Regular', sans-serif;
+$rs-font-medium: '#{$fontName}Medium', sans-serif;
+$rs-font-bold: '#{$fontName}Bold', sans-serif;
+$rs-font-sbold: '#{$fontName}SemiBold', sans-serif;
+
+
+// Common
+$letterSpacing        : 0.2px;
+$container-width      : 1399px;
+$container-fluid      : 95%;
+$seperator            : 5rem;
+$seperator-lg         : 4.5rem;
+$seperator-md         : 4rem;
+$seperator-sm         : 3rem;
+
+// Font size
+$font-title           : 40px;
+$font-heading         : 34px;
+$font-sub-heading-md  : 23px;
+$font-sub-heading     : 26px;
+$font-body            : 18px;
+$font-description     : 16px;
+$font-foot-note       : 14px;
+$font-foot-note-sm    : 11px;
+
+$font-xmall           : 12px;
+$font-small           : 14px;
+$font-xmedium         : 16px;
+$font-medium          : 18px;
+$font-xlarge          : 20px;
+$font-large           : 22px;
+
+$font-13              : 13px;
+$font-15              : 15px;
+
+
+

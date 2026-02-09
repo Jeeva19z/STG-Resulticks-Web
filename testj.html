@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Test</title>
+</head>
+<body>
+
+<h2>Resulticks API Test</h2>
+
+<form id="testForm">
+  <input type="text" id="fname" placeholder="First Name" value="Jeeva"><br><br>
+  <input type="text" id="lname" placeholder="Last Name" value="Test"><br><br>
+  <input type="email" id="email" placeholder="Email" value="test@mailinator.com"><br><br>
+  <input type="text" id="mobile" placeholder="Mobile" value="9999999999"><br><br>
+  <input type="text" id="company" placeholder="Company" value="Test Company"><br><br>
+  <input type="text" id="job" placeholder="Job Title" value="Manager"><br><br>
+  <input type="text" id="industry" placeholder="Industry" value="IT"><br><br>
+  <input type="text" id="country" placeholder="Country" value="India"><br><br>
+  <input type="text" id="purpose" placeholder="Purpose" value="Demo Request"><br><br>
+
+  <button type="submit">Send</button>
+</form>
+
+<script>
+document.getElementById("testForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let payload = {
+    "First name": document.getElementById("fname").value,
+    "Last name": document.getElementById("lname").value,
+    "EmailID": document.getElementById("email").value,
+    "MobileNo": document.getElementById("mobile").value,
+    "Company": document.getElementById("company").value,
+    "Job Title": document.getElementById("job").value,
+    "Industry": document.getElementById("industry").value,
+    "Receive Udpates": "",
+    "Country": document.getElementById("country").value,
+    "Purpose": document.getElementById("purpose").value,
+    "SyncSDKID": "",
+    "formId": "215",
+    "dbId": "cc33cd4b_2fea_4b94_9123_bb7d48ff673e",
+    "SourceURL": window.location.href,
+    "pagereferrerurl": document.referrer,
+    "rid": "",
+    "cid": "",
+    "pagetitle": document.title
+  };
+
+  console.log("Sending:", payload);
+
+  fetch("https://formapiv5.resul.io/Subscription/IndexInsertAPI", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams(payload)
+  })
+  .then(res => res.text())
+  .then(data => {
+    console.log("API RESPONSE:", data);
+    alert("Check console for API response");
+  })
+  .catch(err => console.error(err));
+});
+</script>
+
+</body>
+</html>

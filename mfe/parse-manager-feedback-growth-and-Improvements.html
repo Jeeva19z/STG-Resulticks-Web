@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Manager Feedback CSV → Flat (Grouped by Manager)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:24px;background:#f7fafc;color:#111827}
+    .card{background:#fff;border-radius:16px;box-shadow:0 10px 20px rgba(0,0,0,.08);padding:20px;margin-bottom:20px}
+    h1{margin:0 0 8px;font-size:22px}
+    .hint{color:#6b7280;font-size:14px}
+    input[type=file]{margin-top:8px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #e5e7eb;padding:8px;text-align:left;vertical-align:top}
+    th{background:#f3f4f6;position:sticky;top:0}
+    .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    .btn{background:#2563eb;color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:600}
+    .btn[disabled]{background:#9ca3af;cursor:not-allowed}
+    .badge{background:#e0e7ff;color:#1e3a8a;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}
+    .grid{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+    .footer{color:#6b7280;font-size:12px;margin-top:8px}
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Manager Feedback CSV → Flat (Grouped)</h1>
+    <div class="hint">Upload your raw CSV (with <b>RatingsJSON</b>, <b>ImprovementsJSON</b>, <b>StrengthsJSON</b>). Output is grouped by manager and fixed criteria order.</div>
+    <div class="toolbar">
+      <input id="fileInput" type="file" accept=".csv" />
+      <button id="downloadBtn" class="btn" disabled>Download Converted CSV</button>
+      <span id="rowCount" class="badge" style="display:none;"></span>
+    </div>
+    <div class="footer">Expected columns: <code>Timestamp, Username, Managers, RatingsJSON, ImprovementsJSON, StrengthsJSON, ExtraFeedback</code></div>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <h2 style="margin:0;font-size:18px">Preview (first 50 rows)</h2>
+      <small class="hint" id="status">No file loaded</small>
+    </div>
+    <div id="tableWrap"></div>
+  </div>
+
+<script>
+const fileInput = document.getElementById('fileInput');
+const downloadBtn = document.getElementById('downloadBtn');
+const tableWrap = document.getElementById('tableWrap');
+const rowCount = document.getElementById('rowCount');
+const statusEl = document.getElementById('status');
+
+let convertedRows = [];
+
+// Keep this EXACTLY in the order used in your form:
+const CRITERIA_ORDER = [
+    "This manager is approachable and easy to talk to",
+  "This manager gives useful & constructive feedback",
+  "This manager provides required support and guidance when I seek",
+  "This manager appreciates my work contributions",
+  "This manager treats me with respect and exhibits professionalism",
+  "This manager constantly sets the bar high and challenges me",
+  "This manager provides effective direction and is an inspiration to me and my team",
+  "This manager demonstrates strong competencies ",
+  "This manager maintains composure even when working under pressure",
+  "I look up to this manager for mentorship"
+];
+
+function safeParseJSON(str, fallback) {
+  if (!str || typeof str !== 'string') return fallback;
+  try { return JSON.parse(str); } catch { return fallback; }
+}
+
+function toCSV(rows) {
+  if (!rows.length) return '';
+  const headers = Object.keys(rows[0]);
+  const esc = v => {
+    if (v === null || v === undefined) return '';
+    const s = String(v);
+    if (/[",\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  };
+  const lines = [headers.join(',')];
+  for (const r of rows) lines.push(headers.map(h => esc(r[h])).join(','));
+  return lines.join('\n');
+}
+
+function renderPreview(rows) {
+  if (!rows.length) { tableWrap.innerHTML = '<div class="hint">No data to show.</div>'; return; }
+  const headers = Object.keys(rows[0]);
+  const slice = rows.slice(0, 50);
+  let html = '<div style="max-height:60vh;overflow:auto;"><table><thead><tr>';
+  html += headers.map(h => `<th>${h}</th>`).join('');
+  html += '</tr></thead><tbody>';
+  html += slice.map(r => {
+    return '<tr>' + headers.map(h => `<td>${(r[h] ?? '').toString().replace(/</g,'&lt;')}</td>`).join('') + '</tr>';
+  }).join('');
+  html += '</tbody></table></div>';
+  tableWrap.innerHTML = html;
+}
+
+function convertGrouped(srcRows) {
+  const out = [];
+
+  for (const r of srcRows) {
+    const timestamp = r['Timestamp'] ?? r['Time and date'] ?? '';
+    const reviewer  = r['Username'] ?? r['Reviwer Name'] ?? r['Reviewer Name'] ?? '';
+    const extra     = r["Anything else you'd like to share?"] ?? r['ExtraFeedback'] ?? '';
+
+    const ratingsArr = safeParseJSON(r['RatingsJSON'], []);
+    const improvements = safeParseJSON(r['ImprovementsJSON'], {});
+    const strengths = safeParseJSON(r['StrengthsJSON'], {});
+
+    // Build lookup: ratings_by_mgr[manager][criteria] = rating
+    const ratings_by_mgr = {};
+    if (Array.isArray(ratingsArr)) {
+      for (const item of ratingsArr) {
+        const mgr = item?.manager ?? '';
+        const crit = item?.criteria ?? '';
+        const rating = item?.rating ?? '';
+        if (!mgr) continue;
+        if (!ratings_by_mgr[mgr]) ratings_by_mgr[mgr] = {};
+        ratings_by_mgr[mgr][crit] = rating;
+      }
+    }
+
+    // Get manager order from Managers field if present; else from ratings keys
+    let managers_order = [];
+    const managersField = r['Managers'];
+    if (typeof managersField === 'string' && managersField.trim()) {
+      managers_order = managersField.split(',').map(s => s.trim()).filter(Boolean);
+    } else {
+      managers_order = Object.keys(ratings_by_mgr);
+    }
+
+    // Emit rows grouped by manager, criteria fixed order
+    for (const mgr of managers_order) {
+      const mapForMgr = ratings_by_mgr[mgr] || {};
+      for (const crit of CRITERIA_ORDER) {
+        out.push({
+          'Time and date': timestamp,
+          'Reviwer Name': reviewer,                          // keep sample’s spelling
+          'managers': mgr,
+          'Criteria': crit,
+          'Rating': mapForMgr[crit] ?? '',
+          'improvement for this manager?': improvements?.[mgr] ?? '',
+          'What does this manager do well?': strengths?.[mgr] ?? '',
+          "Anything else you'd like to share?": extra ?? ''
+        });
+      }
+    }
+  }
+
+  return out;
+}
+
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files?.[0];
+  if (!file) return;
+  statusEl.textContent = 'Parsing...';
+
+  Papa.parse(file, {
+    header: true,
+    skipEmptyLines: true,
+    complete: (res) => {
+      const srcRows = res.data;
+      convertedRows = convertGrouped(srcRows);
+      renderPreview(convertedRows);
+      downloadBtn.disabled = convertedRows.length === 0;
+      rowCount.style.display = convertedRows.length ? 'inline-block' : 'none';
+      rowCount.textContent = `${convertedRows.length} rows`;
+      statusEl.textContent = 'Ready';
+    },
+    error: (err) => {
+      statusEl.textContent = 'Parse error';
+      alert('Error parsing CSV: ' + err.message);
+    }
+  });
+});
+
+downloadBtn.addEventListener('click', () => {
+  if (!convertedRows.length) return;
+  const csv = toCSV(convertedRows);
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'manager_feedback_flat_grouped.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>

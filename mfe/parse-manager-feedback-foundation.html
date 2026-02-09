@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manager Feedback Processor</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; }
+    .card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { font-size: 22px; }
+    input[type="file"] { margin-top: 10px; }
+    .btn { background: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    .btn:disabled { background: #D6D6D6; cursor: not-allowed; }
+    .hint { color: #6c757d; font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background: #f0f0f0; }
+    .footer { color: #6c757d; font-size: 12px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Manager Feedback Processor</h1>
+    <input id="fileInput" type="file" accept=".csv" />
+    <button id="downloadBtn" class="btn" disabled>Download Converted CSV</button>
+    <div class="hint">Upload a CSV file with the required structure (Timestamp, Username, RatingsJSON, etc.)</div>
+  </div>
+
+  <div class="card">
+    <h2>Preview (first 50 rows)</h2>
+    <div id="status">No file loaded</div>
+    <table id="tablePreview"></table>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const statusEl = document.getElementById('status');
+    const tablePreview = document.getElementById('tablePreview');
+
+    let processedData = [];
+
+    const CRITERIA_ORDER = [
+      "My manager is approachable when I have questions/clarifications & concern",
+      "My manager communicates openly and transparently with me and my team",
+      "My manager has given me the support/training I need to succeed",
+      "My manager gives useful constructive feedback",
+      "My manager pushes my limits and challenges me",
+      "My manager effectively provides direction and inspires confidence in the team",
+      "My manager supports my professional growth and career development",
+      "My manager effectively manages team workload",
+      "My manager encourages collaboration and teamwork",
+      "My manager demonstrates strong competencies even when working under pressure",
+      "My manager recognizes me and appreciates my contributions in the team",
+      "My manager checks in regularly about my work or blockers",
+      "My manager creates a positive and inclusive work environment",
+      "My manager is flexible and promotes a healthy work-life balance",
+      "My manager helps prioritize or escalate issues when needed",
+      "My manager seeks and accepts feedback"
+    ];
+
+    function safeParseJSON(str, fallback) {
+      if (!str || typeof str !== 'string') return fallback;
+      try { return JSON.parse(str); } catch { return fallback; }
+    }
+
+    function processFeedbackData(rows) {
+      const groupedData = [];
+      rows.forEach(row => {
+        const timestamp = row['Timestamp'] ?? '';
+        const reviewer = row['Username'] ?? '';
+        const employeeId = row['Employee ID'] ?? ''; // Add Employee ID
+        const extraFeedback = row["Anything else you'd like to share?"] ?? '';
+
+        const ratingsArr = safeParseJSON(row['Ratings'], {});
+        const ratingsByManager = {};
+
+        Object.keys(ratingsArr).forEach(criteria => {
+          const rating = ratingsArr[criteria] ?? '';
+          ratingsByManager[criteria] = rating;
+        });
+
+        CRITERIA_ORDER.forEach(criteria => {
+          groupedData.push({
+            'Timestamp': timestamp,
+            'Reviewer Name': reviewer,
+            'Employee ID': employeeId, // Include Employee ID in processed data
+            'Manager': row['Manager'] ?? '',
+            'Criteria': criteria,
+            'Rating': ratingsByManager[criteria] ?? '',
+            'Improvement for this Manager': row['Improvements'] ?? '',
+            'Strengths for this Manager': row['Strengths'] ?? '',
+            'Extra Feedback': extraFeedback
+          });
+        });
+      });
+
+      return groupedData;
+    }
+
+    function renderTablePreview(data) {
+      if (!data.length) return;
+
+      const headers = Object.keys(data[0]);
+      let html = '<thead><tr>';
+      headers.forEach(header => html += `<th>${header}</th>`);
+      html += '</tr></thead><tbody>';
+
+      data.slice(0, 50).forEach(row => {
+        html += '<tr>';
+        headers.forEach(header => html += `<td>${row[header] ?? ''}</td>`);
+        html += '</tr>';
+      });
+
+      html += '</tbody>';
+      tablePreview.innerHTML = html;
+    }
+
+    function downloadCSV(data) {
+      const csvContent = data.map(row => {
+        return Object.values(row).join(',');
+      }).join('\n');
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Manager_Feedback_Processed.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+
+      statusEl.textContent = 'Parsing...';
+
+      Papa.parse(file, {
+        header: true,
+        skipEmptyLines: true,
+        complete: (results) => {
+          processedData = processFeedbackData(results.data);
+          renderTablePreview(processedData);
+          downloadBtn.disabled = processedData.length === 0;
+          statusEl.textContent = `Loaded ${processedData.length} rows.`;
+        },
+        error: (err) => {
+          statusEl.textContent = 'Error parsing CSV';
+          alert('Error parsing CSV: ' + err.message);
+        }
+      });
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      if (processedData.length) {
+        downloadCSV(processedData);
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multi‑Manager Feedback Normalizer — v2</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    .table-scroll { overflow: auto; max-height: 58vh; }
+    th, td { white-space: nowrap; }
+    thead th { position: sticky; top: 0; background: #fff; }
+    button#showTidy {
+    display: none;
+    
+}
+button#showWide {
+    border: 3px solid #000;
+}
+button#dlTidy {
+    display: none;
+}
+
+span.text-sm.text-gray-500 {
+    display: none;
+}
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <div class="max-w-7xl mx-auto p-6 space-y-6">
+    <header>
+      <h1 class="text-3xl font-bold">Multi‑Manager Feedback Normalizer — v2</h1>
+      <p class="text-gray-600 mt-1">Works with columns: <span class="font-mono">Timestamp, Anonymous, Username, Managers, RatingsJSON, ImprovementsJSON, StrengthsJSON, ExtraFeedback</span>. Upload a CSV/TSV <em>or</em> paste raw table text.</p>
+    </header>
+
+    <!-- INPUT MODES -->
+    <section class="bg-white rounded-2xl border">
+      <div class="px-4 pt-4 flex gap-2">
+        <button id="tabUpload" class="px-4 py-2 rounded-xl bg-black text-white">Upload file</button>
+        <button id="tabPaste" class="px-4 py-2 rounded-xl bg-white border">Paste data</button>
+      </div>
+      <div class="p-4 grid lg:grid-cols-3 gap-4">
+        <div id="panelUpload" class="lg:col-span-2">
+          <label class="block text-sm font-medium text-gray-700 mb-2">Upload CSV/TSV</label>
+          <div id="dropzone" class="border-2 border-dashed rounded-2xl p-6 bg-white flex items-center justify-center text-center cursor-pointer">
+            <div>
+              <p class="font-medium">Drag & drop your file here</p>
+              <p class="text-xs text-gray-500">or click to browse</p>
+            </div>
+            <input id="fileInput" type="file" accept=".csv,.tsv,text/csv,text/tab-separated-values" class="hidden" />
+          </div>
+        </div>
+        <div id="panelPaste" class="lg:col-span-2 hidden">
+          <label class="block text-sm font-medium text-gray-700 mb-2">Paste table text (from Excel/Sheets) or CSV</label>
+          <textarea id="pasteArea" class="w-full h-48 p-3 border rounded-xl font-mono text-sm" placeholder="Paste your rows here...&#10;Header must include the required columns."></textarea>
+          <div class="mt-2 flex gap-2">
+            <button id="parsePasteBtn" class="px-4 py-2 rounded-xl bg-black text-white">Parse pasted data</button>
+            <button id="loadSampleBtn" class="px-4 py-2 rounded-xl bg-white border">Load small sample</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 shadow-sm border space-y-2">
+          <h3 class="font-semibold">Options</h3>
+          <label class="flex items-center gap-2">
+            <input id="keepPunct" type="checkbox" class="h-4 w-4" checked />
+            <span class="text-sm">Keep basic punctuation in text (.,!? -'&():/+)</span>
+          </label>
+          <label class="flex items-center gap-2">
+            <input id="limitRows" type="checkbox" class="h-4 w-4" />
+            <span class="text-sm">Preview first 500 rows only</span>
+          </label>
+          <div class="pt-2 grid grid-cols-2 gap-2">
+            <button id="dlTidy" class="px-4 py-2 rounded-xl bg-gray-200 text-gray-700 cursor-not-allowed" disabled>Download Tidy CSV</button>
+            <button id="dlWide" class="px-4 py-2 rounded-xl bg-gray-200 text-gray-700 cursor-not-allowed" disabled>Download Pivot CSV</button>
+          </div>
+          <div class="pt-2">
+            <button id="resetBtn" class="px-4 py-2 rounded-xl bg-white border w-full">Reset</button>
+          </div>
+        </div>
+      </div>
+      <div id="errorBox" class="px-4 pb-4 hidden">
+        <div class="rounded-xl border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm" id="errorText"></div>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section id="summary" class="hidden bg-white rounded-2xl p-4 border">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-6 gap-3 text-sm">
+        <div><div class="text-gray-500">Input rows</div><div id="inRows" class="font-semibold">—</div></div>
+        <div><div class="text-gray-500">Managers found</div><div id="mgrCount" class="font-semibold">—</div></div>
+        <div><div class="text-gray-500">Criteria found</div><div id="critCount" class="font-semibold">—</div></div>
+        <div><div class="text-gray-500">Preview mode</div><div id="previewMode" class="font-semibold">—</div></div>
+        <div><div class="text-gray-500">Separator</div><div id="sepType" class="font-semibold">—</div></div>
+        <div><div class="text-gray-500">Missing required cols</div><div id="missingCols" class="font-semibold">—</div></div>
+      </div>
+    </section>
+
+    <!-- VIEW SWITCH -->
+    <section class="flex items-center gap-2">
+      <button id="showTidy" class="px-4 py-2 rounded-xl bg-black text-white">Show Tidy</button>
+      <button id="showWide" class="px-4 py-2 rounded-xl bg-white border">Show Pivot</button>
+      <span class="text-sm text-gray-500">(Tidy = one row per Manager × Criteria. Pivot = one row per Manager per submission, criteria as columns.)</span>
+    </section>
+
+    <!-- TABLE -->
+    <section id="tableWrap" class="hidden bg-white rounded-2xl p-4 border">
+      <div class="table-scroll">
+        <table id="dataTable" class="min-w-full text-sm">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Required columns
+    const REQUIRED = ['Timestamp','Anonymous','Username','Managers','RatingsJSON','ImprovementsJSON','StrengthsJSON','ExtraFeedback'];
+
+    // Helpers
+    function cleanText(s, keepBasicPunct = true){
+      if (s === null || s === undefined) return '';
+      s = String(s).replace(/\s+/g, ' ').trim();
+      if (keepBasicPunct){
+        return s.replace(/[^A-Za-z0-9 \.,!\?\-\'&():\/+]/g, '');
+      }
+      return s.replace(/[^A-Za-z0-9 ]/g, '');
+    }
+    function safeJSONParse(s){
+      if (s === null || s === undefined) return null;
+      s = String(s).trim();
+      if (!s) return null;
+      try { return JSON.parse(s); } catch(e){}
+      const s2 = s.replace(/[“”]/g, '"').replace(/[’‘]/g, "'");
+      try { return JSON.parse(s2); } catch(e){}
+      return null;
+    }
+    function detectSeparator(firstChunk){
+      const firstLine = firstChunk.split(/\r?\n/)[0] || '';
+      const tabs = (firstLine.match(/\t/g) || []).length;
+      const commas = (firstLine.match(/,/g) || []).length;
+      return tabs > commas ? '\t' : undefined;
+    }
+    function toCSV(header, rows){
+      const esc = v => {
+        if (v === null || v === undefined) v = '';
+        v = String(v);
+        const needsQuote = /[",\n]/.test(v);
+        v = v.replace(/"/g, '""');
+        return needsQuote ? `"${v}"` : v;
+      };
+      const lines = [];
+      lines.push(header.map(esc).join(','));
+      rows.forEach(r => lines.push(r.map(esc).join(',')));
+      return lines.join('\n');
+    }
+    function showError(msg){
+      const box = document.getElementById('errorBox');
+      const txt = document.getElementById('errorText');
+      txt.textContent = msg; box.classList.remove('hidden');
+    }
+    function hideError(){ document.getElementById('errorBox').classList.add('hidden'); }
+
+    // Transform
+    function transform(rows, keepPunct){
+      const tidyRows = [];
+      const allManagers = new Set();
+      const allCriteria = new Set();
+
+      rows.forEach(src => {
+        const ts = src['Timestamp'] || '';
+        const anon = src['Anonymous'] || '';
+        const user = src['Username'] || '';
+        const extra = cleanText(src['ExtraFeedback'] || '', keepPunct);
+
+        const ratingsArr = safeJSONParse(src['RatingsJSON']) || [];
+        const improObj = safeJSONParse(src['ImprovementsJSON']) || {};
+        const strObj = safeJSONParse(src['StrengthsJSON']) || {};
+
+        ratingsArr.forEach(r => {
+          const m = r.manager || '';
+          const c = r.criteria || '';
+          const rating = r.rating ?? '';
+          allManagers.add(m);
+          allCriteria.add(c);
+          const imp = cleanText(improObj[m] || '', keepPunct);
+          const str = cleanText(strObj[m] || '', keepPunct);
+          tidyRows.push({
+            Timestamp: ts,
+            Anonymous: anon,
+            Username: user,
+            Manager: m,
+            Criteria: c,
+            Rating: rating,
+            Improvement: imp,
+            Strength: str,
+            ExtraFeedback: extra
+          });
+        });
+      });
+
+      const tidyHeader = ['Timestamp','Anonymous','Username','Manager','Criteria','Rating','Improvement','Strength','ExtraFeedback'];
+      const tidyMatrix = tidyRows.map(r => tidyHeader.map(h => r[h]));
+
+      const criteriaList = Array.from(allCriteria);
+      const wideMap = new Map();
+      tidyRows.forEach(r => {
+        const key = `${r.Timestamp}||${r.Username}||${r.Anonymous}||${r.Manager}`;
+        if (!wideMap.has(key)){
+          const base = { Timestamp: r.Timestamp, Anonymous: r.Anonymous, Username: r.Username, Manager: r.Manager, Improvement: r.Improvement, Strength: r.Strength, ExtraFeedback: r.ExtraFeedback };
+          criteriaList.forEach(c => base[c] = '');
+          wideMap.set(key, base);
+        }
+        const row = wideMap.get(key);
+        row[r.Criteria] = r.Rating;
+        if (!row.Improvement && r.Improvement) row.Improvement = r.Improvement;
+        if (!row.Strength && r.Strength) row.Strength = r.Strength;
+      });
+      const wideHeader = ['Timestamp','Anonymous','Username','Manager', ...criteriaList, 'Improvement','Strength','ExtraFeedback'];
+      const wideRows = Array.from(wideMap.values()).map(r => wideHeader.map(h => r[h] ?? ''));
+
+      return { tidyHeader, tidyRows: tidyMatrix, wideHeader, wideRows, managers: Array.from(allManagers), criteria: criteriaList };
+    }
+
+    // Render
+    function renderTable(header, rows){
+      const thead = document.querySelector('#dataTable thead');
+      const tbody = document.querySelector('#dataTable tbody');
+      thead.innerHTML = '';
+      const htr = document.createElement('tr');
+      header.forEach(h => { const th = document.createElement('th'); th.textContent = h; th.className = 'px-3 py-2 text-left border-b'; htr.appendChild(th); });
+      thead.appendChild(htr);
+      tbody.innerHTML = '';
+      const limit = document.getElementById('limitRows').checked ? 500 : rows.length;
+      for (let i=0;i<Math.min(rows.length, limit);i++){
+        const tr = document.createElement('tr');
+        rows[i].forEach(v => { const td = document.createElement('td'); td.textContent = v == null ? '' : v; td.className = 'px-3 py-2 border-b'; tr.appendChild(td); });
+        tbody.appendChild(tr);
+      }
+      document.getElementById('tableWrap').classList.remove('hidden');
+    }
+
+    function updateSummary(count, managers, criteria, sep, missing){
+      document.getElementById('inRows').textContent = count;
+      document.getElementById('mgrCount').textContent = managers.length;
+      document.getElementById('critCount').textContent = criteria.length;
+      document.getElementById('sepType').textContent = sep === '\\t' ? 'Tab (TSV)' : (sep ? sep : 'Auto');
+      document.getElementById('previewMode').textContent = document.getElementById('limitRows').checked ? 'First 500 rows' : 'All rows';
+      document.getElementById('missingCols').textContent = missing.length ? missing.join(', ') : 'None';
+      document.getElementById('summary').classList.remove('hidden');
+    }
+
+    function enableDownloads(){
+      const a = id => document.getElementById(id);
+      a('dlTidy').disabled = false; a('dlWide').disabled = false;
+      a('dlTidy').className = 'px-4 py-2 rounded-xl bg-black text-white';
+      a('dlWide').className = 'px-4 py-2 rounded-xl bg-black text-white';
+    }
+    function disableDownloads(){
+      const a = id => document.getElementById(id);
+      a('dlTidy').disabled = true; a('dlWide').disabled = true;
+      a('dlTidy').className = 'px-4 py-2 rounded-xl bg-gray-200 text-gray-700 cursor-not-allowed';
+      a('dlWide').className = 'px-4 py-2 rounded-xl bg-gray-200 text-gray-700 cursor-not-allowed';
+    }
+
+    // Parse engines
+    let lastSepUsed = undefined;
+    let currentTidy = { header: [], rows: [] };
+    let currentWide = { header: [], rows: [] };
+    let parsedCount = 0;
+
+    function validateHeaders(obj){
+      const present = Object.keys(obj || {});
+      const missing = REQUIRED.filter(k => !present.includes(k));
+      return missing;
+    }
+
+    function processRows(rows, sep){
+      hideError();
+      if (!rows || !rows.length) { showError('No rows found. Check your header and data.'); return; }
+      const missing = validateHeaders(rows[0]);
+      if (missing.length){ showError('Missing required columns: ' + missing.join(', ')); }
+      const t = transform(rows, document.getElementById('keepPunct').checked);
+      currentTidy = { header: t.tidyHeader, rows: t.tidyRows };
+      currentWide = { header: t.wideHeader, rows: t.wideRows };
+      renderTable(currentTidy.header, currentTidy.rows);
+      parsedCount = rows.length;
+      updateSummary(parsedCount, t.managers, t.criteria, sep, missing);
+      enableDownloads();
+    }
+
+    function parseFile(file){
+      const reader = new FileReader();
+      reader.onload = e => {
+        const text = e.target.result;
+        lastSepUsed = detectSeparator(text);
+        const parsed = Papa.parse(text, { header: true, skipEmptyLines: 'greedy', delimiter: lastSepUsed });
+        if (parsed.errors && parsed.errors.length){ console.warn('PapaParse errors:', parsed.errors.slice(0,3)); }
+        const rows = parsed.data.filter(r => Object.values(r).some(v => String(v || '').trim() !== ''));
+        processRows(rows, lastSepUsed);
+      };
+      reader.readAsText(file, 'utf-8');
+    }
+
+    function parsePasted(text){
+      if (!text || !text.trim()) { showError('Paste area is empty.'); return; }
+      const firstLine = text.split(/\r?\n/)[0] || '';
+      let sep = detectSeparator(text);
+      // Try TSV, otherwise CSV
+      const parsed = Papa.parse(text, { header: true, skipEmptyLines: 'greedy', delimiter: sep });
+      const rows = parsed.data.filter(r => Object.values(r).some(v => String(v || '').trim() !== ''));
+      processRows(rows, sep);
+    }
+
+    // UI wiring
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('border-black'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('border-black'));
+    dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('border-black'); if (e.dataTransfer.files && e.dataTransfer.files[0]) parseFile(e.dataTransfer.files[0]); });
+    fileInput.addEventListener('change', e => { const f = e.target.files[0]; if (f) parseFile(f); });
+
+    document.getElementById('dlTidy').addEventListener('click', () => {
+      if (!currentTidy.header.length) return;
+      const csv = toCSV(currentTidy.header, currentTidy.rows);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'feedback_tidy.csv';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+    document.getElementById('dlWide').addEventListener('click', () => {
+      if (!currentWide.header.length) return;
+      const csv = toCSV(currentWide.header, currentWide.rows);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'feedback_pivot.csv';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // Tabs
+    const tabUpload = document.getElementById('tabUpload');
+    const tabPaste = document.getElementById('tabPaste');
+    const panelUpload = document.getElementById('panelUpload');
+    const panelPaste = document.getElementById('panelPaste');
+    tabUpload.addEventListener('click', () => { tabUpload.className = 'px-4 py-2 rounded-xl bg-black text-white'; tabPaste.className = 'px-4 py-2 rounded-xl bg-white border'; panelUpload.classList.remove('hidden'); panelPaste.classList.add('hidden'); });
+    tabPaste.addEventListener('click', () => { tabPaste.className = 'px-4 py-2 rounded-xl bg-black text-white'; tabUpload.className = 'px-4 py-2 rounded-xl bg-white border'; panelPaste.classList.remove('hidden'); panelUpload.classList.add('hidden'); });
+
+    // Paste mode actions
+    document.getElementById('parsePasteBtn').addEventListener('click', () => parsePasted(document.getElementById('pasteArea').value));
+    document.getElementById('loadSampleBtn').addEventListener('click', () => {
+      const sample = `Timestamp\tAnonymous\tUsername\tManagers\tRatingsJSON\tImprovementsJSON\tStrengthsJSON\tExtraFeedback\n9/26/2025 18:06:01\tYES\t\tKarthik R, Sneha Subramanian\t[{"manager":"Karthik R","criteria":"This manager is approachable and easy to talk to","rating":4},{"manager":"Sneha Subramanian","criteria":"This manager is approachable and easy to talk to","rating":4}]\t{"Karthik R":"More Interaction","Sneha Subramanian":"More Interaction"}\t{"Karthik R":"Team work","Sneha Subramanian":"Motivating team"}\t`;
+      document.getElementById('pasteArea').value = sample; hideError();
+    });
+
+    // View switch & options
+    document.getElementById('showTidy').addEventListener('click', () => {
+      if (!currentTidy.header.length) return;
+      renderTable(currentTidy.header, currentTidy.rows);
+      document.getElementById('showTidy').className = 'px-4 py-2 rounded-xl bg-black text-white';
+      document.getElementById('showWide').className = 'px-4 py-2 rounded-xl bg-white border';
+    });
+    document.getElementById('showWide').addEventListener('click', () => {
+      if (!currentWide.header.length) return;
+      renderTable(currentWide.header, currentWide.rows);
+      document.getElementById('showWide').className = 'px-4 py-2 rounded-xl bg-black text-white';
+      document.getElementById('showTidy').className = 'px-4 py-2 rounded-xl bg-white border';
+    });
+    document.getElementById('limitRows').addEventListener('change', () => {
+      const wideActive = document.getElementById('showWide').className.includes('bg-black');
+      if (wideActive) renderTable(currentWide.header, currentWide.rows); else renderTable(currentTidy.header, currentTidy.rows);
+      document.getElementById('previewMode').textContent = document.getElementById('limitRows').checked ? 'First 500 rows' : 'All rows';
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      document.querySelector('#dataTable thead').innerHTML = '';
+      document.querySelector('#dataTable tbody').innerHTML = '';
+      document.getElementById('tableWrap').classList.add('hidden');
+      document.getElementById('summary').classList.add('hidden');
+      document.getElementById('fileInput').value = '';
+      document.getElementById('pasteArea').value = '';
+      disableDownloads(); currentTidy = {header:[],rows:[]}; currentWide = {header:[],rows:[]};
+      hideError();
+      document.getElementById('showTidy').className = 'px-4 py-2 rounded-xl bg-black text-white';
+      document.getElementById('showWide').className = 'px-4 py-2 rounded-xl bg-white border';
+    });
+  </script>
+</body>
+</html>

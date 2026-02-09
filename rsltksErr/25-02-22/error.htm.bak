@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7]>   <html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]>   <html lang="en" class="no-js ie8"><![endif]-->
+<!--[if IE 9]>   <html lang="en" class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Best Email, SMS marketing, Online Reputation Management</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <link rel="stylesheet" href="https://www.resulticks.com/rsltksErr/Content/plugins.min.css" type="text/css">
+  <link rel="stylesheet" href="https://www.resulticks.com/rsltksErr/Content/ui-theme.css" type="text/css">
+  <link rel="stylesheet" href="https://www.resulticks.com/rsltksErr/Content/ui-styles.css" type="text/css">
+  <link href="https://www.resulticks.com/assets/platform/logos/favicon.png" rel="shortcut icon">
+  <link href="https://www.resulticks.com/assets/platform/logos/resulticks-touch-icon.png" rel="apple-touch-icon">
+</head>
+
+<body class="bgBlue-light rpNewTheme">
+
+  <header>
+	<div class="main-wrapper">
+			<div>
+				<div class="container-fluid">
+					<div class="brand-logo" style="background-color:transparent;">
+						<a href="https://www.resulticks.com/" class="logo">
+							<img src="https://www.resulticks.com/assets/platform/logos/resulticks-logo-white.svg" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		</header>  <!-- /Header -->
+
+  <section class="campaign errorSectionContainer bgBlue-light no-margin-bottom">
+    <div id="wrapper">
+      <div class="content">
+			
+			<div class="displayCenter page-header">
+			
+				<div class="col-sm-6 text-center borderRight">
+					<!--<img src="https://www.resulticks.com/rsltksErr/Images/error.gif"/>-->
+					<img src="https://www.resulticks.com/rsltksErr/Images/internet-cut_icon.svg"/>
+				</div>
+				<div class="col-sm-6">
+				<div class="padding-L30">
+							<h1 class="white"><span style="font-weight:bold;font-size:180%;letter-spacing:3px;">SORRY</span> ...</h1>
+							<h2 class="padding-B20 line-height-sm white">It's not you. It's us.</h2>
+							<H3 class="padding-B20 line-height-sm white">We're experiencing an internal server error problem,
+								<br>Please try again later...</H3>
+							<button class="btn btn-green hide">Go to dashboard</button>
+						</div>
+				</div>
+			</div>
+				
+    <div class="clearfix"></div>
+	
+    </div>
+    </div>
+	
+  </section>
+ <div class="clearfix"></div>
+<footer id="footer-primary">
+	<div class="wrapper copyright container">Copyright © <span class="init-copyright">2004 - <script>document.write(new Date().getFullYear())</script></span><a href="https://www.resulticks.com/privacy-policy.html">Privacy policy</a><a href="https://www.resulticks.com/terms-and-conditions.html">Terms &amp; Conditions</a><a id="ataghelp" href="javascript:;" onclick="DocRedirect()">Help</a><span class="powered" rel="tooltip" data-placement="top" title="" data-original-title="Powered by Resulticks"><i class="icon-poweredby-sign-medium icon-md fti footerIcon1"></i><i class="icon-resulticks-cloud-new-large icon-lg fti footerIcon2"></i></span>
+	</div>
+
+	<!-- Footer bottom borders -->
+	<div class="footer-borders-container"><div class="container-fluid"><div class="row"><div class="footer-color-bg" style="background:#0018f9;"></div>
+	<div class="footer-color-bg" style="background:#7f04b2;"></div>
+	<div class="footer-color-bg" style="background:#9e131e;"></div>
+	<div class="footer-color-bg" style="background:#ce992c;"></div>
+	<div class="footer-color-bg" style="background:#005f35;"></div></div><div class="clearfix"></div></div></div>
+	<!-- /Footer bottom borders -->
+</footer><!-- /Footer -->
+
+
+  <!-- Script starts -->
+
+  <script src="https://www.resulticks.com/rsltksErr/Scripts/plugins.jquery.min.js"></script>
+  
+  <!-- /Script ends -->
+</body>
+</html>

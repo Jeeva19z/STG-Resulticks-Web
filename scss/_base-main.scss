@@ -1,0 +1,25 @@
+// BOOTSTRAP
+@import'./bootstrap/bootstrap';
+
+// VARIABLES
+@import 
+'./variables/variables',
+'./variables/colors-brand';
+
+// FUNCTIONS
+@import
+'./functions/mixins',
+'./functions/for',
+'./functions/fonts',
+'./functions/placeholder',
+'./functions/each',
+'./functions/font-lists';
+
+// GLOBAL
+@import './global/breakpoints',
+'./global/animation',
+'./global/component',
+'./global/default',
+'./global/footer',
+'./global/header',
+'./global/loader';

@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+  <title>Resulticks Diwali</title>
+<link href="https://www.resulticks.com/images/favicon.png" rel="shortcut icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://www.resulticks.com/js/sdk.js"></script>
+  <style type="text/css">
+    :root {
+      --PrimaryClr : #fec06d;
+      --BorderClr  : #ff7f00;
+      --FormBrdClr : #e5d892;
+      --WhiteClr   : #ffffff;
+      --ErrorClr   : #ffb4b4;
+      --ErrorText  : #ffd0d0;
+    }
+    h1, h2, h3, p, figure{margin:0px; font-family: 'MADE Mirage';}
+    *,*:before,*:after { box-sizing:border-box; }
+    img{border:0; max-width:100%; height: auto;}
+    .text-center{text-align:center;}
+
+    body{padding: 0px; margin: 0px; font-family: 'MADE Mirage';}
+    .container{width: 100%; max-width:960px; padding: 0px 15px; margin: 0 auto;}
+
+    @font-face {
+      font-family: 'MADE Mirage';
+      src: url('./assets/fonts/MADEMirage.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'MADE Mirage';
+      src: url('./assets/fonts/MADEMirage-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    html, body{height: 100%;}
+    .diwali-campaigns-outer .container{width: 100%; max-width:1320px; padding: 0px 15px; margin: 0 auto;}
+
+    .diwali-campaigns_card{
+      background:url(./assets/images/Bg.jpg) no-repeat top;
+      aspect-ratio: 16 / 9;
+      background-size: contain;
+      padding:4rem 0px 0px 5rem;
+    }
+
+    .dc-logo{margin-bottom:4rem;}
+    .dc-logo img{max-height:50px;}
+    .frame-height{height: calc(100% - 55.5px - 4rem);}    
+
+    .diwali-campaigns_welcome_screen{display: flex;flex-direction: column;align-items:flex-start;row-gap: 2rem;
+      background: url('./assets/images/LAmp.png') no-repeat right bottom; background-size: 59%;}
+    .diwali-campaigns_welcome_screen *{margin: 0px;}
+    .diwali-campaigns_welcome_screen h1{font-size:4.6rem; letter-spacing:2px; color: var(--PrimaryClr); font-weight: 500;}
+    .diwali-campaigns_welcome_screen p{font-size:1.5rem; margin-bottom: 0.5rem; color: var(--PrimaryClr); font-weight: 400;}
+
+    .get-started-btn{border: solid 2px var(--BorderClr); border-radius: 6px; color:var(--PrimaryClr); padding:0.8rem 1.6rem; font-size: 1.2rem; letter-spacing:1px; font-weight: 500; text-decoration: none;transition:all 0.3s ease;}
+    .get-started-btn:hover{background: var(--BorderClr); color:var(--WhiteClr);}    
+
+    .diwali-campaigns_form{display: grid; grid-template-columns: 1fr 1fr; column-gap: 3rem; padding: 0px 3rem;}
+    .diwali-campaigns_form h2{font-size:3.2rem; letter-spacing:2px; color: var(--PrimaryClr); font-weight: 500; max-width: 90%; padding-top: 3rem;}
+
+    .diwali-campaigns_form_card .form-group{
+      border:solid 2px var(--FormBrdClr);
+      background:#68000087;
+      border-radius: 6px;
+      padding:1.4rem;
+      width: 100%;
+      max-width:400px;
+    }
+
+
+    /* you already added this, showing here for completeness */
+    .reveal-btn-next{
+      border: 0;
+      padding: 0.6rem;
+      font-size: 1.1rem;
+      background: var(--BorderClr);
+      color:#680000;
+      border-radius: 6px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      transition: all .3s ease;
+      cursor: pointer;
+    }
+    .reveal-btn-next:hover{ background: var(--PrimaryClr); }
+
+    .form-field{margin-bottom:1rem; letter-spacing:0.5px;}
+    .form-field label{font-family: "Poppins", sans-serif; font-weight:300; font-size: 1rem;color:var(--WhiteClr);}    
+
+    .form-input{width: 100%; border: 0px; border-bottom: solid 1px var(--FormBrdClr); border-radius: 0px; background: transparent; color:var(--WhiteClr);
+      font-family: "Poppins", sans-serif; font-weight: 300; font-size: 1rem; padding: 0.5rem 0px;}
+    .form-input:focus{outline: 0px; border-bottom:solid 1px var(--BorderClr);}    
+
+    ::-webkit-input-placeholder {color:var(--WhiteClr);} ::-moz-placeholder {color:var(--WhiteClr);} :is(:-ms-input-placeholder, :-moz-placeholder){color:var(--WhiteClr);}    
+
+    /* Radios & checks */
+    .gender-grid{display:flex; justify-content: space-between; margin-top:8px;}
+    .gender-grid .cust-check .check-checkmark:after{display: none!important;}
+
+    .cust-check {position: relative; padding-left:30px; cursor: pointer; user-select: none; font-size: 0.9rem!important; display: inline-block; color: var(--WhiteClr); font-family: "Poppins", sans-serif; font-weight: 300;}
+    .cust-check input {position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;}
+    .check-checkmark {position: absolute; top:0px; left: 0; height:20px; width:20px; border-radius: 30px; border: solid 1px var(--FormBrdClr); }
+    .cust-check:hover input ~ .check-checkmark {background-color:var(--BorderClr);}    
+    .cust-check input:checked ~ .check-checkmark {background-color:var(--BorderClr);}    
+    .check-checkmark:after {content: ""; position: absolute; display: none;}
+    .cust-check input:checked ~ .check-checkmark:after {display: block;}
+
+    .agree-check .check-checkmark {position: absolute; top:0px; left: 0; height:20px; width:20px; border-radius:0px; border: solid 1px var(--FormBrdClr); }
+    .cust-check .check-checkmark:after {left:7px; top:3px; width: 5px; height: 10px; border: solid white;  border-width: 0 2px 2px 0; transform: rotate(45deg);}    
+
+    .reveal-btn{width: 100%; max-width: 80%; border: 0px; padding: 0.6rem; font-size: 1.1rem; background: var(--BorderClr); color:#680000; border-radius: 6px;font-family: "Poppins", sans-serif; font-weight: 700;transition:all 0.3s ease; cursor: pointer;}
+    .reveal-btn:hover{background: var(--PrimaryClr);}   
+
+    .reveal-btn-next{ border: 0px; padding: 0.6rem; font-size: 1.1rem; background: var(--BorderClr); color:#680000; border-radius: 6px;font-family: "Poppins", sans-serif; font-weight: 700;transition:all 0.3s ease; cursor: pointer;}
+    .reveal-btn-next:hover{background: var(--PrimaryClr);}    
+
+    .q-actions{display:flex; justify-content:flex-end; padding: 0 10rem 1rem; /* matches question padding nicely */}
+
+    /* Make the button a bit smaller (you can keep your existing class too) */
+    .reveal-btn-next{
+      padding: .45rem 2rem;     /* smaller than .6rem */
+      font-size: .95rem;         /* smaller than 1.1rem */
+    }
+
+    .dcq-group h3{font-size: 2rem; color: var(--PrimaryClr); font-weight: 500; letter-spacing: 1px;}
+    .dcq-group div{padding: 2rem;}
+    .dcq-group .cust-check{font-size:1.1rem!important; display: block; color: var(--WhiteClr); margin-bottom:1.0rem;font-family: "Poppins", sans-serif; font-weight: 300;}
+    .dcq-group .check-checkmark {top: 3px;}
+
+    /* Inline validation */
+    .error-text{ font-family: "Poppins", sans-serif; font-weight:300; font-size: 0.85rem; color: var(--ErrorText); display: none; }
+    .error-input{ border-bottom-color: var(--ErrorClr) !important; }
+    .field-row{ display:flex; flex-direction:column; }
+
+    /* Success overlay */
+    .overlay {background: rgba(104, 0, 0, 0.8);padding: 3rem 2rem;width: 100%;max-width: 750px;line-height: 2.3rem;border-radius: 12px;border: 2px solid #ff7f00;box-shadow: 0 0 20px rgba(255, 127, 0, 0.7);}
+
+    @media (max-width:1280px) {
+      .diwali-campaigns_card{padding:3rem 0px 0px 3rem;}
+      .dc-logo{margin-bottom:2rem;}
+      .dc-logo img{max-height:40px;}
+      .frame-height{height: calc(100% - 45.5px - 2rem);}      
+      .diwali-campaigns_welcome_screen h1 {font-size: 3.4rem;}
+      .diwali-campaigns_form h2 {font-size: 2.6rem; max-width: 100%;}
+      .diwali-campaigns_form_card .form-group{padding: 1rem;}
+      .form-input{padding-top: 5px;}
+    }
+
+    @media (max-width:960px) {
+      .diwali-campaigns_card{aspect-ratio: 4 / 3; background-size: cover;padding: 3rem 0px 0px 2rem;}
+      .diwali-campaigns_form {column-gap: 1rem; padding: 0px 2rem 0px 0px;}
+      .diwali-campaigns_form h2{font-size: 2rem;}
+      .gender-grid {flex-wrap: wrap; flex-direction: column; row-gap: 0.5rem;}
+    }
+
+    @media (max-width:767px) {
+      .diwali-campaigns_card {background: url(./assets/images/mobile-bg.jpg) no-repeat top; aspect-ratio: 7 / 15; background-size: contain; padding: 2rem 2rem 0px 2rem;}
+      .diwali-campaigns_welcome_screen{align-items: center;}
+      .diwali-campaigns_welcome_screen p {font-size: 1.3rem; width: 100%; text-align: center;}
+      .diwali-campaigns_form{grid-template-columns: 1fr; padding-right: 0px; row-gap: 1rem;}
+      .diwali-campaigns_form h2{padding-top: 0px;}
+      .dc-logo{text-align: center;}
+      .diwali-campaigns_welcome_screen h1 {font-size: 2rem; text-align: center;}
+      .frame-height {height: calc(100% - 38.5px - 4rem);}
+      .diwali-campaigns_welcome_screen{background-size: contain;}
+
+      .diwali-campaigns_form h2 {font-size: 1.6rem; text-align: center;}
+      .dcq-group h3 {font-size: 1.3rem; padding-left: 1rem;}
+      .dcq-group div {padding: 1rem 0rem 1rem 1rem;}
+    }
+    
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {-webkit-appearance: none; margin: 0;}
+
+    /* ✅ Hide arrows for Firefox */
+    input[type=number] {-moz-appearance: textfield;}
+
+  </style>
+</head>
+
+<body>
+  <div class="diwali-campaigns-outer">
+    <div class="container">
+      <div class="diwali-campaigns_card">
+        <div class="dc-logo">
+          <a href="#"><img src="assets/images/logo.png" alt="Logo"></a>
+        </div>
+
+        <!-- Frame 1 -->
+        <div class="diwali-campaigns_welcome_screen frame-height" style="display: none;">
+          <h1>Light up your<br> Diwali with rewards!</h1>
+          <div>
+            <p>Join the celebration take</p>
+            <p>The quiz and unlock festive surprises</p>
+          </div>
+          <a href="#" class="get-started-btn">Let's Get Started</a>
+        </div>
+
+        <!-- Frame 2 -->
+        <div class="diwali-campaigns_form" style="display: none;">
+          <div>
+            <h2>We’d love to <br>make your Surprise extra special, tell us a little about you.</h2>
+          </div>
+          <div class="diwali-campaigns_form_card">
+            <form class="form-group" novalidate>
+              <div class="form-field field-row">
+                <input id="name" type="text" class="form-input" placeholder="Name" autocomplete="name">
+                <small class="error-text" data-error-for="name">Please enter your name.</small>
+              </div>
+
+              <div class="form-field field-row">
+                <input id="email" type="email" class="form-input" placeholder="Email" autocomplete="email">
+                <small class="error-text" data-error-for="email">Enter a valid email address.</small>
+              </div>
+
+              <!-- ✅ Location field (replacing phone) -->
+              <div class="form-field field-row">
+                <input id="location" type="text" class="form-input" placeholder="Location / City" autocomplete="address-level2">
+                <small class="error-text" data-error-for="location">Please enter your location.</small>
+              </div>
+
+              <div class="form-field">
+                <label>Gender</label>
+                <div class="gender-grid">
+                  <label class="cust-check">Male
+                    <input type="radio" name="gender" value="Male" checked>
+                    <span class="check-checkmark"></span>
+                  </label>
+
+                  <label class="cust-check">Female
+                    <input type="radio" name="gender" value="Female">
+                    <span class="check-checkmark"></span>
+                  </label>
+
+                  <label class="cust-check">Prefer not to say
+                    <input type="radio" name="gender" value="Prefer not to say">
+                    <span class="check-checkmark"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-field field-row">
+                <input id="age" type="number" inputmode="numeric" class="form-input" placeholder="Age" min="1" max="120">
+                <small class="error-text" data-error-for="age">Enter an age between 13 and 120.</small>
+              </div>
+
+              <div class="form-field field-row">
+                <label class="cust-check agree-check">I agree to share my details with Resulticks and RPSG for this activity
+                  <input id="consent" type="checkbox" checked>
+                  <span class="check-checkmark"></span>
+                </label>
+                <small class="error-text" data-error-for="consent">Please accept to proceed.</small>
+              </div>
+              
+            <div class="form-field field-row">
+
+                              <div 
+                  class="cf-turnstile text-center" 
+                  data-sitekey="0x4AAAAAAB6y8GFuGqt9y4L_" 
+                  data-callback="onTurnstileSuccess">
+                </div>
+              
+            </div>
+
+              <div class="text-center">
+                <input type="submit" class="reveal-btn" value="Reveal your Diwali gift">
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Frame 3.1 -->
+        <div style="display: none;">
+          <div class="diwali-campaigns_questions">
+            <div class="dcq-group">
+              <h3>1. What is your favourite aspect of the festive season?</h3>
+              <div>
+                <label class="cust-check agree-check">Shopping for new clothes
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Attending social events and gatherings to celebrate with more people
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Festive discounts
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Thoughtful and cherished gifts
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">A wide array of mithai, thalis, and decadence
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frame 3.2 -->
+        <div style="display: none;">
+          <div class="diwali-campaigns_questions">
+            <div class="dcq-group">
+              <h3>2. What is a must-have during the festive season?  </h3>
+              <div>
+                <label class="cust-check agree-check">A new outfit for every occassion
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Friends and family to celebrate with
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Discounts on big ticket items
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Giving gifts, and receiving them
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Eating all day, every day 
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frame 3.3 -->
+        <div style="display: none;">
+          <div class="diwali-campaigns_questions">
+            <div class="dcq-group">
+              <h3>3. How do you normally celebrate Diwali? </h3>
+              <div>
+                <label class="cust-check agree-check">Attend, or host stylish parties 
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Light Diyas and host prayers at home with the family
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Shop for non-Diwali specific items for yourself 
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Give the people you love thoughtful presents
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Cook for your loved ones, or eat everything that comes your way
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frame 3.4 -->
+        <div style="display: none;">
+          <div class="diwali-campaigns_questions">
+            <div class="dcq-group">
+              <h3>4. How early do you start planning for the festive season? (In months) </h3>
+              <div>
+                <label class="cust-check agree-check">1 month - I have my outfits ready in advance 
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">2 months - I've already started planning what the house is going to look like
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">3 months - I've had my eyes on the price drops on things I really want
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">4 months – I've hidden everyone's gifts around the house 
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">5 months – I know the menu already
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frame 3.5 -->
+        <div style="display: none;">
+          <div class="diwali-campaigns_questions">
+            <div class="dcq-group">
+              <h3>5. Pick your ideal Diwali gift basket items</h3>
+              <div>
+                <label class="cust-check agree-check">Brand new kurta/suit
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Things for the house - décor, lights, and diyas
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Whatever is in your cart while online shopping
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">Gifts for the family and friends
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+                <label class="cust-check agree-check">A long list of foods
+                  <input type="checkbox">
+                  <span class="check-checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- /.diwali-campaigns_card -->
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const welcomeScreen = document.querySelector(".diwali-campaigns_welcome_screen");
+    const formSection   = document.querySelector(".diwali-campaigns_form");
+    const questionSections = document.querySelectorAll(".diwali-campaigns_questions");
+    const startBtn      = document.querySelector(".get-started-btn");
+    const form          = document.querySelector(".form-group");
+
+    // inputs
+    const nameInput     = document.getElementById('name');
+    const emailInput    = document.getElementById('email');
+    const locationInput = document.getElementById('location');
+    const ageInput      = document.getElementById('age');
+    const consentInput  = document.getElementById('consent');
+
+    let currentQuestion = 0;
+
+    // Show welcome screen
+    welcomeScreen.style.display = "flex";
+
+    // Start button → Show form
+    startBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      welcomeScreen.style.display = "none";
+      formSection.style.display = "grid";
+    });
+
+    // Utility: show & clear errors
+    function showError(inputEl, message){
+      const field = inputEl.closest('.field-row') || inputEl.closest('.form-field');
+      const key = inputEl.id || inputEl.name;
+      const errorEl = field.querySelector(`[data-error-for="${key}"]`);
+      if(errorEl){ errorEl.textContent = message; errorEl.style.display = 'block'; }
+      inputEl.classList.add('error-input');
+    }
+    function clearError(inputEl){
+      const field = inputEl.closest('.field-row') || inputEl.closest('.form-field');
+      const key = inputEl.id || inputEl.name;
+      const errorEl = field.querySelector(`[data-error-for="${key}"]`);
+      if(errorEl){ errorEl.style.display = 'none'; }
+      inputEl.classList.remove('error-input');
+    }
+
+    // Live clear on input
+    [nameInput, emailInput, locationInput, ageInput].forEach(el => {
+      el.addEventListener('input', () => clearError(el));
+      el.addEventListener('blur', () => clearError(el));
+    });
+    consentInput.addEventListener('change', () => clearError(consentInput));
+
+    function validateForm(){
+      let valid = true;
+
+      // Name
+      if(!nameInput.value.trim()){
+        showError(nameInput, 'Please enter your name.');
+        valid = false;
+      }
+
+      // Email
+      const email = emailInput.value.trim();
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      if(!emailOk){
+        showError(emailInput, 'Enter a valid email address.');
+        valid = false;
+      }
+
+      // ✅ Location validation
+      if(!locationInput.value.trim()){
+        showError(locationInput, 'Please enter your location.');
+        valid = false;
+      }
+
+      // Age
+      const ageVal = parseInt(ageInput.value, 10);
+      if(isNaN(ageVal) || ageVal < 13 || ageVal > 120){
+        showError(ageInput, 'Enter an age between 13 and 120.');
+        valid = false;
+      }
+
+      // Consent
+      if(!consentInput.checked){
+        showError(consentInput, 'Please accept to proceed.');
+        valid = false;
+      }
+
+      return valid;
+    }
+
+    // Form submission → Move to first question
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      [nameInput, emailInput, locationInput, ageInput, consentInput].forEach(clearError);
+
+      const isValid = validateForm();
+      if(!isValid){
+        const firstErr = form.querySelector('.error-input');
+        if(firstErr) firstErr.focus();
+        return;
+      }
+
+      const gender = (form.querySelector('input[name="gender"]:checked')?.value) || '';
+
+      window.formData = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        location: locationInput.value.trim(),
+        gender,
+        age: ageInput.value.trim()
+      };
+
+      formSection.style.display = "none";
+      showQuestion(currentQuestion);
+    });
+
+    // Question logic: single-select via checkboxes
+    function showQuestion(index) {
+      if (index < questionSections.length) {
+        const questionBlock = questionSections[index];
+        questionBlock.parentElement.style.display = "block";
+
+        const checkboxes = questionBlock.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+              checkboxes.forEach((cb) => { if (cb !== checkbox) cb.checked = false; });
+            }
+          });
+        });
+
+        let errorMsg = questionBlock.querySelector('.q-error-text');
+        if(!errorMsg){
+          errorMsg = document.createElement("p");
+          errorMsg.className = 'q-error-text';
+          errorMsg.style.color = "var(--ErrorText)";
+          errorMsg.style.fontSize = "14px";
+          errorMsg.style.margin = "6px 0 0";
+          errorMsg.style.display = "none";
+          errorMsg.textContent = "⚠️ Please select an option to continue";
+          questionBlock.appendChild(errorMsg);
+        }
+
+      // Create a right-aligned actions row (flex) if not present
+let actions = questionBlock.querySelector('.q-actions');
+if (!actions) {
+  actions = document.createElement('div');
+  actions.className = 'q-actions';
+  questionBlock.appendChild(actions);
+}
+
+// Create or reuse the Next/Finish button inside the actions row
+let nextBtn = actions.querySelector('.q-next-btn');
+if (!nextBtn) {
+  nextBtn = document.createElement('button');
+  nextBtn.type = 'button';
+  nextBtn.className = 'reveal-btn-next q-next-btn';
+  actions.appendChild(nextBtn);
+}
+
+// Set the label based on whether this is the last question
+nextBtn.textContent = (index === questionSections.length - 1) ? 'Finish' : 'Next';
+
+        nextBtn.onclick = () => {
+          const selected = Array.from(
+            questionBlock.querySelectorAll("input[type='checkbox']:checked")
+          ).map((el) => el.parentElement.textContent.trim());
+
+          if (selected.length === 0) {
+            errorMsg.style.display = "block";
+            return;
+          }
+
+          errorMsg.style.display = "none";
+          window.formData[`Q${index + 1}`] = selected[0];
+
+          questionBlock.parentElement.style.display = "none";
+          currentQuestion++;
+          showQuestion(currentQuestion);
+        };
+      } else {
+        submitFormData();
+      }
+    }
+
+    // ✅ Updated API submit with Q1–Q6 included in payload
+    async function submitFormData() {
+      const { name, email, location, gender, age } = window.formData;
+      const getQ = (i) => (window.formData?.[`Q${i}`] ?? "");
+
+      const formData = {
+        "Full name": name,
+        "EmailID": email,
+        "Current City": location,
+        "Gender": gender,
+        "Age group": age,
+        "Q1": getQ(1),
+        "Q2": getQ(2),
+        "Q3": getQ(3),
+        "Q4": getQ(4),
+        "Q5": getQ(5),
+        // "Q6": getQ(6),   // will be "" if you have only 5 questions
+        "formid": 236,
+        "apikey": "cc33cd4b_2fea_4b94_9123_bb7d48ff673e",
+        "SourceURL": window.location.href,
+        "pagereferrerurl": document.referrer,
+        "rid": "",
+        "cid": "",
+        "pagetitle": document.title
+      };
+
+      try {
+        const response = await fetch("https://resu.io/Subscription/formsubmission", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+
+        let data = null;
+        try { data = await response.json(); } catch {}
+        console.log("✅ API Response:", data || response.status);
+
+        const coupon = "AMZ-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+
+        document.body.innerHTML = "";
+
+        const bgDiv = document.createElement("div");
+        bgDiv.style.background = "url('./assets/images/Bg.jpg') no-repeat center center";
+        bgDiv.style.backgroundSize = "cover";
+        bgDiv.style.height = "100vh";
+        bgDiv.style.display = "flex";
+        bgDiv.style.justifyContent = "center";
+        bgDiv.style.alignItems = "center";
+        bgDiv.style.textAlign = "center";
+        bgDiv.style.flexDirection = "column";
+
+        const overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+        overlay.innerHTML = `
+        
+        <h2 style="color: #fff0d6; font-size: 1.2rem;">You made our Diwali brighter! 🌟</h2>
+
+        <p style="color: #fff0d6; font-size: 1.2rem;">Now it’s our turn - you could be taking home some of the coolest new gadgets.</p>
+
+        <p style="color: #fff0d6; font-size: 1.2rem;">Keep an eye on your inbox and our socials - the lucky winners drop soon!</p>
+        <br>
+        
+          <a href="https://www.go.resul.io/" class="get-started-btn">Home</a>
+        
+          
+        `;
+
+        bgDiv.appendChild(overlay);
+        document.body.appendChild(bgDiv);
+
+      } catch (error) {
+        console.error("❌ Error submitting form:", error);
+        const banner = document.createElement("div");
+        banner.setAttribute("role", "status");
+        banner.style.maxWidth = "640px";
+        banner.style.margin = "24px auto";
+        banner.style.padding = "12px 16px";
+        banner.style.border = "1px solid var(--ErrorClr)";
+        banner.style.background = "#4a0000";
+        banner.style.color = "var(--ErrorText)";
+        banner.style.borderRadius = "6px";
+        banner.textContent = "Something went wrong while submitting. Please try again.";
+        document.body.prepend(banner);
+      }
+    }
+  });
+  </script>
+
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</body>
+</html>

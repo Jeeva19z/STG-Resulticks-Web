@@ -1,0 +1,177 @@
+// ===> DEFAULT STYLE <===
+img::-moz-selection { 
+  background: transparent 
+}
+
+img::selection { 
+  background: transparent 
+}
+
+*:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+.container {
+  // @include screen(custom, min, 992) {
+  //   max-width: $container-width !important
+  // }
+  // @include screen(custom, min, 1199) {
+  //   max-width: 1199px !important;
+  // }
+}
+
+.container-fluid {
+  width: $container-fluid;
+}
+
+.h-auto {
+  height: auto !important;
+}
+
+.white {
+  color: $white;
+}
+
+.text-black {
+  color: $black-medium !important;
+}
+
+.blue {
+  color: $heading-color2;
+}
+
+.bg-black {
+  background: $black;
+}
+
+.bg-grey {
+  background: $bg-color1;
+}
+
+.bg-light-blue {
+  background: $bg-color2;
+}
+
+.font-regular {
+  font-family: $rs-font-regular;
+}
+
+.font-light {
+  font-family: $rs-font-light;
+}
+
+.rs-font-bold {
+  font-family: $rs-font-bold;
+}
+
+.hide {
+  display: none;
+}
+
+.btn-primary {
+    background-color: $btn-primary;
+    border-color: $btn-primary;
+    padding: 7px 20px;
+    border-radius: 5px;
+    &:hover {
+      background-color: $btn-primary-hover;
+    }
+}
+
+.main-heading {
+  font-family: $rs-font-medium;
+  font-size: 2.5rem;
+  display: block;
+  line-height: 1.3;
+  // text-transform: capitalize;
+  @include screen(md) {
+    font-size: 1.75rem;
+  }
+}
+
+.flex-xs-column {
+  @include screen(md) {
+    flex-direction: column;
+  }
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-12 {
+  font-size: $font-small
+}
+.font-15 {
+  font-size: $font-15
+}
+
+// ===> HEADING TAG <===
+h1,  h2,  h3,  h4,  h5,  h6 {
+  font-family: $rs-font-medium;
+  color: $headings-color;
+  line-height: 1.25;
+  margin-bottom: 25px;
+  margin-top: 0 !important;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.section-space     {
+  padding-top: $seperator !important;
+  padding-bottom: $seperator !important;
+  @include screen(lg) {
+    padding-top: $seperator-lg !important;
+    padding-bottom: $seperator-lg !important;
+  }
+  @include screen(md) {
+    padding-top: $seperator-md !important;
+    padding-bottom: $seperator-md !important;
+  }
+}
+.section-space-t   {
+  padding-top: $seperator !important;
+  @include screen(lg) {
+    padding-top: $seperator-lg !important;
+  }
+  @include screen(md) {
+    padding-top: $seperator-md !important;
+  }
+}
+.section-space-b   {
+  padding-bottom: $seperator !important;
+  @include screen(lg) {
+    padding-bottom: $seperator-lg !important;
+  }
+  @include screen(md) {
+    padding-bottom: $seperator-md !important;
+  }
+}

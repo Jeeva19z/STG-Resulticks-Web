@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resul Relese</title>
+
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    
+    <!-- Bootstrap Tabs Section -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+       
+
+
+        /* font size  */
+
+        /* Headings */
+        .rs-heading-xl { font-size: 3.375rem; font-weight: 700; } /* 54px */
+        .rs-heading-lg { font-size: 2.625rem; font-weight: 700; } /* 42px */
+        .rs-heading-md { font-size: 2rem; font-weight: 700; }     /* 32px */
+        .rs-heading-sm { font-size: 1.75rem; font-weight: 700; }     
+
+        /* Body Text */
+         .rs-text-xlg { font-size: 1.75rem; line-height: 1.6; } 
+        .rs-text-xl { font-size: 1.5rem; line-height: 1.6; }      /* 24px */
+        .rs-text-lg { font-size: 1.375rem; line-height: 1.6; }    /* 22px */
+        .rs-text-md { font-size: 1.25rem; line-height: 1.6; }     /* 20px */
+
+
+  .hero-banner {
+    background-image: url('./assets/hero-banner-bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+}
+.banner-bottom{
+     background-image: url('./assets/banner-bottom-bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+}
+.hero-home{
+    padding: 20px 2%;
+}
+
+.rcs-left {
+    background: linear-gradient(to bottom, #D4E0F3 0%, #EEF3F9 100%);
+    border-radius: 20px;     /* optional (looks like your reference) */
+    padding: 20px;           /* space inside */
+    /* height: 100%;            fill column height */
+}
+
+.rcs-right {
+    background: linear-gradient(to bottom, #D4E0F3 0%, #EEF3F9 100%);
+    border-radius: 20px;
+    padding: 20px;
+    /* height: 100%; */
+}
+
+
+.rs-gradient-bg{
+    background: linear-gradient(to bottom, #D4E0F3 0%, #EEF3F9 100%);
+    border-radius: 20px;
+}
+.rs-shop {
+
+    min-height: 500px;
+
+}
+
+.rs-cards{
+    
+    min-height: 430px;
+
+}
+
+.rs-cards-grid{
+
+    min-height: 450px;
+
+}
+.rs-cards-builder{
+min-height: 500px;
+}
+.f-builder{
+    background-color: #00006E;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/* tab css  */
+
+
+.nav-tabs .nav-link {
+    color:#000000 !important;
+    /* background-color:#0909d3  !important;  */
+    border-color: none !important;
+}
+.nav-tabs .nav-link.active {
+    color:#FFFFFF !important;
+    background-color:#0909d3  !important; 
+    border-color: none !important;
+}
+
+.nav-tabs .nav-link {
+    margin-bottom:0 !important;
+    border:none !important;
+    border-radius: 20px;
+}
+.nav-link{
+    border-radius:20px !important
+}
+.tab-switch{
+    background: linear-gradient(to bottom, #D4E0F3 0%, #EEF3F9 50%);
+        padding: 5px;
+    border-radius: 20px;
+}
+
+button#r1-tab , button#r2-tab, button#r3-tab, button#r4-tab {
+    font-size: 1.3rem;
+}
+.relese-notes{
+    height: 100vh;
+
+    margin-bottom: 800px;
+}
+li.crs{
+    cursor: no-drop;
+}
+.non-relese{
+    visibility: hidden;
+     height: 100vh;
+}
+
+
+@media only screen and  (max-width:768px){
+     /* Headings */
+        .rs-heading-xl { font-size: 1.375rem; font-weight: 700; } 
+        .rs-heading-lg { font-size: 1.625rem; font-weight: 700; } 
+        .rs-heading-md { font-size: 1.5rem; font-weight: 700; }     
+        .rs-heading-sm { font-size: 1.175rem; font-weight: 700; }   
+
+        /* Body Text */
+         .rs-text-xlg { font-size: 1.5rem; line-height: 1.6; } 
+        .rs-text-xl { font-size: 1.2rem; line-height: 1.6; }     
+        .rs-text-lg { font-size: 0.9375rem; line-height: 1.6; }   
+        .rs-text-md { font-size: 1.1rem; line-height: 1.6; }    
+
+        .hero-home {
+    padding: 20px 5%;
+}
+
+.rs-shop {
+    min-height: auto;
+        padding: 20px 0;
+}
+
+.rs-cards{
+   min-height: auto;
+        padding: 20px 0;
+}
+
+.rs-cards-grid{
+   min-height: auto;
+        padding: 20px 0;
+}
+.rs-cards-builder{
+min-height: auto;
+        padding: 20px 0;
+}
+
+}
+    </style>
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                
+                <div class="col-12 col-md-8">
+                    <img src="./assets/header.svg" alt="" class="img-fluid pt-3">
+                </div>
+               
+            </div>
+        </div>
+    </section>
+<section class="home-section">
+    
+        <div class="container-fluid hero-home">
+            <div class="hero-banner">
+            <div class="row justify-content-center align-items-center p-4 ">
+
+                <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center gap-5 py-3">
+
+                    <h1 class="rs-primary text-center rs-heading-lg text-white">What’s New in</h1>
+
+                    <img src="./assets/rs-resul.png" alt="resul" class="img-fluid">
+
+                    <p class="text-center text-white rs-text-lg">
+                        Be the first to learn about the latest updates from RESUL—and how they can take your
+                        real-time customer engagement to the next level.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+
+<div class=" mt-4">
+  <!-- Tabs -->
+  <ul class="nav nav-tabs justify-content-center gap-3 border-0" id="releaseTabs" role="tablist">
+    <div class="d-flex align-items-center justify-content-center tab-switch">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="r1-tab" data-bs-toggle="tab" data-bs-target="#r1" type="button" role="tab">1st Nov 2025</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="r2-tab" data-bs-toggle="tab" data-bs-target="#r2" type="button" role="tab">2nd Release</button>
+    </li>
+    <!-- <li class="nav-item crs d-none d-md-block" role="presentation">
+      <button class="nav-link" id="r3-tab" data-bs-toggle="tab" disabled aria-disabled="true" data-bs-target="#r3" type="button" role="tab">3rd Release</button>
+    </li>
+    <li class="nav-item crs d-none d-md-block" role="presentation">
+      <button class="nav-link" id="r4-tab" data-bs-toggle="tab" disabled aria-disabled="true" data-bs-target="#r4" type="button" role="tab">4th Release</button>
+    </li> -->
+    </div>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content" id="releaseTabsContent">
+
+    <!-- Tab 1 -->
+    <div class="tab-pane fade show active" id="r1" role="tabpanel">
+    
+
+
+<section class="banner-bottom-section">
+
+    <div class="container">
+        <div class="banner-bottom  pb-md-0 mx-3 mx-md-0">
+        <div class="row p-4 mt-5 pb-0 align-items-center justify-content-around ">
+            <div class="col-12 col-md-7 ps-md-5 d-flex p-3 gap-4 flex-column ">
+                <h2 class="text-start rs-heading-md">19 Smart Links for deeper attribution </h2>
+                <p class="text-start  rs-text-xl">Campaigns now support up to 19 Smart Links with custom UTM parameters, each with custom UTM parameters for more granual attribution. </p>
+            </div>
+
+            <div class="col-12 col-md-4 d-flex  justify-content-start">
+                <img src="./assets/indisebox.png" alt="" class="img-fluid">
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="rs-carousel-messages pt-5">
+    <div class="container">
+        <div class="row justify-content-center pt-2">
+            <div class="col-12 col-md-8">
+                <h2 class="rs-heading-md text-center">RCS and WhatsApp Carousel Messages </h2>
+                <p class="rs-text-md text-center pt-2">Bring richer, app-like messaging to Android users. </p>
+                <h2 class="rs-heading-md text-center pt-2 pb-3">RCS</h2>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-12 col-md-6">
+                <div class="rcs-left d-flex justify-content-center align-items-end pb-0 rs-shop mx-1 mx-md-0">
+                    <img src="./assets/rcs-mshop.svg" alt="" class="img-fluid">
+                </div>
+
+                <ul class="pt-3 mt-3 ms-4">
+                    <li class="rs-text-md">Up to 10 cards per carousel</li>
+                    <li class="rs-text-md">Support for images, titles, descriptions and CTAs</li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="rcs-right d-flex justify-content-center pb-0 rs-shop mx-1 mx-md-0">
+                    <img src="./assets/rcs-model-dress.svg" alt="" class="img-fluid">
+                </div>
+                
+                <ul class="pt-3 mt-3 ms-4">
+                    <li class="rs-text-md">Up to 10 cards per carousel</li>
+                    <li class="rs-text-md">Support for images, titles, descriptions and CTAs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-12">
+         <h2 class="rs-heading-md py-5 text-center">WhatsApp Carousels </h2>
+</div>
+    <div class="row rs-gradient-bg justify-content-center pt-3 mx-1 mx-md-0">
+       
+        <div class="col-12 col-md-4 ps-3 d-flex align-items-center">
+            <p class="rs-text-md">Swipeable card layout optimized for mobile engagement </p>
+        </div>
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-end">
+            <img src="./assets/rs-glaskart.svg" alt="" class="img-fluid">
+        </div>
+    </div>
+
+
+     <div class="row pt-5 pb-3 rs-gradient-bg justify-content-center  rs-cards  mt-5 mx-1 mx-md-0">
+       
+        <div class="col-12 col-md-5 ps-3 d-flex align-items-center py-3">
+            <!-- <p class="rs-text-md">Swipeable card layout optimized for mobile engagement </p> -->
+             <ul>
+                <li class="rs-text-md ">Up to 4 CTAs per card (e.g., Learn More, Add to Cark, Book Now) </li>
+                <li class="rs-text-md py-3">Unified channel preview inside RESUL before sending</li>
+                <li class="rs-text-md">Useful for multi-offer and guided browsing flows</li>
+             </ul>
+        </div>
+        <div class="col-12 col-md-5 d-flex justify-content-center align-items-end">
+            <img src="./assets/rs-message.svg" alt="" class="img-fluid">
+        </div>
+    </div>
+
+
+    <div class="col-12">
+         <h2 class="rs-heading-md pt-5 pb-3 text-center">Template Builder Enhancements</h2>
+</div>
+         <p class="rs-text-xlg text-center pb-3">A faster, more flexible builder for email and content production. </p>
+
+
+        <div class="row justify-content-evenly ">
+            <div class="col-12 col-md-6  p-3 ">
+            <div class="rs-gradient-bg rs-cards-grid d-flex align-items-center justify-content-center">
+                <img src="./assets/trible-white.svg" alt="" class="img-fluid px-5 py-2"> 
+             </div>
+                <p class="rs-text-md px-3 pt-2 text-center text-md-start">Create eye-catching emails with our drag-and-drop template builder</p>
+            </div>
+
+             <div class="col-12 col-md-6 p-3">
+            <div class="rs-gradient-bg rs-cards-grid d-flex align-items-center justify-content-center">
+                <img src="./assets/vaction.svg" alt="" class="img-fluid px-5 py-2"> 
+            </div> 
+                <p class="rs-text-md px-3 pt-2 text-center text-md-start">Target your individual audience with personalized content</p>
+
+            </div>
+        </div>
+
+          <div class="row justify-content-evenly ">
+            <div class="col-12 col-md-6  p-3 ">
+            <div class="rs-gradient-bg rs-cards-grid d-flex align-items-center justify-content-center">
+                <img src="./assets/end-of-sale.svg" alt="" class="img-fluid px-5 py-2"> 
+             </div>
+                <p class="rs-text-md px-3 pt-2 text-center text-md-start">Save your blocks as snippets and repurpose in a jiffy</p>
+            </div>
+
+             <div class="col-12 col-md-6 p-3">
+            <div class="rs-gradient-bg rs-cards-grid d-flex align-items-center justify-content-center">
+                <img src="./assets/summer-sale.svg" alt="" class="img-fluid px-5 py-2"> 
+            </div> 
+                <p class="rs-text-md px-3 pt-2 text-center text-md-start">You dont need coding knowledge to master templates</p>
+
+            </div>
+        </div>
+     
+
+
+
+    </div>
+
+<!-- Footer builder section -->
+
+
+    <div class="container-fluid p-0 m-0 py-4 my-4">
+        <div class="f-builder">
+            <div class="container py-4">
+                <div class="row ">
+                    <div class="col-12">
+                <h2 class="rs-heading-md text-center pt-3 text-white">Footer Builder</h2>
+
+                <p class="rs-text-xl text-center pb-3 text-white">A centralized workspace for all email footers. </p>
+</div>
+                    <div class="col-12">
+                <div class="row rs-gradient-bg px-5 py-2 mb-5 d-flex align-items-center justify-content-center mx-2 mx-md-0">
+
+                    <div class="col-12 col-md-5 d-flex flex-column justify-content-center align-items-md-center">
+                        <h2 class="rs-heading-md text-md-center">What’s new </h2>
+                        <p class="rs-text-md text-md-center">One dedicated canvas for footer design </p>
+                    </div>
+
+                    <div class="col-12 col-md-6 ">
+                        <img src="./assets/dbs.svg" alt="" class="img-fluid rs-cards">
+                    </div>
+
+                </div>
+                </div>
+  
+                </div>
+
+                  <div class="row justify-content-evenly ">
+            <div class="col-12 col-md-6  p-3 ">
+            <div class="rs-gradient-bg rs-cards-builder d-flex align-items-center justify-content-center">
+                <img src="./assets/f-builder-vision.svg" alt="" class="img-fluid px-5 py-2"> 
+             </div>
+                <p class="rs-text-xl px-md-5 px-2 pt-3 text-white w-100 w-md-75  text-center text-md-start">Global updates applied across all linked templates </p>
+            </div>
+
+             <div class="col-12 col-md-6 p-3">
+            <div class="rs-gradient-bg rs-cards-builder d-flex align-items-center justify-content-center">
+                <img src="./assets/f-builder-vision-travel.svg" alt="" class="img-fluid px-5 py-2"> 
+            </div>
+            
+                
+                <p class="rs-text-xl px-md-5 px-2 pt-3 text-white w-100 w-md-75 text-center text-md-start">Flexible layout components and icon options </p>
+
+            </div>
+        </div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- Content Targeting section -->
+
+     <div class="container-fluid p-0 m-0 py-4 my-4 mt-0 pt-0">
+     
+            <div class="container py-4">
+                <div class="row ">
+                    <div class="col-12">
+                <h2 class="rs-heading-md text-center pt-3">Content Targeting</h2>
+
+                <p class="rs-text-xl text-center pb-3">Personalize content inside a single template. </p>
+</div>
+                
+  
+                </div>
+
+                  <div class="row justify-content-evenly ">
+            <div class="col-12 col-md-6  p-3 ">
+            <div class="rs-gradient-bg d-flex align-items-center justify-content-center py-3 rs-cards">
+                <img src="./assets/cotent-target.svg" alt="" class="img-fluid px-5 py-2"> 
+             </div>
+                <p class="rs-text-xl ps-md-5 pt-3 p-2 text-md-start text-center">Assign blocks to up to 7 audience groups</p>
+            </div>
+
+             <div class="col-12 col-md-6 p-3">
+            <div class="rs-gradient-bg  d-flex align-items-center justify-content-center py-3 rs-cards">
+                <img src="./assets/exploye-your-des.svg" alt="" class="img-fluid px-5 py-2"> 
+            </div>
+            
+                
+                <p class="rs-text-xl ps-md-5 pt-3 p-2 text-md-start text-center">Each group supports 7 attributes</p>
+
+            </div>
+        </div>
+            </div>
+
+    
+    </div>
+
+
+    <!-- drop off  -->
+       <div class="container-fluid p-0 m-0 py-4 my-4">
+        <div class="f-builder">
+            <div class="container py-4">
+                <div class="row mx-3 mx-md-0">
+               
+             
+  
+                </div>
+
+                  <div class="row justify-content-evenly ">
+            <div class="col-12 col-md-6  p-3 ">
+
+                <h2 class="rs-heading-sm text-white py-3 text-center">Drop-Off Retargeting</h2>
+            <div class="rs-gradient-bg rs-cards-builder d-flex align-items-center justify-content-center">
+                <img src="./assets/drop-off.svg" alt="" class="img-fluid px-5 py-2"> 
+             </div>
+                <p class="rs-text-md px-3 pt-3 text-white">Automatically generate re-engagement lists based on user drop-off points along the path to conversion.</p>
+                <p class="rs-text-md px-3 text-white">One click → RESUL creates the retargeting audience.</p>
+            </div>
+
+             <div class="col-12 col-md-6 p-3">
+                <h2 class="rs-heading-sm text-white py-3 text-center">Value-Based Search in Segmentation</h2>
+
+            <div class="rs-gradient-bg rs-cards-builder d-flex align-items-center justify-content-center">
+                <img src="./assets/value-based.svg" alt="" class="img-fluid px-5 py-2"> 
+            </div>
+            
+                
+                <p class="rs-text-md px-3 pt-3 text-white">Look up not only attributes but also actual values—emails, SKUs, phone numbers—across datasets, making segmentation faster and more accurate. </p>
+
+            </div>
+        </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- Digipop Integration -->
+
+<div class="container">
+    <div class="row rs-gradient-bg p-2 p-md-5 mx-1 mx-md-0">
+        <div class="col-12 py-2">
+            <h2 class="rs-heading-md py-2">Digipop Integration for Paid Campaign Activation (Indonesia)</h2>
+            <p class="rs-text-md py-2">Teams can now launch Digipop-powered ad campaigns directly from RESUL, enabling end-to-end paid activation without switching platforms. This allows Indonesian teams to run paid media activation faster and with more operational consistency.</p>
+</div>
+            <div class="col-12 col-md-6">
+                <h2 class="rs-heading-sm">What’s new</h2>
+
+                <ul>
+                    <li class="rs-text-md py-2">Digipop appears as a connected system in Data Exchange → Data Ingestion </li>
+                    <li class="rs-text-md py-2">Target Lists can be built using Digipop partner audience attributes (interests, province, home province, etc.) </li>
+                    <li class="rs-text-md py-2">Create Meta, programmatic, video, generic video, and CTV campaigns directly in RESUL </li>
+                    <li class="rs-text-md py-2">Upload creatives, configure impressions, and assign categories within the RESUL UI </li>
+                    <li class="rs-text-md py-2">Generate Smart Links for all Digipop-supported channels</li>
+                    <li class="rs-text-md py-2">Automatic sync: campaigns created in RESUL appear in the Digipop marketing platform </li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <img src="./assets/digipop-ntegration.svg" alt="" class="img-fluid">
+            </div>
+
+
+        
+    </div>
+</div>
+
+</section>
+
+
+
+
+        
+    </div>
+
+    <!-- Tab 2 -->
+    <div class="tab-pane fade" id="r2" role="tabpanel">
+        <div class="container">
+      <h2 class="rs-heading-md py-4">2nd Release Content Coming Soon...</h2>
+
+      <p class="non-relese"></p>
+      </div>
+    </div>
+
+    <!-- Tab 3 -->
+    <div class="tab-pane fade" id="r3" role="tabpanel">
+       <div class="container relese-notes">
+      <h2 class="rs-heading-md py-4">3rd Release Content Coming Soon...</h2>
+      </div>
+    </div>
+
+    <!-- Tab 4 -->
+    <div class="tab-pane fade" id="r4" role="tabpanel">
+      <div class="container">
+      <h2 class="rs-heading-md py-4">4th Release Content Coming Soon...</h2>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</section>
+
+<div class="pt-5 mt-5"></div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

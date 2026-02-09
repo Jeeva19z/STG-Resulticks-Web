@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manager Feedback CSV Cleaner</title>
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- PapaParse for CSV/TSV parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    /* smooth table scrolling */
+    .table-scroll { overflow: auto; max-height: 60vh; }
+    th, td { white-space: nowrap; }
+    thead th { position: sticky; top: 0; background: #fff; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <div class="max-w-7xl mx-auto p-6">
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold">Manager Feedback CSV Cleaner</h1>
+      <p class="text-gray-600 mt-1">Upload your Google Form export (CSV or TSV). This tool will expand the <b>Ratings</b> JSON into columns and clean special characters in free‑text.</p>
+    </header>
+
+    <section class="grid lg:grid-cols-3 gap-4 mb-6">
+      <div class="lg:col-span-2">
+        <label for="fileInput" class="block text-sm font-medium text-gray-700 mb-2">Upload CSV/TSV</label>
+        <div id="dropzone" class="border-2 border-dashed rounded-2xl p-6 bg-white flex items-center justify-center text-center cursor-pointer">
+          <div>
+            <p class="font-medium">Drag & drop your file here</p>
+            <p class="text-xs text-gray-500">or click to browse</p>
+          </div>
+          <input id="fileInput" type="file" accept=".csv,.tsv,text/csv,text/tab-separated-values" class="hidden" />
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 shadow-sm border">
+        <h3 class="font-semibold mb-3">Options</h3>
+        <label class="flex items-center gap-2 mb-2">
+          <input id="keepPunct" type="checkbox" class="h-4 w-4" checked />
+          <span class="text-sm">Keep basic punctuation in text (.,!? -'&():/+)</span>
+        </label>
+        <label class="flex items-center gap-2">
+          <input id="limitRows" type="checkbox" class="h-4 w-4" />
+          <span class="text-sm">Preview first 500 rows only (speeds up huge files)</span>
+        </label>
+        <div class="mt-4 flex gap-2">
+          <button id="downloadBtn" class="px-4 py-2 rounded-xl bg-gray-200 text-gray-700 cursor-not-allowed" disabled>Download cleaned CSV</button>
+          <button id="resetBtn" class="px-4 py-2 rounded-xl bg-white border">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" class="hidden mb-4 bg-white rounded-2xl p-4 border">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+        <div><div class="text-gray-500">Rows</div><div id="rowsCount" class="font-semibold">—</div></div>
+        <div><div class="text-gray-500">Columns</div><div id="colsCount" class="font-semibold">—</div></div>
+        <div><div class="text-gray-500">Rating columns</div><div id="ratingCols" class="font-semibold">—</div></div>
+        <div><div class="text-gray-500">Separator detected</div><div id="sepType" class="font-semibold">—</div></div>
+      </div>
+    </section>
+
+    <section id="tableWrap" class="hidden bg-white rounded-2xl p-4 border">
+      <div class="table-scroll">
+        <table id="dataTable" class="min-w-full text-sm">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // --- Helpers (matching the Python cleaner logic) ---
+    const ID_COLS = ["Timestamp","Username","Employee ID","Department","Manager"]; 
+    const TEXT_COLS = ["Improvements","Strengths"]; 
+    const RATINGS_COL = "Ratings";
+
+    function cleanText(s, keepBasicPunct = true){
+      if (s === null || s === undefined) return "";
+      s = String(s).replace(/\s+/g, ' ').trim();
+      if (keepBasicPunct){
+        // Keep letters, numbers, space, and basic punct . , ! ? - ' & ( ) : / +
+        return s.replace(/[^A-Za-z0-9 \.,!\?\-\'&():\/+]/g, '');
+      }
+      return s.replace(/[^A-Za-z0-9 ]/g, '');
+    }
+
+    function safeJSONParse(s){
+      if (s === null || s === undefined) return {};
+      s = String(s).trim();
+      if (!s) return {};
+      try { return JSON.parse(s); } catch(e){}
+      // try fixing curly/smart quotes
+      const s2 = s.replace(/[“”]/g, '"').replace(/[’‘]/g, "'");
+      try { return JSON.parse(s2); } catch(e){}
+      return {};
+    }
+
+    function expandRatings(rows){
+      // rows: array of objects
+      const allKeys = new Set();
+      const parsed = rows.map(r => safeJSONParse(r[RATINGS_COL]));
+      parsed.forEach(obj => { Object.keys(obj || {}).forEach(k => allKeys.add(k)); });
+      const keys = Array.from(allKeys).sort();
+      // add columns
+      const out = rows.map((r, idx) => {
+        const obj = parsed[idx] || {};
+        const rr = {...r};
+        keys.forEach(k => { rr[k] = obj[k] ?? ''; });
+        return rr;
+      });
+      return { rows: out, ratingKeys: keys };
+    }
+
+    function normalizeTextColumns(rows, cols, keepBasicPunct){
+      return rows.map(r => {
+        const rr = {...r};
+        cols.forEach(c => { if (c in rr) rr[c] = cleanText(rr[c], keepBasicPunct); });
+        return rr;
+      });
+    }
+
+    function orderColumns(rows){
+      if (!rows.length) return { header: [], rows };
+      const cols = new Set();
+      rows.forEach(r => Object.keys(r).forEach(k => cols.add(k)));
+      const all = Array.from(cols);
+      const ratingCols = all.filter(c => !ID_COLS.includes(c) && !TEXT_COLS.includes(c) && c !== RATINGS_COL);
+      const remaining = all.filter(c => !ID_COLS.includes(c) && !TEXT_COLS.includes(c) && !ratingCols.includes(c));
+      const header = [...ID_COLS, ...TEXT_COLS, ...ratingCols, ...remaining];
+      const mappedRows = rows.map(r => header.map(h => (h in r ? r[h] : '')));
+      return { header, rows: mappedRows, ratingCount: ratingCols.length };
+    }
+
+    function toCSV(header, rows){
+      const esc = v => {
+        if (v === null || v === undefined) v = '';
+        v = String(v);
+        // escape quotes and wrap if needed
+        const needsQuote = /[",\n]/.test(v);
+        v = v.replace(/"/g, '""');
+        return needsQuote ? `"${v}"` : v;
+      };
+      const lines = [];
+      lines.push(header.map(esc).join(','));
+      rows.forEach(r => lines.push(r.map(esc).join(',')));
+      return lines.join('\n');
+    }
+
+    function detectSeparator(firstChunk){
+      // Heuristic: if tabs dominate, use TSV; else let Papa auto-detect
+      const firstLine = firstChunk.split(/\r?\n/)[0] || '';
+      const tabs = (firstLine.match(/\t/g) || []).length;
+      const commas = (firstLine.match(/,/g) || []).length;
+      return tabs > commas ? '\t' : undefined; // undefined => let Papa auto
+    }
+
+    // --- UI logic ---
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const keepPunct = document.getElementById('keepPunct');
+    const limitRows = document.getElementById('limitRows');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    const summary = document.getElementById('summary');
+    const rowsCount = document.getElementById('rowsCount');
+    const colsCount = document.getElementById('colsCount');
+    const ratingCols = document.getElementById('ratingCols');
+    const sepType = document.getElementById('sepType');
+
+    const tableWrap = document.getElementById('tableWrap');
+    const thead = document.querySelector('#dataTable thead');
+    const tbody = document.querySelector('#dataTable tbody');
+
+    let currentHeader = [];
+    let currentRows = [];
+
+    function renderTable(header, rows){
+      // Build thead
+      thead.innerHTML = '';
+      const htr = document.createElement('tr');
+      header.forEach(h => {
+        const th = document.createElement('th');
+        th.textContent = h;
+        th.className = 'px-3 py-2 text-left border-b';
+        htr.appendChild(th);
+      });
+      thead.appendChild(htr);
+
+      // Build tbody (limit preview if checked)
+      tbody.innerHTML = '';
+      const limit = limitRows.checked ? Math.min(rows.length, 500) : rows.length;
+      for (let i=0;i<limit;i++){
+        const tr = document.createElement('tr');
+        const r = rows[i];
+        r.forEach(v => {
+          const td = document.createElement('td');
+          td.textContent = v == null ? '' : v;
+          td.className = 'px-3 py-2 border-b';
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      }
+
+      tableWrap.classList.remove('hidden');
+    }
+
+    function updateSummary(rowsLen, colsLen, ratingCount, sep){
+      rowsCount.textContent = rowsLen;
+      colsCount.textContent = colsLen;
+      ratingCols.textContent = ratingCount;
+      sepType.textContent = sep === '\\t' ? 'Tab (TSV)' : (sep ? sep : 'Auto');
+      summary.classList.remove('hidden');
+    }
+
+    function enableDownload(){
+      downloadBtn.disabled = false;
+      downloadBtn.className = 'px-4 py-2 rounded-xl bg-black text-white';
+    }
+
+    function disableDownload(){
+      downloadBtn.disabled = true;
+      downloadBtn.className = 'px-4 py-2 rounded-xl bg-gray-200 text-gray-700 cursor-not-allowed';
+    }
+
+    function processParsed(rows){
+      if (!rows || !rows.length){
+        alert('No rows found. Make sure your header row exists.');
+        return;
+      }
+      // Convert arrays to objects if necessary
+      if (Array.isArray(rows[0])){
+        const header = rows[0];
+        rows = rows.slice(1).map(r => {
+          const obj = {};
+          header.forEach((h, i) => obj[h] = r[i]);
+          return obj;
+        });
+      }
+
+      // Ensure ID columns exist
+      rows = rows.map(r => {
+        const rr = {...r};
+        ID_COLS.forEach(c => { if (!(c in rr)) rr[c] = ''; });
+        return rr;
+      });
+
+      // Expand ratings
+      const { rows: withRatings, ratingKeys } = expandRatings(rows);
+
+      // Clean text
+      const cleaned = normalizeTextColumns(withRatings, TEXT_COLS, keepPunct.checked);
+
+      // Order columns and map values
+      const ordered = orderColumns(cleaned);
+      currentHeader = ordered.header;
+      currentRows = ordered.rows;
+
+      renderTable(currentHeader, currentRows);
+      updateSummary(currentRows.length, currentHeader.length, ordered.ratingCount, lastSepUsed);
+      enableDownload();
+    }
+
+    function parseFile(file){
+      const reader = new FileReader();
+      reader.onload = e => {
+        const text = e.target.result;
+        lastSepUsed = detectSeparator(text);
+        const config = {
+          header: true,
+          skipEmptyLines: 'greedy',
+          delimiter: lastSepUsed, // if undefined, Papa auto-detects
+        };
+        const parsed = Papa.parse(text, config);
+        if (parsed.errors && parsed.errors.length){
+          console.warn('PapaParse errors:', parsed.errors.slice(0,3));
+        }
+        processParsed(parsed.data);
+      };
+      reader.readAsText(file, 'utf-8');
+    }
+
+    let lastSepUsed = undefined;
+
+    // Drag & drop UX
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('border-black'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('border-black'));
+    dropzone.addEventListener('drop', e => {
+      e.preventDefault(); dropzone.classList.remove('border-black');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) parseFile(e.dataTransfer.files[0]);
+    });
+
+    fileInput.addEventListener('change', e => {
+      const f = e.target.files[0];
+      if (f) parseFile(f);
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      if (!currentHeader.length) return;
+      const csv = toCSV(currentHeader, currentRows);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'cleaned_feedback.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    resetBtn.addEventListener('click', () => {
+      currentHeader = []; currentRows = [];
+      thead.innerHTML = ''; tbody.innerHTML = '';
+      tableWrap.classList.add('hidden');
+      summary.classList.add('hidden');
+      fileInput.value = '';
+      disableDownload();
+    });
+  </script>
+</body>
+</html>

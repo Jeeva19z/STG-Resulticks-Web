@@ -1,0 +1,70 @@
+@mixin image($value, $pos: center center, $rep: no-repeat) {
+	background-image: url(#{$image}#{$value});
+	background-position: $pos;
+	background-repeat: $rep;
+}
+
+@mixin box($value) {
+	width: #{$value};
+	height: #{$value};
+}
+
+@mixin abs-position($p: null, $t: null, $r: null, $b: null, $l: null, $index: null, $fill: null) {
+	position: $p;
+	top: $t;
+	right: $r;
+	bottom: $b;
+	left: $l;
+	z-index: $index;
+	@if ($fill) {
+		top: $t;
+		right: $r;
+		bottom: $b;
+		left: $l;
+	}
+}
+
+@mixin position-inherit($p: null, $t: null, $r: null, $b: null, $l: null) {
+	content: "";
+	display: block;
+	position: $p;
+	top: $t;
+	right: $r;
+	bottom: $b;
+	left: $l;
+}
+
+ @mixin css3-prefix($props, $value) {
+	-webkit-#{$props}: #{$value};
+	-moz-#{$props}: #{$value};
+	-ms-#{$props}: #{$value};
+	-o-#{$props}: #{$value};
+	#{$props}: #{$value};
+}
+
+// TRANSITION
+@mixin transition($for: all, $time-in: 250ms, $type: ease-in-out, $time-out: 0s) {
+	-webkit-transition: $for $time-in $type $time-out;
+		-moz-transition: $for $time-in $type $time-out;
+		-o-transition: $for $time-in $type $time-out;
+		transition: $for $time-in $type $time-out;
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+@mixin text-shorten {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin flex($x:center, $y:center, $dir: row) {
+	display: flex;
+	justify-content: $x;
+	align-items: $y;
+	flex-direction: $dir;
+}

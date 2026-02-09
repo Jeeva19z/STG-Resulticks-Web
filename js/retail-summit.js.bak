@@ -1,0 +1,142 @@
+var myModal = new bootstrap.Modal(document.getElementById('indiaRetailModal'));
+let thanksMsg = document.getElementById("thanksmsg");
+let formBlock = document.getElementById("strategyForm");
+
+function requestStrategyForm(event) {
+    event.preventDefault();
+    
+    // Regular Expressions
+    var alphaExp = /^[a-zA-Z]+$/;
+    var emailExp = /^([A-Za-z0-9_\-\.])+@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+    // Get form input values
+    var firstName = document.getElementById("firstname").value;
+    var emailId = document.getElementById("email").value;
+    var mobileNo = document.getElementById("mobileno").value;
+    var companyName = document.getElementById("company").value;
+    var jobTitle = document.getElementById("jobtitle").value;
+    var checkbox = document.getElementById("checkbox");
+
+    var formValid = true; // Set to true and only change to false if a validation fails
+
+    // Validate First Name
+    if (firstName == "") {
+        document.getElementById('error_firstname').innerHTML = "Enter first name";
+        document.getElementById('error_firstname').style.display = 'block';
+        formValid = false;
+    } else if (!firstName.match(alphaExp)) {
+        document.getElementById('error_firstname').innerHTML = "Enter only alphabets";
+        document.getElementById('error_firstname').style.display = 'block';
+        formValid = false;
+    } else {
+        document.getElementById('error_firstname').style.display = 'none';
+    }
+
+    // Validate Email ID
+    if (emailId == "") {
+        document.getElementById('error_emailid').innerHTML = "Enter email address";
+        document.getElementById('error_emailid').style.display = 'block';
+        formValid = false;
+    } else if (!emailId.match(emailExp)) {
+        document.getElementById('error_emailid').innerHTML = "Enter valid email address";
+        document.getElementById('error_emailid').style.display = 'block';
+        formValid = false;
+    } else {
+        document.getElementById('error_emailid').style.display = 'none';
+    }
+
+    // Validate Mobile Number
+    if (mobileNo == "" || mobileNo.length < 10) {
+        document.getElementById('error_mobileno').innerHTML = "Enter mobile number";
+        document.getElementById('error_mobileno').style.display = 'block';
+        formValid = false;
+    } else {
+        document.getElementById('error_mobileno').style.display = 'none';
+    }
+
+    // Validate Company Name
+    if (companyName == "") {
+        document.getElementById('error_company').innerHTML = "Enter company name";
+        document.getElementById('error_company').style.display = 'block';
+        formValid = false;
+    } else {
+        document.getElementById('error_company').style.display = 'none';
+    }
+
+    // Validate Job Title
+    if (jobTitle == "select") {
+        document.getElementById('error_jobtitle').innerHTML = "Please select a job title";
+        document.getElementById('error_jobtitle').style.display = 'block';
+        formValid = false;
+    } else {
+        document.getElementById('error_jobtitle').style.display = 'none';
+    }
+
+    // Validate Checkbox
+    if (!checkbox.checked) {
+        document.getElementById('error_checkbox').innerHTML = "You must agree to the terms";
+        document.getElementById('error_checkbox').style.display = 'block';
+        formValid = false;
+    } else {
+        document.getElementById('error_checkbox').style.display = 'none';
+    }
+
+    // If form is valid, submit the data
+    if (formValid) {
+        var retailFormData = {
+            'Full_name': firstName,
+            'EmailID': emailId,
+            'MobileNo': mobileNo,
+            'Company': companyName,
+            'Job_Title': jobTitle,
+            'referral': "ref",
+            "formid": "230",
+            "apikey": "cc33cd4b_2fea_4b94_9123_bb7d48ff673e",
+            "SourceURL": "",
+            "pagereferrerurl": "",
+            "rid": "",
+            "cid": "",
+            "pagetitle": ""
+        };
+        
+        fetch('https://resu.io//Subscription/IndexInsertAPI', {
+            method: 'POST',
+            body: JSON.stringify(retailFormData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); 
+            if (thanksMsg) {
+                thanksMsg.classList.remove("d-none"); // Show thank you message
+                if (formBlock) {
+                    formBlock.classList.add("d-none"); // Hide the form block
+                }
+            }
+
+            setTimeout(function(){
+                myModal.hide();
+            }, 3000)
+            // Redirect or perform any action after successful submission
+            // window.location.href = "thank-you.html";
+        })
+        .catch(err => {
+            console.log('caught it!', err);
+        });
+    }
+}
+
+
+document.querySelectorAll('.retailModal').forEach(function(anchor) {
+    anchor.addEventListener('click', function(event) {
+        // debugger
+        event.preventDefault();
+        myModal.show(); 
+        if (thanksMsg) {
+            thanksMsg.classList.add("d-none");
+        }
+        if (formBlock) {
+            formBlock.classList.remove("d-none");
+        }
+    });
+});
+

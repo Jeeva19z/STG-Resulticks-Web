@@ -1,0 +1,77 @@
+
+@for $i from 1 through 72 {
+  $x : $i;
+  .fs#{$x}rem {
+      font-size: #{$x}rem;
+  }
+}
+
+// base structure
+@for $i from 10 through 40 {
+  $count: #{$i}px;
+}
+
+// font size 8 to 100
+@for $i from 8 through 42 {
+  $x: $i;
+  .fs#{$x},
+  .fs#{$x}-btn button,
+  .fs#{$x}-list div {
+    font-size: #{$x}px !important;
+  }
+}
+
+
+@for $i from 0 through 30 {
+  .h#{$i}rem {height: #{$i}rem !important;}
+  .w#{$i}rem {width: #{$i}rem !important;}
+}
+
+// height, width, margin, padding, line-height
+@for $i from 0 through 35 {
+  .top#{$i}, .t#{$i} {top: #{$i}px !important;}
+  .top-#{$i}, .t-#{$i} {top: -#{$i}px !important;}
+
+  .left#{$i}, .l#{$i} {left: #{$i}px !important;}
+  .left-#{$i}, .l-#{$i} {left: -#{$i}px !important;}
+
+  .right#{$i}, .r#{$i} {right: #{$i}px !important;}
+  .right-#{$i}, .r-#{$i} {right: -#{$i}px !important;}
+  
+  .bottom#{$i}, .t#{$i} {bottom: #{$i}px !important;}
+  .bottom-#{$i}, .t-#{$i} {bottom: -#{$i}px !important;}
+}
+
+@for $i from 0 through 10 {
+  .zIndex#{$i} {
+    z-index: #{$i};
+  }
+}
+
+@for $i from 0 through 100 {
+    .height#{$i} {height: #{$i}px !important;}
+    .w#{$i}r {width: #{$i}rem !important;}
+    .lh#{$i} {line-height: #{$i}px;}
+}
+
+@for $i from 1 through 2 {
+  .mb-xs-#{$i} {
+    margin-bottom: #{$i * .25}rem;
+  }
+}
+@for $i from 3 through 5 {
+  .mb-xs-#{$i} {
+    margin-bottom: #{$i * .5 - .5}rem;
+  }
+}
+
+@for $i from 1 through 2 {
+  .pb-xs-#{$i} {
+    padding-bottom: #{$i * .25}rem;
+  }
+}
+@for $i from 3 through 5 {
+  .pb-xs-#{$i} {
+    padding-bottom: #{$i * .5 - .5}rem;
+  }
+}

@@ -1,0 +1,11 @@
+# ------------------------------------------
+# Resulticks -- https://www.resulticks.com/
+# Robot Exclusion File -- robots.txt
+# Author: Resulticks
+# Last Updated: 26/08/2025
+# ------------------------------------------
+ 
+User-agent: *
+Disallow:
+ 
+Sitemap: https://www.resulticks.com/sitemap.xml

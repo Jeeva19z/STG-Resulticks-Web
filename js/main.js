@@ -1,0 +1,91 @@
+var vbody = document.querySelector('body');
+var header = document.querySelector("#rs-header");
+
+function rsHeader(y) {
+    if (y > 50) {
+        header.classList.add("header-fixed");
+        vbody.classList.add('scroll-enabled');
+        // header.classList.add('fadeOutUpDown');
+        // header.classList.remove('fadeInDown');
+    } else {
+        vbody.classList.remove('scroll-enabled');
+        header.classList.remove("header-fixed");
+        // header.classList.remove('fadeOutUpDown');
+        // header.classList.add('fadeInDown');
+    }
+}
+
+[...document.getElementsByClassName('leader-items')].forEach(ele => {
+    ele.addEventListener('click', function(e) {
+        const modalBodyContent = e.target.parentNode.parentNode.querySelector('.leader-content');
+        document.querySelector('.modal-body').innerHTML = modalBodyContent.innerHTML;
+    })
+})
+
+
+window.addEventListener('resize', function () {
+    // window.addEventListener("scroll", rsHeader());
+}, true);
+
+// var content = document.querySelector('.leader-content');
+// content.classList.remove('hide');
+// document.querySelector('.modal-body').html(content);
+const exampleModal = document.getElementById('leadership-team')
+if (exampleModal) {
+    exampleModal.addEventListener('show.bs.modal', () => {
+        console.log(e.target.parentNode.parentNode.querySelector('.leader-content'),"--ele")
+        console.log(ele.querySelector('.leader-content'))
+        const modalBodyContent = e.target.querySelector('.leader-content').innerHTML;
+        document.querySelector('.modal-body').innerHTML = modalBodyContent; 
+    })
+}
+
+if(document.getElementsByClassName('product-menu')?.length) {
+    document.getElementsByClassName('product-menu')[0].addEventListener("click", function(){
+        window.scrollTo({
+            top: 1675,
+            behavior: 'smooth'
+        });
+    });
+}
+
+var wrapperClass = document.querySelector("#wrapper");
+var navbarToggle = document.querySelector("#navbarToggler");
+if(navbarToggle) {
+    navbarToggle.addEventListener('click', () => {
+        setTimeout(function(){
+            wrapperClass.classList.toggle('mobile-bg');
+        }, 500)
+    });
+}
+
+const mediaQuery = window.matchMedia('(max-width: 767px)');
+if(mediaQuery.matches) {
+    document.querySelector('.home-video-banner .swiper-button-position').classList.add('horizontal');
+    document.querySelector('.home-video-banner .swiper-button-position').classList.add('bottom');
+} else {
+    try {
+        document.querySelector('.home-video-banner .swiper-button-position').classList.remove('horizontal');
+        document.querySelector('.home-video-banner .swiper-button-position').classList.remove('bottom');
+    } catch (error) {
+        
+    }
+}
+
+window.addEventListener("scroll", event => {
+    // console.log(window.scrollY)
+    rsHeader(window.scrollY)
+}, { passive: true });
+
+window.addEventListener('load', function() {
+
+    // var easyAppId = document.createElement('script');
+    // easyAppId.innerHTML = `window.fpsetting = {app_id: 2591705924278};`;
+    // document.head.appendChild(easyAppId);
+
+    // var easyHeadTag = document.createElement('script');
+    // easyHeadTag.src = 'https://stats.easyleadz.com/easyengage/io.js';
+    // document.head.appendChild(easyHeadTag);
+
+});
+
