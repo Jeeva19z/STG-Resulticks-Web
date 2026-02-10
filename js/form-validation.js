@@ -854,6 +854,10 @@ function partnerProgramForm() {
     let errSubCountry = document.querySelector("#error_pcountry");
     let errCheckbox = document.querySelector("#error_pcheckbox");
 
+    let iwouldlikereceieveupdate = document.querySelector("#rcheckbox1").checked?"Yes":"No";
+
+    // console.log(iwouldlikereceieveupdate)
+
     // Email validation
     if (!emailInput.value) {
       errEmail.style.display = "block";
@@ -888,6 +892,15 @@ function partnerProgramForm() {
       returnType = false;
     }
 
+   
+     let rcompanyNameGlob = document.querySelector("#rcompanyname");
+        let errrcompanyNameGlob = document.querySelector("#error_rcompanyname");
+        if (!!rcompanyNameGlob && rcompanyNameGlob.value == "" && !!errrcompanyNameGlob) {
+            errrcompanyNameGlob.style.display = "block";
+            errrcompanyNameGlob.innerHTML = "Enter company name";
+            returnType = false;
+        }
+    
     // Partner type
     if (!partnerTypeGlob.value || partnerTypeGlob.value === "select") {
       errpartnerTypeGlob.style.display = "block";
@@ -923,6 +936,8 @@ function partnerProgramForm() {
       returnType = false;
     }
 
+    
+
     // Stop if validation failed
     if (!returnType) return false;
 
@@ -933,12 +948,11 @@ function partnerProgramForm() {
       MobileNo: mobileNoGlob.value,
       EmailID: emailInput.value,
       Partner: partnerTypeGlob.value,
-      Company: "",
+      Company: rcompanyNameGlob.value,
       Job_Title: selectJobTitle.value,
       Industry: selectIndustryInput.value,
-      Receive_Updates: "",
+      Receive_Updates: iwouldlikereceieveupdate||"",
       Country: selectSubCountry.value,
-      Purpose: "",
       SyncSDKID: "",
       FormId: "223",
       DbId: "cc33cd4b_2fea_4b94_9123_bb7d48ff673e",
@@ -1701,7 +1715,7 @@ function contactFormValidation() {
             // let company = !!document.querySelector("#ccompanyname") && document.querySelector("#ccompanyname").value;
 
             let company = document.querySelector("#ccompanyname")?.value || "";
-            let ReceiveUdpates = document.querySelector("#ccheckbox1").checked?"Enabled":"Disabled";
+            let ReceiveUdpates = document.querySelector("#ccheckbox1").checked?"Yes":"No";
 
 
             let reqPayload = {

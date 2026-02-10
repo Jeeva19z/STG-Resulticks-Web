@@ -239,6 +239,14 @@
 
                 <div class="row">
                     <div class="col-md-6">
+                       <div class="form-group">
+                                <input type="text" id="rcompanyname" maxlength="30" required="required"/>
+                                <label class="control-label" for="input">Company name</label>
+                                <div class="border-bottom-required"></div>
+                                <div id="error_rcompanyname" class="rinput-error"></div>
+                            </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <select type="text" id="pjobtitle">
                                 <option value="select">Select job title </option>
@@ -265,55 +273,13 @@
                             <div id="error_pjobtitle" class="pinput-error"></div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <select type="text" id="ppartnertype">
-                                <option value="select">Select partner type</option>
-                                <option value="Technology">Technology</option>
-                                <option value="Consulting">Consulting</option>
-                                <option value="Value added resellers">Value added resellers</option>
-                                <option value="Resellers">Resellers</option>
-                                <option value="Other">Other</option>
-                            </select>                       
-                            <div class="border-bottom-required select-arrow"></div>
-                            <div id="error_ppartnertype" class="pinput-error"></div>
-                        </div>
-                    </div>
+
+                   
+                   
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <select type="text" id="pindustry">
-                                <option value="select">Select industry</option>
-                                <option value="Banking ">Banking </option>
-                                <option value="Financial services">Financial services</option>
-                                <option value="Insurance">Insurance</option>
-                                <option value="Healthcare">Healthcare</option>
-                                <option value="Retail">Retail</option>
-                                <option value="Apparel">Apparel</option>
-                                <option value="Consumer electronics">Consumer electronics</option>
-                                <option value="E-commerce">E-commerce</option>
-                                <option value="Beauty personal care">Beauty personal care</option>
-                                <option value="Real estate">Real estate</option>
-                                <option value="Telecom">Telecom</option>
-                                <option value="Travel">Travel</option>
-                                <option value="Hospitality">Hospitality</option>
-                                <option value="Automotive">Automotive</option>
-                                <option value="Education">Education</option>
-                                <option value="FMCG">FMCG</option>
-                                <option value="Restaurant">Restaurant</option>
-                                <option value="Media &amp; entertainment">Media &amp; entertainment</option>
-                                <option value="F&amp;B">F&amp;B</option>
-                                <option value="Manufacturing">Manufacturing</option>
-                                <option value="IT/ITES">IT/ITES</option>
-                                <option value="Other">Other</option>
-                            </select>                       
-                            <div class="border-bottom-required select-arrow"></div>
-                            <div id="error_pindustry" class="pinput-error"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+                      <div class="col-md-6">
                         <div class="form-group">
                             <select type="text" id="pcountry">
                                 <option value="select">Select country</option>
@@ -520,10 +486,71 @@
                             <div id="error_pcountry" class="pinput-error"></div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select type="text" id="pindustry">
+                                <option value="select">Select industry</option>
+                                <option value="Banking ">Banking </option>
+                                <option value="Financial services">Financial services</option>
+                                <option value="Insurance">Insurance</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Retail">Retail</option>
+                                <option value="Apparel">Apparel</option>
+                                <option value="Consumer electronics">Consumer electronics</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="Beauty personal care">Beauty personal care</option>
+                                <option value="Real estate">Real estate</option>
+                                <option value="Telecom">Telecom</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Hospitality">Hospitality</option>
+                                <option value="Automotive">Automotive</option>
+                                <option value="Education">Education</option>
+                                <option value="FMCG">FMCG</option>
+                                <option value="Restaurant">Restaurant</option>
+                                <option value="Media &amp; entertainment">Media &amp; entertainment</option>
+                                <option value="F&amp;B">F&amp;B</option>
+                                <option value="Manufacturing">Manufacturing</option>
+                                <option value="IT/ITES">IT/ITES</option>
+                                <option value="Other">Other</option>
+                            </select>                       
+                            <div class="border-bottom-required select-arrow"></div>
+                            <div id="error_pindustry" class="pinput-error"></div>
+                        </div>
+                    </div>
+                  
+
+                </div>
+
+                  <div class="row">
+                     
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select type="text" id="ppartnertype">
+                                <option value="select">Select partner type</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Consulting">Consulting</option>
+                                <option value="Value added resellers">Value added resellers</option>
+                                <option value="Resellers">Resellers</option>
+                                <option value="Other">Other</option>
+                            </select>                       
+                            <div class="border-bottom-required select-arrow"></div>
+                            <div id="error_ppartnertype" class="pinput-error"></div>
+                        </div>
+                    </div>
 
                 </div>
 
                 <div class="row">
+
+                 
+
+ <div class="form-elements mt-3 mb-0">
+  <input id="rcheckbox1" name="rcheckbox1" type="checkbox" /> 
+                                <label for="rcheckbox1">I would like to receive relevant content, product updates and newsletter from Resulticks</label>
+                                                   
+</div>
+
+
                     <div class="form-elements mt-3 mb-0">
                         <input id="pcheckbox" name="pcheckbox" type="checkbox" class="agree-checkbox"/> 
                         <label for="pcheckbox">I agree to the <a href="terms-and-conditions.html" target="_blank">terms and conditions</a></label>  
