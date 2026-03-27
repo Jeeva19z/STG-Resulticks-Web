@@ -89,8 +89,9 @@
 .expect-section{background:#F3F6FF; margin-top:120px; padding:5rem 0px;}
 .expect-section_grid{display:flex; align-items:center; justify-content:space-evenly;  column-gap:5rem; row-gap:2rem; padding:1.6rem 0px 1rem 0;}
 .expect-section_grid div{max-width:224px;}
-.expect-section_grid figure{width:100px; height:100px; background:#3F65FF; border:2px solid #0737FB; border-radius:50%; margin:0 auto 1.6rem auto; display:flex; align-items:center; justify-content:center;}
-.expect-section_grid figure img{max-width:60px;}
+/* .expect-section_grid figure{width:100px; height:100px; background:#3F65FF; border:2px solid #0737FB; border-radius:50%; margin:0 auto 1.6rem auto; display:flex; align-items:center; justify-content:center;} */
+.expect-section_grid figure img{max-width:90px;}
+.expect-section_grid img{width: 100%;height: 100%;}
 .expect-section_grid p{color:#383838; font-size:18px; font-family:"MuktaLight"; line-height:25px;}
 
 .agenda-outer{padding-bottom:100px;}

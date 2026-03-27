@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & The Future of Leadership Book - Futurst Publications</title>
+<meta name="description" content="Discover Daxsan RB’s definitive book on AI-driven transformation. Explore six reasons every executive should read it and start leading in the intelligence era.">
+
+<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.svg">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #000080;
+    --navy-d: #00005a;
+    --navy-l: #1a1ab0;
+    --white:  #ffffff;
+    --off:    #f9f9fb;
+    --cream:  #faf8f4;
+    --ink:    #0d0d1a;
+    --muted:  #7a7a9a;
+    --rule:   #e2e2f0;
+
+    /* Gold as gradients only */
+    --gold-grad:   
+  opacity: 1;
+  transform: translateY(0);
+  overflow-x: scroll;
+  overflow: scroll;
+    --
+  .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+;
+  max-width: 1;
+  max-width: 1200px;
+  /* ── GOLD GRADIENT UTILITIES ── */
+  .gold-text {background:var(--gold-grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .gold-bar {height:3px; background:var(--gold-grad-h); border:none;}
+  .gold-bar-v {width:4px; background:var(--gold-grad-v);}
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:300;
+    height:64px;
+    background:var(--white);
+    border-bottom:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 5rem;
+    box-shadow:0 2px 20px rgba(0,0,128,0.05);
+ }
+  .nav-logo {display:flex; align-items:center; gap:0.85rem;}
+  .fpc-badge {line-height:1.2; display:inline-block; max-width:180px;}
+  .nav-name {font-size:0.62rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); line-height:1.4;}
+  .nav-links {list-style:none; display:flex; align-items:center; gap:2.2rem;}
+  .nav-links a {font-size:0.76rem;font-weight:600;letter-spacing:0.14em;/* width: 100% !important; */text-transform:uppercase;color:var(--ink);text-decoration:none;opacity: 4.55;transition:opacity 0.2s, color 0.2s;  .nav-links a:hover {opacity:1; color:var(--navy);}
+  .nav-cta {
+    background:var(--navy) !important;
+    color:var(--white) !important;
+    opacity:1 !important;
+    padding:0.5rem 1.4rem;
+    font-weight:700 !important;
+ }
+  .nav-cta:hover {background:var(--navy-d) !important;}
+
+  /* ── HERO ── */
+  .hero {
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1fr 33%;
+    align-items:center;
+    padding:7rem 5rem 5rem;
+    gap:5rem;
+    background:var(--white);
+    position:relative;
+    overflow:hidden;
+ }
+
+  /* subtle radial behind the book */
+  .hero::before {
+    content:'';
+    position:absolute;
+    right:0; top:0; bottom:0;
+    width:480px;
+    background:radial-gradient(ellipse at 80% 50%, rgba(0,0,128,0.04) 0%, transparent 70%);
+    pointer-events:none;
+ }
+
+  /* thin gold gradient top border */
+  .hero::after {
+    content:'';
+    position:absolute;
+    top:64px; left:0; right:0;
+    height:3px;
+    background:var(--gold-grad-h);
+    pointer-events:none;
+ }
+  .hero-eyebrow {
+    display:inline-flex; align-items:center; gap:0.7rem;
+    font-size:1rem; font-weight:700;
+    letter-spacing:0.2em; text-transform:uppercase;
+    margin-bottom:1.6rem;
+    animation:up 0.7s 0.1s both;
+ }
+  .hero-eyebrow-line {
+    display:inline-block;
+    width:28px; height:2px;
+    background:var(--gold-grad-h);
+ }
+  .hero-eyebrow-text {background:var(--gold-grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+
+  .hero-title {
+    font-size:clamp(3rem, 5.5vw, 6rem);
+    font-weight:800; line-height:1.3;
+    color:var(--ink); letter-spacing:-0.025em;
+    margin-bottom:0.6rem;
+    animation:up 0.7s 0.2s both;
+ }
+  .hero-title .word-blue {color:var(--navy);}
+  .hero-title .word-gold {
+    background:var(--gold-grad-text);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+ }
+  .hero-subtitle {
+    font-size:0.95rem; font-weight:500;
+    color:var(--muted); margin-bottom:2rem;
+    letter-spacing:0.06em; text-transform:uppercase;
+    animation:up 0.7s 0.28s both;
+ }
+  .hero-divider {
+    width:3.5rem; height:3px;
+    background:var(--gold-grad-h);
+    margin-bottom:2rem;
+    animation:up 0.7s 0.32s both;
+ }
+  .hero-desc {
+    font-size:1rem; color:#000000;
+    line-height:1.85; max-width:74ch;
+    margin-bottom:0.5rem;
+    animation:up 0.7s 0.38s both;
+ }
+  .hero-btns {display:flex; gap:1rem; flex-wrap:wrap; animation:up 0.7s 0.46s both; margin-top: 1.2rem;}
+  .btn-fill {
+    background:var(--navy); color:var(--white);
+    padding:0.85rem 2.2rem;
+    font-size:0.8rem; font-weight:700;
+    letter-spacing:0.15em; text-transform:uppercase;
+    text-decoration:none; border:none; cursor:pointer;
+    display:inline-block;
+    transition:background 0.2s, transform 0.15s;
+ }
+  .btn-fill:hover {background:var(--navy-d); transform:translateY(-2px);}
+
+  .btn-outline-gold {
+    background:transp
+    background:transparent;
+    color:var(--ink);
+    border:none;
+    padding:0.85rem 2.2rem;
+    font-size:0.8rem;
+    font-weight:700;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    text-decoration:none;
+    display:inline-block;
+    cursor:pointer;
+    position:relative;
+    width: revert;
+    transition:color 0.2s;
+  .btn-outline-gold::after {
+    content:'';
+    position:absolute; bottom:0; left:0; right:0;
+    height:2px; background:var(--gold-grad-h);
+ }
+  .btn-outline-gold:hover {color:var(--navy);}
+
+  /* hero book */
+  .hero-right {
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    position:relative; z-index:2;
+    animation:up 0.9s 0.3s both;
+    min-width: 0px;
+ }
+
+  .book-pedestal {
+    background:var(--cream);
+    border:1px solid var(--rule);
+    /* display:flex; flex-direction:column; align-items:center; */
+    width:100%;
+    position:relative;
+ }
+ .book-pedestal::after {
+    content:''; position:absolute; bottom:0; left:0; right:0;
+    height:3px; background:var(--gold-grad-h);
+ }
+  .book-pedestal::before {
+    content:''; position:absolute; top:0; left:0; right:0;
+    height:3px; background:var(--gold-grad-h); z-index: 2;
+ }
+.book-pedestal figure{height: 100%; display: flex; align-items: center; justify-content: center;}
+  .book-img {
+    width:100%;
+    height: auto;
+    /* box-shadow:0 24px 60px rgba(0,0,128,0.16), -3px 3px 0 rgba(201,168,76,0.4); */
+    transition:transform 0.4s ease;
+ }
+  .book-label {margin-top:1.8rem; text-align:center;}
+  .book-label-top {
+    font-size:0.55rem; font-weight:700;
+    letter-spacing:0.25em; text-transform:uppercase;
+    display:block; margin-bottom:0.25rem;
+    background:var(--gold-grad-text);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+ }
+  .book-label-main {font-size:0.8rem; font-weight:600; color:var(--navy);}
+
+  /* ── SECTION ── */
+  .sec {padding:6rem 5rem;}
+  .sec-alt {background:var(--off);}
+  .sec-navy {background:var(--navy);}
+  .sec-header {margin-bottom:3.5rem;}
+  .sec-header.center {text-align:center;}
+
+  .sec-eye {
+    display:inline-flex; align-items:center; gap:0.6rem;
+    font-size:1rem; font-weight:700;
+    letter-spacing:0.2em; text-transform:uppercase;
+    margin-bottom:0.9rem;
+ }
+  .sec-eye .eye-line {width:20px; height:2px; background:var(--gold-grad-h); display:inline-block;}
+  .sec-eye .eye-text {background:var(--gold-grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .sec-navy .sec-eye .eye-text {background:var(--gold-grad-text);}
+
+  .sec-title {
+    font-size:clamp(1.8rem, 3.2vw, 2.8rem);
+    font-weight:800; color:var(--navy);
+    line-height:1.15; letter-spacing:-0.02em;
+ }
+  .sec-title .it {font-weight:700; background:var(--gold-grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .sec-navy .sec-title {color:var(--white);}
+
+  .sec-rule {width:3rem; height:3px; background:var(--gold-grad-h); margin-top:1rem; border:none;}
+  .sec-header.center .sec-rule {margin-left:auto; margin-right:auto;}
+
+  /* ── WHY CARDS ── */
+  .why-grid {
+    display:grid; grid-template-columns:repeat(2, 1fr);
+    gap:1px; background:var(--rule);
+    border:1px solid var(--rule);
+  }
+  .why-card {
+    background:var(--white); padding:2.8rem 2.5rem;
+    transition:background 0.25s; position:relative;
+ }
+  .why-card:hover {background:#f5f5ff;}
+  .why-card::before {
+    content:''; position:absolute; bottom:0; left:0;
+    width:0; height:3px;
+    background:var(--gold-grad-h);
+    transition:width 0.35s;
+ }
+  .why-card:hover::before {width:100%;}
+
+  .wc-tag {
+    font-size:0.56rem; font-weight:700;
+    letter-spacing:0.22em; text-transform:uppercase;
+    display:block; margin-bottom:1rem;
+    background:var(--gold-grad-text);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+ }
+  .wc-title {font-size:1.2rem; font-weight:700; color:var(--navy); margin-bottom:0.75rem; line-height:1.35;}
+  .wc-body {font-size:1rem; line-height:1.8;}
+  .wc-body ul {list-style:none; margin-top:0.7rem;}
+  .wc-body ul li {padding-left:1.2rem; position:relative; margin-bottom:0.3rem; }
+  .wc-body ul li::before {content:'›'; position:absolute; left:0; color:var(--navy); font-weight:700;}
+
+  /* ── HIGHLIGHTS (navy section) ── */
+  .hl-grid {display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; margin-top:3.5rem;}
+
+  .hl-card {border:1px solid rgba(255,255,255,0.1); padding:2.5rem 2rem; background:rgba(255,255,255,0.04); transition:background 0.25s, border-color 0.25s; position:relative; overflow:hidden;}
+  .hl-card:hover {background:rgba(255,255,255,0.08);}
+  .hl-card::before {content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gold-grad-h); opacity:0; transition:opacity 0.3s;}
+  .hl-card:hover::before {opacity:1;}
+  
+  .hl-num {font-size:2.5rem; font-weight:800; line-height:1; margin-bottom:1rem; background:var(--gold-grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .hl-title {font-size:1.2rem; font-weight:700; color:var(--white); margin-bottom:0.7rem; line-height:1.35;}
+  .hl-body {font-size:1rem; line-height:1.8; color:#ffffff;}
+
+  /* ── AUTHOR ── */
+  .author-inner {display:grid; grid-template-columns:300px 1fr; gap:5rem; align-items:start; max-width:1180px; margin:0 auto;}
+  .author-card {background:var(--white); border:1px solid var(--rule);padding:2.5rem 2rem; text-align:center; position:sticky; top:80px; overflow:hidden;}
+  .author-card::after {content:''; display:block; height:4px; background:var(--gold-grad-h); margin:30px -2rem -2.5rem -3rem;} 
+  .author-mono {width:200px; height:200px; background:var(--white); border-radius:50%; display:flex; margin:0 auto 1.5rem; position:relative; overflow:hidden; padding:3px;}
+  .author-mono::after {content:''; position:absolute; inset:-3px; border-radius:50%; background:var(--gold-grad); z-index:0;}
+
+  .author-mono-text {font-size:1.8rem;font-weight:800;color:var(--white);letter-spacing:0.06em;border:solid 3px var(--gold-grad); overflow:hidden; background:white;width:200px;height:194px;z-index:1;border-radius:100%;}
+  .author-mono-text img{max-height:200px; object-position:center 16px;}
+  .author-n {font-size:1.3rem; font-weight:800; color:var(--navy); line-height:1.2; margin-bottom:0.3rem;}
+  .author-pos { font-size:0.62rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; line-height:1.6; margin-bottom:1rem;}
+  .author-pos img{max-height:30px;}
+  .author-rule {width:2.5rem; height:2px; background:var(--gold-grad-h); margin:0.8rem auto 1rem; border:none;}
+  .author-tags {display:flex; flex-wrap:wrap; gap:0.4rem; justify-content:center;}
+ 
+  .a-tag {border:1px solid var(--rule); color:var(--muted); padding:0.2rem 0.65rem; font-size:0.55rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;}
+  .author-headline {font-size:clamp(1.5rem, 2.5vw, 2.1rem); font-weight:800; color:var(--navy); line-height:1.25; margin-bottom:1.8rem; letter-spacing:-0.01em;}
+
+  .author-headline em {font-style:normal; background:var(--gold-grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .author-bio p {font-size:1rem; line-height:1.9;  margin-bottom:1.2rem;}
+  .author-bio p a{font-weight:600; color:4C3BF4; text-decoration: none;}
+  .author-bio em {font-style:italic; font-weight:600; color:var(--navy);}
+
+  /* ── PULL QUOTE ── */
+  .pq-section {padding:5rem; background:var(--white); border-top:1px solid var(--rule); text-align:center; position:relative; overflow:hidden;}
+  .pq-section::before {content:'\201C'; font-family:Georgia, serif; font-size:18rem; line-height:1; color:rgba(0,0,128,0.04); position:absolute; top:-2rem; left:50%; transform:translateX(-50%); pointer-events:none;}
+  .pq-text {font-size:clamp(1.3rem, 2.5vw, 2rem); font-weight:400; font-style:italic;  line-height:1.5;  max-width:36ch; margin:0 auto 1.2rem; position:relative; z-index:1; font-family:"Times New Roman", Times, serif;}
+  .pq-attr {font-size:1.1rem; font-weight:700; letter-spacing:0.1em;  font-style:italic;}
+
+  /* ── FORM ── */
+  .form-section {background:var(--off); border-top:3px solid transparent; border-image:var(--gold-grad-h) 1;}
+  .form-wrap {max-width:680px; margin:0 auto;}
+  .form-sec-sub {font-size:1rem; color:var(--muted); margin-bottom:2.5rem; line-height:1.7; max-width:55ch;}
+  .form-grid {display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem;}
+  .form-field {display:flex; flex-direction:column; gap:0.4rem;}
+  .form-field.full {grid-column:1 / -1;}
+  .form-field label {font-size:0.8rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--navy);}
+  .form-field input, .form-field select {
+    background:var(--white);
+    border:1.5px solid var(--rule);
+    padding:0.75rem 1rem;
+    font-family:'Poppins', sans-serif;
+    font-size:0.88rem; color:var(--ink);
+    outline:none; width:100%;
+    transition:border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance:none; appearance:none;
+  }
+  .form-field input:focus, .form-field select:focus {border-color:var(--navy); box-shadow:0 0 0 3px rgba(0,0,128,0.07);}
+  .form-field input::placeholder {color:#c0c0d8;}
+  .form-select-wrap {position:relative;}
+  .form-select-wrap::after {content:'▾'; position:absolute; right:1rem; top:50%; transform:translateY(-50%); color:var(--navy); font-size:0.8rem; pointer-events:none;}
+  .form-note {font-size:0.7rem; color:var(--muted); margin-bottom:1.8rem; line-height:1.6;}
+
+  .btn-form {
+    background:var(--navy); color:var(--white); border:none;
+    padding:1rem 3rem; font-family:'Poppins', sans-serif;
+    font-size:0.9rem; font-weight:700;
+    letter-spacing:0.18em; text-transform:uppercase;
+    cursor:pointer; width:100%;
+    transition:background 0.2s, transform 0.15s;
+    position:relative; overflow:hidden;
+  }
+  .btn-form::after {content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gold-grad-h);}
+  .btn-form:hover {background:var(--navy-d); transform:translateY(-2px);}
+
+  /* ── FOOTER ── */
+  footer {background:var(--navy); padding:1.5rem 5rem 1.5rem;}
+  .footer-top {display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:2rem; padding-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:1.5rem;}
+  .footer-logo {display:flex; align-items:center; gap:0.85rem;}
+  .fpc-f {max-height:50px;}
+  .footer-wm {font-size:0.6rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.35); line-height:1.4;}
+  .footer-links {list-style:none; display:flex; gap:2rem; flex-wrap:wrap;}
+  .footer-links a {font-size:0.8rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#ffffff; text-decoration:none; transition:color 0.2s;}
+  .footer-links a:hover {color:rgba(201,168,76,0.9);}
+  .footer-bottom {display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:1rem;}
+  .footer-copy {font-size:0.78rem; color:#ffffff;}
+  .footer-tagline {font-size:0.72rem; font-style:italic; color:rgba(255,255,255,0.22);}
+
+  /* ── FACTS SECTION ── */
+.facts-section {background: var(--navy); padding: 6rem 5rem; position: relative; overflow: hidden;}
+.facts-section::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold-grad-h);}
+
+  /* faint watermark text */
+.facts-section::after {content: 'FACTS'; position: absolute; right: -1rem; top: 50%; transform: translateY(-50%); font-size: 14rem; font-weight: 900; color: rgba(255,255,255,0.03); letter-spacing: -0.05em; pointer-events: none; line-height: 1;}
+.facts-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); margin-top: 3.5rem;}
+
+.fact-card {background: var(--navy); padding: 2.8rem 2.2rem; position: relative; transition: background 0.25s; overflow: hidden; height: 220px;}
+.fact-card:hover { background: rgba(255,255,255,0.04); }
+.fact-card::before {content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold-grad-h); opacity: 0; transition: opacity 0.3s;}
+.fact-card:hover::before { opacity: 1; }
+.fact-num {font-size: 2.5rem; font-weight: 800; line-height: 1; margin-bottom: 1rem; background: var(--gold-grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block;}
+.fact-label {font-size: 1.22rem; font-weight: 700; color: var(--white); margin-bottom: 0.7rem; line-height: 1.35;}
+.fact-desc {font-size:0.937vw; color:#ffffff; line-height: 1.7; font-weight: 400;}
+
+.fact-top{transition: transform 0.8s ease, opacity 0.8s ease;}
+.fact-desc{position:absolute; left:0px; bottom:-100%; padding:0px 2.2rem; opacity:0; transition: all 0.8s ease;}
+.fact-card:hover .fact-top{transform: translateY(-60px);opacity:0;}
+.fact-card:hover .fact-desc{bottom:2.2rem; opacity:1;}
+
+  /* ── ANIMATIONS ── */
+  @keyframes up {from {opacity:0; transform:translateY(22px);} to {opacity:1; transform:translateY(0);}}
+  .error-message {color:red;font-size:13px;margin-top:4px;display:block;font-family:var(--BodyTxt);}
+  .success-message {color:green; font-size:16px; margin-top:10px; font-weight:bold; text-align:center;}
+  #successMessage{text-align:center;padding:0px 2rem; line-height:22px; margin-top:2rem; margin-bottom:2rem; display:none;}
+  #successMessage div, #successMessage h1{margin-bottom:1.4rem; color: var(--navy);}
+  .bi-check2{width:6rem; height:6rem; background:#4aae50; border-radius:50%; padding:1rem; fill:white;}
+  
+
+
+@media (min-width:1500px) {
+  .hero-text{padding-left:5rem;}
+}
+
+@media (max-width:1500px) {
+  .hero-text {
+    padding-left: 0rem;
+  }
+}
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:1024px) {
+    nav {padding:0 1.5rem;}
+    .nav-links {display:none;}
+    .hero {grid-template-columns:1fr; padding:6rem 1.5rem 4rem;}
+    /* .hero-right {display:none;} */
+    .hero{gap: 3rem;}
+    .sec, .pq-section, .facts-section {padding:4rem 1.5rem;}
+    footer {padding:1.5rem 1.5rem;}
+    .why-grid, .hl-grid, .facts-grid {grid-template-columns:1fr;}
+    .why-card:nth-child(2n) {border-right:none;}
+    .author-inner {grid-template-columns:1fr; gap:2.5rem;}
+    .author-card {position:static;}
+    .form-grid {grid-template-columns:1fr;}
+    .footer-top{gap: 1rem;}
+    .footer-links a{letter-spacing: 0px;}
+    .footer-links{width: 100%; justify-content: space-between;gap: 0;}
+    .footer-logo{margin-inline:auto;}
+
+    .hero-eyebrow, .sec-eye{font-size: 0.8rem;}
+    .sec-title br{display: none;}
+
+    .fact-card{height:190px; padding: 1.8rem 1.2rem;}
+    .fact-desc{padding:1rem 1.2rem 0rem 1.2rem; font-size:0.9rem;}
+ }
+
+ 
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+    <a href="#book" class="nav-logo"><img src="images/fbc-logo-black.svg" alt="Futurst Publications Co." class="fpc-badge"></a>
+
+  <ul class="nav-links">
+    <li><a href="#book">The Book</a></li>
+    <li><a href="#why">Insights</a></li>
+    <li><a href="#author">Author</a></li>
+     <li><a href="#author" target="_blank">Beyond the book</a></li>
+    <li><a href="#interested" class="nav-cta">Get a Copy</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="book">
+  <div class="hero-text">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      <span class="hero-eyebrow-text">Intelligence Age Series</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="word-blue">A</span> <span class="word-gold">Blueprint</span> 
+      <span class="word-blue">for Executives</span>
+    </h1>
+     <p class="hero-desc">Navigate the Intelligence Revolution with "AI and the Future of Leadership," the definitive blueprint for business executives seeking to harness the power of disruptive innovation as a driving force to achieve business growth. Leverage the “12-step S-curve Strategy” to ensure successful implementation and move beyond "Pilot Purgatory" and into full-scale business operational excellence.</p> 
+     <p class="hero-desc">Transform your role from traditional business leadership to Architect of Augmentation and Chief Sense Maker, balancing technological efficiency with uniquely human insight and intuition. Just as in The Alchemist, this book is serves as a roadmap and compass to effectively navigate the complexities of implementing AI systems and uncovering your business organization's "hidden treasures".</p>
+
+    <div class="hero-btns">
+      <a href="#interested" class="btn-fill">Get a Copy</a>
+      <a href="#why" class="btn-outline-gold">Explore</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="book-pedestal">
+      <!-- <img src="images/book-cover.jpg" alt="AI & The Future of Leadership — Book Cover" class="book-img"> -->
+       <div class="hero-book-slider">
+          <div>
+            <figure><img src="images/dkbanner-1.jpg" alt="Futurst Publications" width="300" height="400" class="book-img"></figure>
+          </div>
+          <div>
+            <figure><img src="images/dkbanner-2.jpg" alt="Futurst Publications" width="300" height="400" class="book-img" loading="lazy"></figure>
+          </div>
+          <div>
+            <figure><img src="images/dkbanner-3.jpg" alt="Futurst Publications" width="300" height="400" class="book-img" loading="lazy"></figure>
+          </div>
+          <!-- <div>
+            <figure><img src="images/image-4.jpg" alt="Futurst Publications" width="300" height="400" class="book-img" loading="lazy"></figure>
+          </div> -->
+       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pq-section">
+  <p class="pq-text">"The one who survives is the most responsive&nbsp;to change."</p>
+  <div class="pq-attr">— Charles Darwin</div>
+</section>
+
+<!-- FACTS SECTION -->
+<section class="facts-section" id="facts">
+  <div class="sec-header center">
+    <div class="sec-eye" style="justify-content:center;">
+      <span class="eye-line"></span><span class="eye-text">The Intelligence Revolution — By the Numbers</span><span class="eye-line"></span>
+    </div>
+    <h2 class="sec-title" style="color:#fff; max-width:32ch; margin:0 auto;">Why Every Executive Must Act Now</h2>
+    <div class="sec-rule" style="margin:1rem auto 0;"></div>
+  </div>
+  <div class="facts-grid">
+
+    <div class="fact-card">
+      <div class="fact-top">
+        <span class="fact-num">$16T</span>
+        <div class="fact-label">Total AI Market Opportunity</div>
+      </div>
+      <div class="fact-desc">$7 trillion in labour productivity gains and $9 trillion in increased consumer demand — the single largest economic transformation in history.</div>
+    </div>
+
+    <div class="fact-card">
+      <div class="fact-top">
+        <span class="fact-num">2–5x</span>
+        <div class="fact-label">Productivity Gains Already Recorded</div>
+      </div>
+      <div class="fact-desc">Recent AI advances have boosted productivity by 2 to 5 times across finance, legal services, and software development. In some instances, developer task completion speed rose by 57%.</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-top">
+        <span class="fact-num">61%</span>
+        <div class="fact-label">Leaders Call AI a Game-Changer</div>
+      </div>
+      <div class="fact-desc">Yet fewer than 10% have made significant progress in adoption, and 57% of executives lack confidence in their leadership team's ability to understand AI's full implications.</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-top">
+        <span class="fact-num">6–9<span style="font-size:1.8rem;"> mo</span></span>
+        <div class="fact-label">One Decade of AI Progress</div>
+      </div>
+      <div class="fact-desc">AI is currently advancing at a rate of one full decade of progress every 6 to 9 months — making the pace of change the defining leadership challenge of our era.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS BOOK -->
+<section class="sec sec-alt" id="why">
+  <div class="sec-header center">
+    <div class="sec-eye"  style="justify-content:center;"><span class="eye-line"></span><span class="eye-text">The Intelligence Age Blueprint</span><span class="eye-line"></span></div>
+    <h2 class="sec-title" style="margin:0 auto; max-width: 27ch;">Six reasons why this book is <span class="it">essential</span> for every executive</h2>
+    <div class="sec-rule" style="margin:1rem auto 0;"></div>
+  </div>
+
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="wc-title">You need a clear starting point — not more jargon.</div>
+        <div class="wc-body">57% of executives admit they lack confidence in their ability to understand AI's implications. This book gives you a plain-language, 12-step blueprint that moves you from uncertainty to decisive action — with a First 100 Days Action Plan you can deploy immediately.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="wc-title">You need to escape pilot purgatory for good.</div>
+        <div class="wc-body">Most AI initiatives fail not because of technology, but because of culture, mindset, and leadership gaps. This book diagnoses exactly where organisations stall and gives you the organisational readiness framework to break through and scale — sustainably.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="wc-title">You need a new blueprint for the C-suite itself.</div>
+        <div class="wc-body">The roles of CEO, CFO, and CHRO are being fundamentally rewritten. This book maps the new mandate for each — from orchestrating AI agents and gig ecosystems to shifting from historical accounting to predictive value creation. Stay ahead of the restructure.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="wc-title">You need more than a strategy — you need a philosophy.</div>
+        <div class="wc-body">Drawing from the Upanishads, Stoicism, and Sun Tzu, this book builds the inner operating system that no algorithm can replicate — the wisdom to make sound judgements under pressure, inspire trust in uncertain times, and lead from a place of clarity rather than fear.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="wc-title">You need a practical workforce transformation model.</div>
+        <div class="wc-body">The AI Skill Pyramid gives you concrete numbers for departmental planning — 100% foundational literacy, 20–30% practitioner capability, 10–15% specialist depth. No guesswork. No consultancy fees. A ready-to-use framework for upskilling at every level of your organisation.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="wc-title">You need to demonstrate ROI — not just intent.</div>
+        <div class="wc-body">This book goes beyond vision to accountability. Five distinct metric categories — Model Performance, Employee Engagement, Customer Satisfaction, Operational Efficiency, and Financial Impact — give you the measurement language to defend, justify, and accelerate your AI investment at every level.</div>
+      </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS (navy) -->
+<section class="sec sec-navy" id="highlights">
+  <div class="sec-header center">
+    <div class="sec-eye" style="justify-content:center;">
+      <span class="eye-line"></span><span class="eye-text" style="height:10px;">Executive Summary</span><span class="eye-line"></span>
+    </div>
+    <h2 class="sec-title" style="color:#fff;max-width:32ch;margin:0 auto;">What Leaders Will Master</h2>
+    <div class="sec-rule" style="margin:1rem auto 0;"></div>
+  </div>
+  <div class="hl-grid">
+    <div class="hl-card">
+      <div class="hl-num">01</div>
+      <div class="hl-title">From Automation to Augmentation</div>
+      <div class="hl-body">Build a Human-AI Symbiosis where technology handles cognitive load while humans focus on empathy, ethical judgment, and the high-stakes decisions that define enduring advantage.</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">02</div>
+      <div class="hl-title">Regenerative Growth</div>
+      <div class="hl-body">Shift from reactive "fixes" to building self-sustaining customer value loops and dynamic ecosystems that continuously evolve and compound with intelligence over time.</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">03</div>
+      <div class="hl-title">The Uncertainty Advantage</div>
+      <div class="hl-body">Turn ambiguity into a strategic edge. Deploy AI as a co-pilot for exploration and discovery — not merely a tool for prediction — and lead with clarity through volatility.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="sec" id="author">
+  <div class="author-inner">
+    <div class="author-card">
+      <div class="author-mono"><span class="author-mono-text"><img src="images/dakshen.png" alt="Daxsan RB" loading="lazy"></span></div>
+      <div class="author-n">Daxsan RB</div>
+      <hr class="author-rule">
+      <div class="author-pos">Co-Founder &amp; Chief Product Officer<br> <a href="https://www.resulticks.com/" target="_blank"><img src="https://www.resulticks.com/images/logos/resulticks-logo-blue.svg" alt="RESULTICKS" loading="lazy"></a></div>
+      <div class="author-tags">
+        <span class="a-tag">Futurst</span>
+        <span class="a-tag">Strategist</span>
+        <span class="a-tag">Author</span>
+        <span class="a-tag">AI Advisor</span>
+        <span class="a-tag">Executive Philosopher</span>
+      </div>
+    </div>
+
+    <div class="author-right">
+      <div class="sec-eye" style="margin-bottom:0.8rem;"><span class="eye-line"></span><span class="eye-text">About the Author</span></div>
+      <h2 class="author-headline">A mind that <em>bridges epochs</em> — where ancient wisdom meets algorithmic precision.</h2>
+      <div class="author-bio">
+        <p>Daxsan RB is a rare intellect at the intersection of technology, philosophy, and executive leadership. As Co-Founder and Chief Product Officer of RESULTICKS — a globally recognised, real-time audience intelligence solution and the creator of <a href="https://www.go.resul.io/genie" target="_blank" rel="noopener nofollow">Genie - the AI for Smart Businesses</a>. He has spent decades orchestrating the confluence of human ambition and machine capability at the highest levels of enterprise strategy.</p>
+        <p>His work is defined not merely by encyclopaedic command of artificial intelligence and product architecture, but by a singular capacity to distil complexity into clarity. Where others perceive disruption, Daxsan identifies pattern. Where industries encounter friction, he engineers fluidity. His thinking transcends the transactional — it operates at the level of civilisational design.</p>
+        <p>A practitioner of what he terms Witness Consciousness, Daxsan draws from the Upanishads, Stoic philosophy, and Sun Tzu's strategic canon to construct an ethical operating system for leadership in the Intelligence Age — one that prizes wisdom above raw intelligence, and measured judgment above the allure of automation.</p>
+        <p>Through decades of building, scaling, and advising organisations across Asia, the Middle East, and beyond, he has earned a reputation as an executive philosopher — equally at home in a boardroom dissecting algorithmic ROI as in a seminar room interrogating the metaphysics of human potential.</p>
+        <p><em>"AI &amp; The Future of Leadership"</em> is the codification of that counsel — a blueprint forged from real-world transformation, ancient insight, and an unrelenting conviction that the future belongs to those who respond, not merely those who react.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pq-section">
+  <p class="pq-text" style="max-width: 40ch;">"In an era where raw intelligence is a commodity, wisdom is the ultimate competitive advantage."</p>
+  <div class="pq-attr">— Daxsan RB</div>
+</section>
+
+<!-- FORM -->
+<section class="sec form-section" id="interested">
+  <div class="form-wrap">
+    <div class="sec-header" id="sec-header">
+      <div class="sec-eye"><span class="eye-line"></span><span class="eye-text">Express Your Interest</span></div>
+      <h2 class="sec-title">Get your copy of the Book</h2>
+      <div class="sec-rule" style="margin-top:0.8rem;"></div>
+    </div>
+    <p class="form-sec-sub" id="form-sec-sub">Fill in the details below and our team will reach out with availability, pricing, and bulk order options.</p>
+
+    <div id="successMessage"></div>
+    <div id="theForm">
+      <form id="subscriptionForm">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="firstName">Full Name</label>
+            <input type="text" id="firstName" name="First name" class="form-control" placeholder="Your full name" autocomplete="name">
+            <small id="firstNameError" class="error-message"></small>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="you@company.com" autocomplete="email">
+            <small id="emailError" class="error-message"></small>
+          </div>
+
+          <div class="form-field">
+            <label for="mobile">Mobile Number</label>
+            <div class="cntry-code-outer" style="display:flex;">
+              <div class="form-select-wrap">
+                <select id="country" name="Country" class="form-control dropdownicon" style="width:100px; height:100%; border-right:0px;"></select>
+              </div>
+              <input type="text" id="mobile" name="MobileNo" class="form-control" inputmode="numeric" autocomplete="tel-national" placeholder="000 000 0000" >
+            </div>
+            <small id="mobileError" class="error-message"></small>
+          </div>
+
+          <div class="form-field">
+            <label for="OrganisationRole">Organisation / Role</label>
+            <input type="text" id="OrganisationRole" name="Organisation / Role" class="form-control" placeholder="Company name or job title">
+            <small id="organisationError" class="error-message"></small>
+          </div>
+
+          <div class="form-field full">
+            <label for="interest">I am interested in</label>
+            <div class="form-select-wrap">
+              <select id="interest">
+                <option value="" disabled selected>Select your interest</option>
+                <option value="individual">Individual Copy</option>
+                <option value="bulk">Bulk Order for Team / Organisation</option>
+                <option value="speaking">Speaking Engagement with Author</option>
+                <option value="workshop">Executive Workshop / Masterclass</option>
+                <option value="media">Media / Press Enquiry</option>
+                <option value="partnership">Publishing Partnership</option>
+              </select>
+              <small id="interestError" class="error-message"></small>
+            </div>
+          </div>
+
+        </div>
+        <p class="form-note">Your information is confidential and will only be used to follow up on your request. We do not share data with third parties.</p>
+         <input type="submit" value="Submit My Interest" class="btn-form">
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <a href="#book" class="footer-logo"><img src="images/fbc-logo-gold.svg" alt="Futurst Publications Co." loading="lazy" class="fpc-f"></a>
+    <ul class="footer-links">
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#why">Insights</a></li>
+      <li><a href="#author">Author</a></li>
+      <li><a href="#interested">Get a Copy</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© Futurst Publications LLC <span id="year"></span>. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="vendor/jquery.min.js"></script>
+<link rel="stylesheet" href="vendor/slick.css">
+<script src="vendor/slick.min.js"></script>
+
+<script>
+  $('.hero-book-slider').slick({
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll:1,
+    autoplay: false,
+    autoplaySpeed:2000,
+    speed: 1000,
+  });
+</script>
+
+<script>
+  const countries =  [
+    {
+      name:"Afghanistan",
+      code:"AF",
+      phoneCode:"+93"
+   },
+    {
+      name:"Åland Islands",
+      code:"AX",
+      phoneCode:"+358"
+   },
+    {
+      name:"Albania",
+      code:"AL",
+      phoneCode:"+355"
+   },
+    {
+      name:"Algeria",
+      code:"DZ",
+      phoneCode:"+213"
+   },
+    {
+      name:"Andorra",
+      code:"AD",
+      phoneCode:"+376"
+   },
+    {
+      name:"Angola",
+      code:"AO",
+      phoneCode:"+244"
+   },
+    {
+      name:"Argentina",
+      code:"AR",
+      phoneCode:"+54"
+   },
+    {
+      name:"Armenia",
+      code:"AM",
+      phoneCode:"+374"
+   },
+    {
+      name:"Aruba",
+      code:"AW",
+      phoneCode:"+297"
+   },
+    {
+      name:"Ascension Island",
+      code:"AC",
+      phoneCode:"+247"
+   },
+    {
+      name:"Australia",
+      code:"AU",
+      phoneCode:"+61"
+   },
+    {
+      name:"Austria",
+      code:"AT",
+      phoneCode:"+43"
+   },
+    {
+      name:"Azerbaijan",
+      code:"AZ",
+      phoneCode:"+994"
+   },
+    {
+      name:"Bahrain",
+      code:"BH",
+      phoneCode:"+973"
+   },
+    {
+      name:"Bangladesh",
+      code:"BD",
+      phoneCode:"+880"
+   },
+    {
+      name:"Belarus",
+      code:"BY",
+      phoneCode:"+375"
+   },
+    {
+      name:"Belgium",
+      code:"BE",
+      phoneCode:"+32"
+   },
+    {
+      name:"Belize",
+      code:"BZ",
+      phoneCode:"+501"
+   },
+    {
+      name:"Benin",
+      code:"BJ",
+      phoneCode:"+229"
+   },
+    {
+      name:"Bhutan",
+      code:"BT",
+      phoneCode:"+975"
+   },
+    {
+      name:"Bolivia",
+      code:"BO",
+      phoneCode:"+591"
+   },
+    {
+      name:"Bosnia & Herzegovina",
+      code:"BA",
+      phoneCode:"+387"
+   },
+    {
+      name:"Botswana",
+      code:"BW",
+      phoneCode:"+267"
+   },
+    {
+      name:"Brazil",
+      code:"BR",
+      phoneCode:"+55"
+   },
+    {
+      name:"British Indian Ocean Territory",
+      code:"IO",
+      phoneCode:"+246"
+   },
+    {
+      name:"Brunei",
+      code:"BN",
+      phoneCode:"+673"
+   },
+    {
+      name:"Bulgaria",
+      code:"BG",
+      phoneCode:"+359"
+   },
+    {
+      name:"Burkina Faso",
+      code:"BF",
+      phoneCode:"+226"
+   },
+    {
+      name:"Burundi",
+      code:"BI",
+      phoneCode:"+257"
+   },
+    {
+      name:"Cambodia",
+      code:"KH",
+      phoneCode:"+855"
+   },
+    {
+      name:"Cameroon",
+      code:"CM",
+      phoneCode:"+237"
+   },
+    {
+      name:"Cape Verde",
+      code:"CV",
+      phoneCode:"+238"
+   },
+    {
+      name:"Caribbean Netherlands",
+      code:"BQ",
+      phoneCode:"+599"
+   },
+    {
+      name:"Central African Republic",
+      code:"CF",
+      phoneCode:"+236"
+   },
+    {
+      name:"Chad",
+      code:"TD",
+      phoneCode:"+235"
+   },
+    {
+      name:"Chile",
+      code:"CL",
+      phoneCode:"+56"
+   },
+    {
+      name:"China",
+      code:"CN",
+      phoneCode:"+86"
+   },
+    {
+      name:"Christmas Island",
+      code:"CX",
+      phoneCode:"+61"
+   },
+    {
+      name:"Cocos (Keeling) Islands",
+      code:"CC",
+      phoneCode:"+61"
+   },
+    {
+      name:"Colombia",
+      code:"CO",
+      phoneCode:"+57"
+   },
+    {
+      name:"Comoros",
+      code:"KM",
+      phoneCode:"+269"
+   },
+    {
+      name:"Congo - Brazzaville",
+      code:"CG",
+      phoneCode:"+242"
+   },
+    {
+      name:"Congo - Kinshasa",
+      code:"CD",
+      phoneCode:"+243"
+   },
+    {
+      name:"Cook Islands",
+      code:"CK",
+      phoneCode:"+682"
+   },
+    {
+      name:"Costa Rica",
+      code:"CR",
+      phoneCode:"+506"
+   },
+    {
+      name:"Côte d’Ivoire",
+      code:"CI",
+      phoneCode:"+225"
+   },
+    {
+      name:"Croatia",
+      code:"HR",
+      phoneCode:"+385"
+   },
+    {
+      name:"Cuba",
+      code:"CU",
+      phoneCode:"+53"
+   },
+    {
+      name:"Curaçao",
+      code:"CW",
+      phoneCode:"+599"
+   },
+    {
+      name:"Cyprus",
+      code:"CY",
+      phoneCode:"+357"
+   },
+    {
+      name:"Czechia",
+      code:"CZ",
+      phoneCode:"+420"
+   },
+    {
+      name:"Denmark",
+      code:"DK",
+      phoneCode:"+45"
+   },
+    {
+      name:"Djibouti",
+      code:"DJ",
+      phoneCode:"+253"
+   },
+    {
+      name:"Ecuador",
+      code:"EC",
+      phoneCode:"+593"
+   },
+    {
+      name:"Egypt",
+      code:"EG",
+      phoneCode:"+20"
+   },
+    {
+      name:"El Salvador",
+      code:"SV",
+      phoneCode:"+503"
+   },
+    {
+      name:"Equatorial Guinea",
+      code:"GQ",
+      phoneCode:"+240"
+   },
+    {
+      name:"Eritrea",
+      code:"ER",
+      phoneCode:"+291"
+   },
+    {
+      name:"Estonia",
+      code:"EE",
+      phoneCode:"+372"
+   },
+    {
+      name:"Eswatini",
+      code:"SZ",
+      phoneCode:"+268"
+   },
+    {
+      name:"Ethiopia",
+      code:"ET",
+      phoneCode:"+251"
+   },
+    {
+      name:"Falkland Islands",
+      code:"FK",
+      phoneCode:"+500"
+   },
+    {
+      name:"Faroe Islands",
+      code:"FO",
+      phoneCode:"+298"
+   },
+    {
+      name:"Fiji",
+      code:"FJ",
+      phoneCode:"+679"
+   },
+    {
+      name:"Finland",
+      code:"FI",
+      phoneCode:"+358"
+   },
+    {
+      name:"France",
+      code:"FR",
+      phoneCode:"+33"
+   },
+    {
+      name:"French Guiana",
+      code:"GF",
+      phoneCode:"+594"
+   },
+    {
+      name:"French Polynesia",
+      code:"PF",
+      phoneCode:"+689"
+   },
+    {
+      name:"Gabon",
+      code:"GA",
+      phoneCode:"+241"
+   },
+    {
+      name:"Gambia",
+      code:"GM",
+      phoneCode:"+220"
+   },
+    {
+      name:"Georgia",
+      code:"GE",
+      phoneCode:"+995"
+   },
+    {
+      name:"Germany",
+      code:"DE",
+      phoneCode:"+49"
+   },
+    {
+      name:"Ghana",
+      code:"GH",
+      phoneCode:"+233"
+   },
+    {
+      name:"Gibraltar",
+      code:"GI",
+      phoneCode:"+350"
+   },
+    {
+      name:"Greece",
+      code:"GR",
+      phoneCode:"+30"
+   },
+    {
+      name:"Greenland",
+      code:"GL",
+      phoneCode:"+299"
+   },
+    {
+      name:"Guadeloupe",
+      code:"GP",
+      phoneCode:"+590"
+   },
+    {
+      name:"Guatemala",
+      code:"GT",
+      phoneCode:"+502"
+   },
+    {
+      name:"Guernsey",
+      code:"GG",
+      phoneCode:"+44"
+   },
+    {
+      name:"Guinea",
+      code:"GN",
+      phoneCode:"+224"
+   },
+    {
+      name:"Guinea-Bissau",
+      code:"GW",
+      phoneCode:"+245"
+   },
+    {
+      name:"Guyana",
+      code:"GY",
+      phoneCode:"+592"
+   },
+    {
+      name:"Haiti",
+      code:"HT",
+      phoneCode:"+509"
+   },
+    {
+      name:"Honduras",
+      code:"HN",
+      phoneCode:"+504"
+   },
+    {
+      name:"Hong Kong SAR China",
+      code:"HK",
+      phoneCode:"+852"
+   },
+    {
+      name:"Hungary",
+      code:"HU",
+      phoneCode:"+36"
+   },
+    {
+      name:"Iceland",
+      code:"IS",
+      phoneCode:"+354"
+   },
+    {
+      name:"India",
+      code:"IN",
+      phoneCode:"+91"
+   },
+    {
+      name:"Indonesia",
+      code:"ID",
+      phoneCode:"+62"
+   },
+    {
+      name:"Iran",
+      code:"IR",
+      phoneCode:"+98"
+   },
+    {
+      name:"Iraq",
+      code:"IQ",
+      phoneCode:"+964"
+   },
+    {
+      name:"Ireland",
+      code:"IE",
+      phoneCode:"+353"
+   },
+    {
+      name:"Isle of Man",
+      code:"IM",
+      phoneCode:"+44"
+   },
+    {
+      name:"Israel",
+      code:"IL",
+      phoneCode:"+972"
+   },
+    {
+      name:"Italy",
+      code:"IT",
+      phoneCode:"+39"
+   },
+    {
+      name:"Japan",
+      code:"JP",
+      phoneCode:"+81"
+   },
+    {
+      name:"Jersey",
+      code:"JE",
+      phoneCode:"+44"
+   },
+    {
+      name:"Jordan",
+      code:"JO",
+      phoneCode:"+962"
+   },
+    {
+      name:"Kazakhstan",
+      code:"KZ",
+      phoneCode:"+7"
+   },
+    {
+      name:"Kenya",
+      code:"KE",
+      phoneCode:"+254"
+   },
+    {
+      name:"Kiribati",
+      code:"KI",
+      phoneCode:"+686"
+   },
+    {
+      name:"Kosovo",
+      code:"XK",
+      phoneCode:"+383"
+   },
+    {
+      name:"Kuwait",
+      code:"KW",
+      phoneCode:"+965"
+   },
+    {
+      name:"Kyrgyzstan",
+      code:"KG",
+      phoneCode:"+996"
+   },
+    {
+      name:"Laos",
+      code:"LA",
+      phoneCode:"+856"
+   },
+    {
+      name:"Latvia",
+      code:"LV",
+      phoneCode:"+371"
+   },
+    {
+      name:"Lebanon",
+      code:"LB",
+      phoneCode:"+961"
+   },
+    {
+      name:"Lesotho",
+      code:"LS",
+      phoneCode:"+266"
+   },
+    {
+      name:"Liberia",
+      code:"LR",
+      phoneCode:"+231"
+   },
+    {
+      name:"Libya",
+      code:"LY",
+      phoneCode:"+218"
+   },
+    {
+      name:"Liechtenstein",
+      code:"LI",
+      phoneCode:"+423"
+   },
+    {
+      name:"Lithuania",
+      code:"LT",
+      phoneCode:"+370"
+   },
+    {
+      name:"Luxembourg",
+      code:"LU",
+      phoneCode:"+352"
+   },
+    {
+      name:"Macao SAR China",
+      code:"MO",
+      phoneCode:"+853"
+   },
+    {
+      name:"Madagascar",
+      code:"MG",
+      phoneCode:"+261"
+   },
+    {
+      name:"Malawi",
+      code:"MW",
+      phoneCode:"+265"
+   },
+    {
+      name:"Malaysia",
+      code:"MY",
+      phoneCode:"+60"
+   },
+    {
+      name:"Maldives",
+      code:"MV",
+      phoneCode:"+960"
+   },
+    {
+      name:"Mali",
+      code:"ML",
+      phoneCode:"+223"
+   },
+    {
+      name:"Malta",
+      code:"MT",
+      phoneCode:"+356"
+   },
+    {
+      name:"Marshall Islands",
+      code:"MH",
+      phoneCode:"+692"
+   },
+    {
+      name:"Martinique",
+      code:"MQ",
+      phoneCode:"+596"
+   },
+    {
+      name:"Mauritania",
+      code:"MR",
+      phoneCode:"+222"
+   },
+    {
+      name:"Mauritius",
+      code:"MU",
+      phoneCode:"+230"
+   },
+    {
+      name:"Mayotte",
+      code:"YT",
+      phoneCode:"+262"
+   },
+    {
+      name:"Mexico",
+      code:"MX",
+      phoneCode:"+52"
+   },
+    {
+      name:"Micronesia",
+      code:"FM",
+      phoneCode:"+691"
+   },
+    {
+      name:"Moldova",
+      code:"MD",
+      phoneCode:"+373"
+   },
+    {
+      name:"Monaco",
+      code:"MC",
+      phoneCode:"+377"
+   },
+    {
+      name:"Mongolia",
+      code:"MN",
+      phoneCode:"+976"
+   },
+    {
+      name:"Montenegro",
+      code:"ME",
+      phoneCode:"+382"
+   },
+    {
+      name:"Morocco",
+      code:"MA",
+      phoneCode:"+212"
+   },
+    {
+      name:"Mozambique",
+      code:"MZ",
+      phoneCode:"+258"
+   },
+    {
+      name:"Myanmar (Burma)",
+      code:"MM",
+      phoneCode:"+95"
+   },
+    {
+      name:"Namibia",
+      code:"NA",
+      phoneCode:"+264"
+   },
+    {
+      name:"Nauru",
+      code:"NR",
+      phoneCode:"+674"
+   },
+    {
+      name:"Nepal",
+      code:"NP",
+      phoneCode:"+977"
+   },
+    {
+      name:"Netherlands",
+      code:"NL",
+      phoneCode:"+31"
+   },
+    {
+      name:"New Caledonia",
+      code:"NC",
+      phoneCode:"+687"
+   },
+    {
+      name:"New Zealand",
+      code:"NZ",
+      phoneCode:"+64"
+   },
+    {
+      name:"Nicaragua",
+      code:"NI",
+      phoneCode:"+505"
+   },
+    {
+      name:"Niger",
+      code:"NE",
+      phoneCode:"+227"
+   },
+    {
+      name:"Nigeria",
+      code:"NG",
+      phoneCode:"+234"
+   },
+    {
+      name:"Niue",
+      code:"NU",
+      phoneCode:"+683"
+   },
+    {
+      name:"Norfolk Island",
+      code:"NF",
+      phoneCode:"+672"
+   },
+    {
+      name:"North Korea",
+      code:"KP",
+      phoneCode:"+850"
+   },
+    {
+      name:"North Macedonia",
+      code:"MK",
+      phoneCode:"+389"
+   },
+    {
+      name:"Norway",
+      code:"NO",
+      phoneCode:"+47"
+   },
+    {
+      name:"Oman",
+      code:"OM",
+      phoneCode:"+968"
+   },
+    {
+      name:"Pakistan",
+      code:"PK",
+      phoneCode:"+92"
+   },
+    {
+      name:"Palau",
+      code:"PW",
+      phoneCode:"+680"
+   },
+    {
+      name:"Palestinian Territories",
+      code:"PS",
+      phoneCode:"+970"
+   },
+    {
+      name:"Panama",
+      code:"PA",
+      phoneCode:"+507"
+   },
+    {
+      name:"Papua New Guinea",
+      code:"PG",
+      phoneCode:"+675"
+   },
+    {
+      name:"Paraguay",
+      code:"PY",
+      phoneCode:"+595"
+   },
+    {
+      name:"Peru",
+      code:"PE",
+      phoneCode:"+51"
+   },
+    {
+      name:"Philippines",
+      code:"PH",
+      phoneCode:"+63"
+   },
+    {
+      name:"Poland",
+      code:"PL",
+      phoneCode:"+48"
+   },
+    {
+      name:"Portugal",
+      code:"PT",
+      phoneCode:"+351"
+   },
+    {
+      name:"Qatar",
+      code:"QA",
+      phoneCode:"+974"
+   },
+    {
+      name:"Réunion",
+      code:"RE",
+      phoneCode:"+262"
+   },
+    {
+      name:"Romania",
+      code:"RO",
+      phoneCode:"+40"
+   },
+    {
+      name:"Russia",
+      code:"RU",
+      phoneCode:"+7"
+   },
+    {
+      name:"Rwanda",
+      code:"RW",
+      phoneCode:"+250"
+   },
+    {
+      name:"Samoa",
+      code:"WS",
+      phoneCode:"+685"
+   },
+    {
+      name:"San Marino",
+      code:"SM",
+      phoneCode:"+378"
+   },
+    {
+      name:"São Tomé & Príncipe",
+      code:"ST",
+      phoneCode:"+239"
+   },
+    {
+      name:"Saudi Arabia",
+      code:"SA",
+      phoneCode:"+966"
+   },
+    {
+      name:"Senegal",
+      code:"SN",
+      phoneCode:"+221"
+   },
+    {
+      name:"Serbia",
+      code:"RS",
+      phoneCode:"+381"
+   },
+    {
+      name:"Seychelles",
+      code:"SC",
+      phoneCode:"+248"
+   },
+    {
+      name:"Sierra Leone",
+      code:"SL",
+      phoneCode:"+232"
+   },
+    {
+      name:"Singapore",
+      code:"SG",
+      phoneCode:"+65"
+   },
+    {
+      name:"Slovakia",
+      code:"SK",
+      phoneCode:"+421"
+   },
+    {
+      name:"Slovenia",
+      code:"SI",
+      phoneCode:"+386"
+   },
+    {
+      name:"Solomon Islands",
+      code:"SB",
+      phoneCode:"+677"
+   },
+    {
+      name:"Somalia",
+      code:"SO",
+      phoneCode:"+252"
+   },
+    {
+      name:"South Africa",
+      code:"ZA",
+      phoneCode:"+27"
+   },
+    {
+      name:"South Korea",
+      code:"KR",
+      phoneCode:"+82"
+   },
+    {
+      name:"South Sudan",
+      code:"SS",
+      phoneCode:"+211"
+   },
+    {
+      name:"Spain",
+      code:"ES",
+      phoneCode:"+34"
+   },
+    {
+      name:"Sri Lanka",
+      code:"LK",
+      phoneCode:"+94"
+   },
+    {
+      name:"St. Barthélemy",
+      code:"BL",
+      phoneCode:"+590"
+   },
+    {
+      name:"St. Helena",
+      code:"SH",
+      phoneCode:"+290"
+   },
+    {
+      name:"St. Martin",
+      code:"MF",
+      phoneCode:"+590"
+   },
+    {
+      name:"St. Pierre & Miquelon",
+      code:"PM",
+      phoneCode:"+508"
+   },
+    {
+      name:"Sudan",
+      code:"SD",
+      phoneCode:"+249"
+   },
+    {
+      name:"Suriname",
+      code:"SR",
+      phoneCode:"+597"
+   },
+    {
+      name:"Svalbard & Jan Mayen",
+      code:"SJ",
+      phoneCode:"+47"
+   },
+    {
+      name:"Sweden",
+      code:"SE",
+      phoneCode:"+46"
+   },
+    {
+      name:"Switzerland",
+      code:"CH",
+      phoneCode:"+41"
+   },
+    {
+      name:"Syria",
+      code:"SY",
+      phoneCode:"+963"
+   },
+    {
+      name:"Taiwan",
+      code:"TW",
+      phoneCode:"+886"
+   },
+    {
+      name:"Tajikistan",
+      code:"TJ",
+      phoneCode:"+992"
+   },
+    {
+      name:"Tanzania",
+      code:"TZ",
+      phoneCode:"+255"
+   },
+    {
+      name:"Thailand",
+      code:"TH",
+      phoneCode:"+66"
+   },
+    {
+      name:"Timor-Leste",
+      code:"TL",
+      phoneCode:"+670"
+   },
+    {
+      name:"Togo",
+      code:"TG",
+      phoneCode:"+228"
+   },
+    {
+      name:"Tokelau",
+      code:"TK",
+      phoneCode:"+690"
+   },
+    {
+      name:"Tonga",
+      code:"TO",
+      phoneCode:"+676"
+   },
+    {
+      name:"Tristan da Cunha",
+      code:"TA",
+      phoneCode:"+290"
+   },
+    {
+      name:"Tunisia",
+      code:"TN",
+      phoneCode:"+216"
+   },
+    {
+      name:"Türkiye",
+      code:"TR",
+      phoneCode:"+90"
+   },
+    {
+      name:"Turkmenistan",
+      code:"TM",
+      phoneCode:"+993"
+   },
+    {
+      name:"Tuvalu",
+      code:"TV",
+      phoneCode:"+688"
+   },
+    {
+      name:"Uganda",
+      code:"UG",
+      phoneCode:"+256"
+   },
+    {
+      name:"Ukraine",
+      code:"UA",
+      phoneCode:"+380"
+   },
+    {
+      name:"United Arab Emirates",
+      code:"AE",
+      phoneCode:"+971"
+   },
+    {
+      name:"United Kingdom",
+      code:"GB",
+      phoneCode:"+44"
+   },
+    {
+      name:"United States",
+      code:"US",
+      phoneCode:"+1"
+   },
+    {
+      name:"Uruguay",
+      code:"UY",
+      phoneCode:"+598"
+   },
+    {
+      name:"Uzbekistan",
+      code:"UZ",
+      phoneCode:"+998"
+   },
+    {
+      name:"Vanuatu",
+      code:"VU",
+      phoneCode:"+678"
+   },
+    {
+      name:"Vatican City",
+      code:"VA",
+      phoneCode:"+39"
+   },
+    {
+      name:"Venezuela",
+      code:"VE",
+      phoneCode:"+58"
+   },
+    {
+      name:"Vietnam",
+      code:"VN",
+      phoneCode:"+84"
+   },
+    {
+      name:"Wallis & Futuna",
+      code:"WF",
+      phoneCode:"+681"
+   },
+    {
+      name:"Western Sahara",
+      code:"EH",
+      phoneCode:"+212"
+   },
+    {
+      name:"Yemen",
+      code:"YE",
+      phoneCode:"+967"
+   },
+    {
+      name:"Zambia",
+      code:"ZM",
+      phoneCode:"+260"
+   },
+    {
+      name:"Zimbabwe",
+      code:"ZW",
+      phoneCode:"+263"
+   }
+  ];
+
+  const countrySelect = document.getElementById("country");
+  // Populate dropdown
+  countries.forEach(country => {
+    const option = document.createElement("option");
+    option.value = country.phoneCode;
+    option.textContent = country.phoneCode;
+    countrySelect.appendChild(option);
+ });
+
+  // Default select United States
+  countrySelect.value = "+1";
+
+document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  let isValid = true;
+  document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+  document.getElementById('successMessage').textContent = '';
+
+  const firstName = document.getElementById('firstName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phoneValue = document.getElementById('mobile').value.trim();
+  const OrganisationRole = document.getElementById('OrganisationRole').value.trim();
+  const interest = document.getElementById('interest').value.trim();
+  
+  const phonecountrycode = document.getElementById('country').value.trim();
+  const fullphonenumber =`${phonecountrycode} ${phoneValue}`
+
+  console.log("v1")
+
+  const mobilePattern = /^[0-9]{4,15}$/;
+
+  if (firstName === '') {
+    document.getElementById('firstNameError').textContent = 'Full name is required';
+    isValid = false;
+  }
+  if (email === '') {
+    document.getElementById('emailError').textContent = 'Enter a valid email address';
+    isValid = false;
+  }
+  if (!mobilePattern.test(phoneValue)) {
+    document.getElementById('mobileError').textContent = 'Enter a valid mobile number (4-15 digits)';
+    isValid = false;
+  }
+  if (OrganisationRole === '') {
+    document.getElementById('organisationError').textContent = 'Organisation name is required';
+    isValid = false;
+  }
+  if (interest === '') {
+    document.getElementById('interestError').textContent = 'Select your interest';
+    isValid = false;
+  }
+  if (isValid) {
+    fetch('https://formapiv5.resul.io/Subscription/IndexInsertAPI', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        First_Name:firstName,
+        EmailID:email,
+        MobileNo:fullphonenumber,
+        Job_function:OrganisationRole,
+        Interest:'interest',
+        FormStyles:"",
+        formid:"20",
+        dbId:"f464547c_d0b1_4ef7_a91c_a0c5cbc88b2e",
+        SourceURL:window.location.href,
+        pagereferrerurl:document.referrer,
+        rid:"",
+        cid:"",
+        pagetitle:document.title,
+        notifyStatus:true
+     }),
+   })
+    .then(response => {
+      if (!response.ok) throw new Error('API error');
+      return response.json();
+   })
+
+    .then(data => {
+      document.getElementById('form-sec-sub').style.display = 'none';
+      document.getElementById('sec-header').style.display = 'none';
+      document.getElementById('subscriptionForm').style.display = 'none';
+      // Show thank you message
+      const messageBox = document.getElementById('successMessage');
+      messageBox.innerHTML = '<h1>Thank you for your interest.</h1><p>We will get back to you shortly</p>';
+      messageBox.style.display = 'block';
+   })
+    .then(data => {
+      document.getElementById('subscriptionForm').reset();
+   })
+    .catch(error => {
+      console.error('Submission failed:', error);
+   });
+ }
+});
+ document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
