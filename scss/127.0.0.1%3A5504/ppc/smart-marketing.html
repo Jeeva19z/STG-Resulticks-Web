@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketing Star | Go Multichannel in Minutes</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <link href="assets/css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/vendor/aos.css" rel="stylesheet">
+    <link href="assets/css/vendor/slick.css" rel="stylesheet">
+    <link href="assets/css/vendor/slick-theme.css" rel="stylesheet">
+     <link rel="stylesheet" href="../assets/css/header.css">
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="assets/css/home.css" rel="stylesheet">
+    <style>
+      :root {
+        --primary: #f23a1d;
+        --primary-dark: #c51f10;
+        --accent: #ff6a21;
+        --deep: #260100;
+        --deep-2: #3b0502;
+        --ink: #241515;
+        --muted: #6e5753;
+        --line: #f0d7d0;
+        --soft: #fff3ef;
+        --soft-2: #f8f3f1;
+        --white: #ffffff;
+        --shadow: 0 24px 60px rgba(80, 16, 4, 0.14);
+        --radius: 22px;
+      }
+
+      .container-custom {
+        width: min(1160px, calc(100% - 40px));
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--deep);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-inner {
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        color: white;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 900;
+        text-transform: lowercase;
+      }
+
+      .brand-mark {
+        width: 26px;
+        height: 26px;
+        display: grid;
+        place-items: center;
+        color: var(--primary);
+        font-weight: 900;
+      }
+
+      .btn-custom {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 0;
+        cursor: pointer;
+        border-radius: 999px;
+        padding: 13px 22px;
+        font-weight: 400;
+        font-size: 14px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        white-space: nowrap;
+        font-size: large;
+      }
+
+      .btn-custom:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary-ms {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        box-shadow: 0 14px 28px rgba(242, 58, 29, 0.26);
+      }
+
+      .btn-light-ms {
+        background: white;
+        color: var(--primary-dark);
+        box-shadow: 0 12px 24px rgba(38, 1, 0, 0.16);
+      }
+
+      .hero {
+        background:
+          radial-gradient(circle at 8% 78%, rgba(255, 106, 33, 0.62), transparent 14%),
+          radial-gradient(circle at 88% 18%, rgba(255, 106, 33, 0.52), transparent 12%),
+          radial-gradient(circle at 72% 58%, rgba(242, 58, 29, 0.26), transparent 18%),
+          linear-gradient(145deg, #430300 0%, #5b0803 48%, #250100 100%);
+        overflow: hidden;
+        color: white;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.10);
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 900;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .hero-copy {
+        color: rgba(255, 255, 255, 0.82);
+        max-width: 540px;
+        margin-bottom: 32px;
+      }
+
+      .hero-points {
+        display: flex;
+        gap: 24px;
+        margin-top: 34px;
+      }
+
+      .point {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 14px;
+      }
+
+      .point-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.10);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        display: grid;
+        place-items: center;
+        color: #ff9b65;
+      }
+
+      .point-icon img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 560px;
+      }
+
+      .dashboard-card {
+        width: 340px;
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        padding: 20px;
+        color: var(--ink);
+        position: absolute;
+        left: 0;
+        top: 80px;
+        z-index: 1;
+      }
+
+      .dash-top {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .stat {
+        background: #fff7f4;
+        border: 1px solid #f4ddd6;
+        border-radius: 14px;
+        padding: 12px;
+      }
+
+      .stat small {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      .stat strong {
+        font-size: 18px;
+        color: var(--primary-dark);
+      }
+
+      .campaign-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0d7d0;
+        font-size: 16px;
+        color: #4f3834;
+      }
+
+      .campaign-row:last-child {
+        border-bottom: 0;
+      }
+
+      .badge-ms {
+        background: #fff0e8;
+        color: var(--primary-dark);
+        border-radius: 999px;
+        padding: 4px 9px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .signup-card {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 360px;
+        background: #fffaf8;
+        border-radius: 26px;
+        box-shadow: 0 24px 70px rgba(38, 1, 0, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        padding: 32px 28px;
+        z-index: 10;
+        color: var(--ink);
+      }
+
+      .signup-card h2 {
+        font-size: 24px;
+        letter-spacing: -0.04em;
+        margin-bottom: 4px;
+        font-weight: 800;
+      }
+
+      .signup-card p {
+        color: var(--muted);
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .form-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid #f0d7d0;
+        border-radius: 12px;
+        padding: 14px 15px;
+        font-size: 16px;
+        outline: none;
+        transition: border 0.2s ease, box-shadow 0.2s ease;
+        background: white;
+      }
+
+      input:focus {
+        border-color: rgba(242, 58, 29, 0.75);
+        box-shadow: 0 0 0 4px rgba(242, 58, 29, 0.10);
+      }
+
+      input.is-invalid {
+        border-color: #c51f10;
+        box-shadow: 0 0 0 4px rgba(197, 31, 16, 0.10);
+      }
+
+      .consent-field {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .consent-field input {
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+        margin-top: 2px;
+        accent-color: var(--primary);
+      }
+
+      .consent-field a {
+        color: var(--primary-dark);
+        font-weight: 700;
+        text-decoration: underline;
+      }
+
+      .field-error {
+        display: none;
+        margin-top: -8px;
+        color: #c51f10;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .field-error.is-visible {
+        display: block;
+      }
+
+      .form-status {
+        display: none;
+        border-radius: 12px;
+        padding: 10px 12px;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .form-status.is-visible {
+        display: block;
+      }
+
+      .form-status.success {
+        background: #edf9f0;
+        color: #176b2c;
+        border: 1px solid #bce7c7;
+      }
+
+      .form-status.error {
+        background: #fff0ed;
+        color: #a51b0f;
+        border: 1px solid #f3c1b8;
+      }
+
+      .signup-card button:disabled {
+        cursor: not-allowed;
+        opacity: 0.75;
+        transform: none;
+      }
+
+      .trust-list {
+        margin-top: 18px;
+        display: grid;
+        gap: 8px;
+        color: #4f3834;
+        font-size: 14px;
+      }
+
+      .trust-list span::before {
+        content: "✓";
+        color: var(--primary);
+        font-weight: 900;
+        margin-right: 8px;
+      }
+
+      .floating-channel {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #fffaf8;
+        border: 1px solid rgba(255, 224, 216, 0.95);
+        box-shadow: 0 18px 40px rgba(38, 1, 0, 0.18);
+        border-radius: 18px;
+        padding: 12px 18px;
+        font-weight: 900;
+        font-size: 16px;
+        color: var(--ink);
+        z-index: 5;
+      }
+
+      .channel-1 {
+        left: 200px;
+        bottom: 30px;
+      }
+
+      .channel-2 {
+        left: 210px;
+        top: 20px;
+      }
+
+      .channel-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #ffe8df;
+        color: var(--primary);
+      }
+
+      .channel-section {
+        padding: 86px 0;
+        background: var(--deep);
+        color: white;
+      }
+
+      .channel-title {
+        text-align: center;
+        max-width: 980px;
+        margin: 0 auto 62px;
+      }
+
+      .channel-title h2 {
+        line-height: 1.12;
+        letter-spacing: -0.055em;
+        color: white;
+      }
+
+      .channel-card {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .feature-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        background: #4b0603;
+        color: var(--accent);
+        border: 1px solid rgba(255, 106, 33, 0.14);
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .channel-card h3 {
+        font-size: 28px;
+        line-height: 1.2;
+        letter-spacing: -0.04em;
+        margin-bottom: 12px;
+        color: white;
+        font-weight: 800;
+      }
+
+      .channel-card p {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 0;
+      }
+
+      .section-soft {
+        background: #f7f2f0;
+      }
+
+      .section-title {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 48px;
+      }
+
+      .section-title h2 {
+        line-height: 1.06;
+        margin-bottom: 14px;
+        color: var(--primary-dark);
+      }
+
+      .benefit-card {
+        background: #fffaf8;
+        border: 1px solid #f0d7d0;
+        border-radius: var(--radius);
+        padding: 30px;
+        box-shadow: 0 12px 34px rgba(80, 16, 4, 0.06);
+        text-align: center;
+        height: 100%;
+      }
+
+      .icon-circle {
+        width: 62px;
+        height: 62px;
+        border-radius: 22px;
+        display: grid;
+        place-items: center;
+        background: #ffe8df;
+        color: var(--primary);
+        font-size: 26px;
+        margin: 0 auto 18px;
+      }
+
+      .icon-circle img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .benefit-card h4 {
+        font-weight: 800;
+        margin-bottom: 12px;
+        color: #2f1815;
+      }
+
+      .benefit-card p {
+        color: var(--muted);
+      }
+
+      .use-card {
+        background: #FFFFFF;
+        border: 1px solid #f0d7d0;
+        border-radius: var(--radius);
+        padding: 50px 20px;
+        text-align: center;
+        font-weight: 800;
+        color: #2f1815;
+        height: 100%;
+      }
+
+      .final-cta {
+        background: radial-gradient(circle at 80% 20%, rgba(255, 106, 33, 0.32), transparent 18%),
+          linear-gradient(135deg, #260100, #3b0502 48%, #180000);
+        color: white;
+        padding: 64px 0;
+      }
+
+      .final-cta h2 {
+        line-height: 1.02;
+        margin-bottom: 14px;
+      }
+
+      .final-cta p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .feature-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fffaf8;
+        border: 1px solid #f0d7d0;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .feature-table th,
+      .feature-table td {
+        padding: 14px 18px;
+        border-top: 1px solid #f0d7d0;
+        text-align: center;
+        font-size: large;
+      }
+
+      .feature-table thead tr {
+        background: #fff0e8;
+      }
+
+      .feature-table th:first-child,
+      .feature-table td:first-child {
+        text-align: left;
+      }
+
+      .hp-card {
+        color: #ffffff
+      }
+
+      .feature-table th:first-child,
+      .feature-table td:first-child {
+        padding-left: 15%;
+        width: 65%;
+      }
+
+      .feature-table th:last-child,
+      .feature-table td:last-child {
+        width: 35%;
+        padding-right: 10%;
+      }
+      .ms-h-40{
+        min-height: 80px;
+      }
+
+      @media (max-width: 991px) {
+        .hero-visual {
+          position: static;
+          min-height: auto;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .signup-card,
+        .dashboard-card,
+        .floating-channel {
+          position: static;
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .dashboard-card {
+          order: 1;
+        }
+
+        .signup-card {
+          order: 4;
+        }
+
+        .channel-1 {
+          order: 1;
+        }
+
+        .channel-2 {
+          order: 3;
+        }
+
+        .feature-table th:first-child,
+        .feature-table td:first-child {
+          padding-left: 10%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+ <nav class="nav">
+      <div class="container-custom py-3">
+        <div class="logo">
+          <a href="https://www.marketingstar.io/">
+            <img src="assets/images/logo.svg" alt="Marketing Star Logo" width="100" height="50">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <header class="hero py-5">
+        <div class="container-custom">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <div class="eyebrow">All-in-one marketing platform ✦</div>
+              <h1 class="fw-bold">Multichannel marketing made easy for growing businesses</h1>
+              <p class="hero-copy">Launch email, SMS, WhatsApp, QR code, form, and landing page campaigns from one simple platform built for SMB growth. Reach more customers, capture more leads, and track every conversion without complex tools or technical setup.</p>
+              <a class="btn-custom btn-primary-ms" href="#signup">Start Your Free Trial →</a>
+              <div class="hero-points">
+                <div class="point">
+                  <span class="point-icon">
+                    <img src="assets/images/icon/launch-icon.svg" alt="Launch in minutes" />
+                  </span>
+                  <span>Launch in minutes</span>
+                </div>
+                <div class="point">
+                  <span class="point-icon">
+                    <img src="assets/images/icon/reach-icon.svg" alt="Reach more customers" />
+                  </span>
+                  <span>Reach more customers</span>
+                </div>
+                <div class="point">
+                  <span class="point-icon">
+                    <img src="assets/images/icon/track-icon.svg" alt="Track and improve performance" />
+                  </span>
+                  <span>Track and improve <br>performance </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-visual">
+                <!-- <div class="floating-channel channel-1">
+                  <span class="channel-icon">✉</span> Campaign sent
+                </div> -->
+                <div class="floating-channel channel-2">
+                  <span class="channel-icon">💬</span> Customer reply
+                </div>
+                <div class="dashboard-card">
+                  <div class="dash-top">
+                    <div class="stat">
+                      <small>Total campaigns</small>
+                      <strong>128</strong>
+                    </div>
+                    <div class="stat">
+                      <small>Messages sent</small>
+                      <strong>256K</strong>
+                    </div>
+                    <div class="stat">
+                      <small>Open rate</small>
+                      <strong>32.6%</strong>
+                    </div>
+                  </div>
+                  <div class="campaign-row">
+                    <span>Weekend Sale</span>
+                    <span class="badge-ms">Sent</span>
+                  </div>
+                  <div class="campaign-row">
+                    <span>Product Launch</span>
+                    <span class="badge-ms">Sent</span>
+                  </div>
+                  <div class="campaign-row">
+                    <span>Flash Offer</span>
+                    <span class="badge-ms">Sent</span>
+                  </div>
+                  <div class="campaign-row">
+                    <span>Re-engagement</span>
+                    <span>Draft</span>
+                  </div>
+                </div>
+                <div class="signup-card" id="signup">
+                  <h2>Start your free trial</h2>
+                  <form class="form-stack" id="signupForm" novalidate>
+                    <input type="text" id="signupName" name="name" placeholder="Full Name" autocomplete="name" required />
+                    <span class="field-error" id="signupNameError">Please enter your full name.</span>
+                    <input type="email" id="signupEmail" name="email" placeholder="Work Email" autocomplete="email" required />
+                    <span class="field-error" id="signupEmailError">Please enter a valid work email.</span>
+                    <input type="text" id="signupCompany" name="company" placeholder="Company Name" autocomplete="organization" />
+                    <input type="tel" id="signupPhone" name="phone" placeholder="Phone Number" autocomplete="tel" required />
+                    <span class="field-error" id="signupPhoneError">Please enter a valid phone number.</span>
+                    <label class="consent-field" for="signupConsent">
+                      <input type="checkbox" id="signupConsent" name="consent" required />
+                      <span>By submitting this form, you agree to our <a href="https://www.marketingstar.io/terms-conditions.html" target="_blank" rel="noopener">terms & conditions</a>.</span>
+                    </label>
+                    <span class="field-error" id="signupConsentError">Please agree to the Terms & Conditions before submitting.</span>
+                    <button class="btn-custom btn-primary-ms" id="signupSubmit" type="submit">Get Started</button>
+                    <div class="form-status" id="signupStatus" role="status" aria-live="polite"></div>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section>
+        <div class="home-products-section section-py-100">
+          <div class="container">
+            <div class="mb-5">
+              <h2 class="text-center text-white"> Reach Your Audience Everywhere with Our Multichannel Marketing Platform </h2>
+            </div>
+            <div class="row g-4">
+              <div class="col-6 col-lg-4">
+                <div class="hp-card h-100 d-flex flex-column justify-content-center p-4 rounded">
+                  <div class="d-flex align-items-center flex-column flex-sm-row">
+                    <figure class="d-flex align-items-center justify-content-center">
+                      <img src="assets/images/icon/email.svg" width="50">
+                    </figure>
+                    <h3>Email</h3>
+                  </div>
+                  <p class="ms-h-40">Send your newsletter and reach audiences on this time-tested channel</p>
+                </div>
+              </div>
+              <div class="col-6 col-lg-4">
+                <div class="hp-card h-100 d-flex flex-column justify-content-center p-4 rounded">
+                  <div class="d-flex align-items-center flex-column flex-sm-row">
+                    <figure class="d-flex align-items-center justify-content-center">
+                      <img src="assets/images/icon/sms.svg" width="50">
+                    </figure>
+                    <h3>SMS</h3>
+                  </div>
+                  <p class="ms-h-40">Send personalized messages straight into their pockets</p>
+                </div>
+              </div>
+              <div class="col-6 col-lg-4">
+                <div class="hp-card h-100 d-flex flex-column justify-content-center p-4 rounded">
+                  <div class="d-flex flex-column flex-sm-row align-items-center">
+                    <figure class="d-flex align-items-center justify-content-center">
+                      <img src="assets/images/icon/qr.svg" width="50">
+                    </figure>
+                    <h3>QR Code</h3>
+                  </div>
+                  <p class="ms-h-40">Turn scans into customers</p>
+                </div>
+              </div>
+              <div class="col-6 col-lg-4">
+                <div class="hp-card h-100 d-flex flex-column justify-content-center p-4 rounded">
+                  <div class="d-flex flex-column flex-sm-row align-items-center">
+                    <figure class="d-flex align-items-center justify-content-center">
+                      <img src="assets/images/icon/whatsapp.svg" width="50">
+                    </figure>
+                    <h3>WhatsApp</h3>
+                  </div>
+                  <p class="ms-h-40">Promote engagement with branded messages</p>
+                </div>
+              </div>
+              <div class="col-6 col-lg-4">
+                <div class="hp-card h-100 d-flex flex-column justify-content-center p-4 rounded">
+                  <div class="d-flex flex-column flex-sm-row align-items-center">
+                    <figure class="d-flex align-items-center justify-content-center">
+                      <img src="assets/images/icon/web-forms.svg" width="50">
+                    </figure>
+                    <h3>Web Forms</h3>
+                  </div>
+                  <p class="ms-h-40">Capture leads and feedback</p>
+                </div>
+              </div>
+              <div class="col-6 col-lg-4">
+                <div class="hp-card h-100 d-flex flex-column justify-content-center p-4 rounded">
+                  <div class="d-flex flex-column flex-sm-row align-items-center">
+                    <figure class="d-flex align-items-center justify-content-center">
+                      <img src="assets/images/icon/lp.svg" width="50">
+                    </figure>
+                    <h3>Template Builder</h3>
+                  </div>
+                  <p class="ms-h-40">Create landing pages easily</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="benefits" class="section-soft py-5">
+        <div class="container-custom">
+          <div class="section-title">
+            <h2>Running a business and trying to market it too?</h2>
+            <p>Marketing Star helps you create, launch, and track campaigns across email, SMS, WhatsApp, QR codes, forms, and landing pages without needing a full marketing team or complicated tools.</p>
+          </div>
+          <div class="text-center pt-3">
+            <a class="btn-custom btn-primary-ms" href="#signup">Get Started →</a>
+          </div>
+        </div>
+      </section>
+      <section class="py-5">
+        <div class="container-custom">
+          <div class="section-title">
+            <h2>More ways to reach and convert customers</h2>
+            <p>Run campaigns across the channels your customers already use, capture interest with forms and landing pages, and track every response from one simple platform.</p>
+          </div>
+          <div class="row g-4">
+            <div class="col-sm-6 col-lg-3">
+              <div class="benefit-card">
+                <div class="icon-circle">
+                  <img src="assets/images/icon/reach-customer-icon.svg" alt="Reach more customers" />
+                </div>
+                <h5>One platform. Every channel.</h5>
+                <p>Run Email, SMS, WhatsApp, QR code, and landing page campaigns without switching between tools.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="benefit-card">
+                <div class="icon-circle">
+                  <img src="assets/images/icon/capture-more-icon.svg" alt="Capture more leads" />
+                </div>
+                <h5>Capture more leads</h5>
+                <p>Turn interest into action with simple forms, campaign pages, and QR-driven journeys.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="benefit-card">
+                <div class="icon-circle">
+                  <img src="assets/images/icon/launch-more-icon.svg" alt="Launch faster" />
+                </div>
+                <h5>Launch faster</h5>
+                <p>Use easy builders and templates to create campaigns without coding or technical setup.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="benefit-card">
+                <div class="icon-circle">
+                  <img src="assets/images/icon/track-more-icon.svg" alt="Track what works" />
+                </div>
+                <h5>Track what works</h5>
+                <p>Measure clicks, views, form submissions, engagement, and conversions in one place.</p>
+              </div>
+            </div>
+          </div>
+          <div class="text-center pt-5">
+            <a class="btn-custom btn-primary-ms" href="#signup">Get a Demo →</a>
+          </div>
+        </div>
+      </section>
+      <section class="pb-5">
+        <div class="container-custom">
+          <div class="section-title">
+            <h2>Everything you need to launch better campaigns</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="feature-table">
+              <thead>
+                <tr>
+                  <th>What growing businesses need</th>
+                  <th>Marketing Star</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Email campaigns</td>
+                  <td style="color:#c51f10; font-weight:700;">Included</td>
+                </tr>
+                <tr>
+                  <td>SMS and WhatsApp outreach</td>
+                  <td style="color:#c51f10; font-weight:700;">Included</td>
+                </tr>
+                <tr>
+                  <td>QR code campaigns</td>
+                  <td style="color:#c51f10; font-weight:700;">Included</td>
+                </tr>
+                <tr>
+                  <td>Web forms and landing pages</td>
+                  <td style="color:#c51f10; font-weight:700;">Included</td>
+                </tr>
+                <tr>
+                  <td>Audience enrichment</td>
+                  <td style="color:#c51f10; font-weight:700;">Included</td>
+                </tr>
+                <tr>
+                  <td>Journey automation</td>
+                  <td style="color:#c51f10; font-weight:700;">Included</td>
+                </tr>
+                <tr>
+                  <td>Campaign analytics</td>
+                  <td style="color:#c51f10; font-weight:700;">Included</td>
+                </tr>
+                <tr>
+                  <td>No-code setup</td>
+                  <td style="color:#c51f10; font-weight:700;">Included</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section id="use-cases" class="section-soft py-5">
+        <div class="container-custom">
+          <div class="section-title">
+            <h2>Built for small teams with big growth goals</h2>
+            <p>Marketing Star helps you move faster, reach more people, and understand what drives results.</p>
+          </div>
+          <div class="row g-3">
+            <div class="col-md col-6">
+              <div class="use-card">Promote offers and events</div>
+            </div>
+            <div class="col-md col-6">
+              <div class="use-card">Capture leads online and offline</div>
+            </div>
+            <div class="col-md col-6">
+              <div class="use-card">Follow up across channels</div>
+            </div>
+            <div class="col-md col-6">
+              <div class="use-card">Create forms and landing pages</div>
+            </div>
+            <div class="col-md col-12">
+              <div class="use-card">Track performance in one place</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="form-section" class="py-5">
+        <div class="container-custom">
+          <div class="section-title">
+            <h2>Start building better campaigns</h2>
+            <p>See how Marketing Star can help your business reach more customers, launch faster, and convert more leads.</p>
+          </div>
+          <div class="text-center">
+            <a class="btn-custom btn-primary-ms" href="#signup">Get Started →</a>
+          </div>
+        </div>
+      </section>
+      <section class="final-cta">
+        <div class="container-custom text-center">
+          <h2>Ready to market your business across more channels?</h2>
+          <p class="mb-4">Launch campaigns that help you reach, engage, and convert more customers from one simple platform.</p>
+          <a class="btn-custom btn-light-ms" href="#signup">Get Started with Marketing Star →</a>
+        </div>
+      </section>
+    
+
+
+    </main>
+
+
+    <script>
+      (function () {
+        const form = document.getElementById("signupForm");
+        const submitButton = document.getElementById("signupSubmit");
+        const statusBox = document.getElementById("signupStatus");
+
+        if (!form) {
+          return;
+        }
+
+        const fields = {
+          name: {
+            input: document.getElementById("signupName"),
+            error: document.getElementById("signupNameError"),
+            validate: function (value) {
+              return /^[A-Za-z][A-Za-z\s.'-]{1,}$/.test(value);
+            }
+          },
+          email: {
+            input: document.getElementById("signupEmail"),
+            error: document.getElementById("signupEmailError"),
+            validate: function (value) {
+              return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+            }
+          },
+          phone: {
+            input: document.getElementById("signupPhone"),
+            error: document.getElementById("signupPhoneError"),
+            validate: function (value) {
+              return /^[0-9+\-\s()]{7,20}$/.test(value);
+            }
+          },
+          consent: {
+            input: document.getElementById("signupConsent"),
+            error: document.getElementById("signupConsentError"),
+            validate: function () {
+              return this.input.checked;
+            }
+          }
+        };
+
+        function setFieldState(field, isValid) {
+          field.input.classList.toggle("is-invalid", !isValid);
+          field.error.classList.toggle("is-visible", !isValid);
+        }
+
+        function setStatus(message, type) {
+          statusBox.textContent = message;
+          statusBox.className = "form-status is-visible " + type;
+        }
+
+        function clearStatus() {
+          statusBox.textContent = "";
+          statusBox.className = "form-status";
+        }
+
+        function validateForm() {
+          let isValid = true;
+
+          Object.keys(fields).forEach(function (key) {
+            const field = fields[key];
+            const fieldIsValid = field.validate(field.input.value.trim());
+            setFieldState(field, fieldIsValid);
+            isValid = isValid && fieldIsValid;
+          });
+
+          return isValid;
+        }
+
+        Object.keys(fields).forEach(function (key) {
+          const eventName = fields[key].input.type === "checkbox" ? "change" : "input";
+
+          fields[key].input.addEventListener(eventName, function () {
+            setFieldState(fields[key], true);
+            clearStatus();
+          });
+        });
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          clearStatus();
+
+          if (!validateForm()) {
+            setStatus("Please fix the highlighted fields and try again.", "error");
+            return;
+          }
+
+          const apiUrl = new URL("https://formapiv5.resul.io/Subscription/IndexInsertAPI");
+          const query = new URLSearchParams(window.location.search);
+          const submittedEmail = fields.email.input.value.trim();
+
+          apiUrl.search = new URLSearchParams({
+            Name: fields.name.input.value.trim(),
+            MobileNo: fields.phone.input.value.trim(),
+            EmailID: submittedEmail,
+            "Web Page URL": window.location.href,
+            Companyname: document.getElementById("signupCompany").value.trim(),
+            LiveDemo: "No",
+            FormStyles: "Marketing Star PPC Signup",
+            Consent: "Yes",
+            formId: "27",
+            dbId: "f464547c_d0b1_4ef7_a91c_a0c5cbc88b2e",
+            SourceURL: window.location.href,
+            pagereferrerurl: document.referrer,
+            rid: query.get("rid") || "",
+            cid: query.get("cid") || "",
+            pagetitle: document.title,
+            notifyStatus: "true"
+          }).toString();
+
+          submitButton.disabled = true;
+          submitButton.textContent = "Submitting...";
+
+          fetch(apiUrl.toString(), {
+            method: "GET"
+          })
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error("Signup request failed");
+              }
+
+              form.reset();
+              setStatus("Thanks! Your free trial request has been submitted.", "success");
+
+              const encodedEmail = btoa(submittedEmail);
+              const redirectUrl = `https://run.marketingstar.us/login?mat=newuser&mem=${encodedEmail}`;
+              window.open(redirectUrl, "_blank");
+            })
+            .catch(function () {
+              setStatus("Something went wrong. Please try again in a moment.", "error");
+            })
+            .finally(function () {
+              submitButton.disabled = false;
+              submitButton.textContent = "Get Started";
+            });
+        });
+      })();
+    </script>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>

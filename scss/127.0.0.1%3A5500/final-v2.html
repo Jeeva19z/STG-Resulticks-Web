@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RESULTICKS — Put real-time engagement to work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #02061a;
+  --bg-mid: #050a2c;
+  --accent-blue: #4A9EFF;
+  --accent-cyan: #00D4FF;
+  --accent-glow: #6BB6FF;
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.68);
+  --text-subtle: rgba(255, 255, 255, 0.45);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --pill-bg: #ffffff;
+  --pill-text: #050a2c;
+  --tab-bar-bg: rgba(8, 14, 40, 0.55);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body { min-height: 100vh; }
+
+/* ============ HERO CONTAINER ============ */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  /* background: radial-gradient(ellipse at 50% 50%, var(--bg-mid) 0%, var(--bg-deep) 70%); */
+}
+
+/* ============ BACKGROUND VIDEO ============ */
+.bg-video-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.15);
+  transform-origin: center center;
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, filter;
+  filter: saturate(1.05) hue-rotate(0deg);
+}
+
+/* Per-tab camera framing — each of the 3 tabs matches one reference frame.
+   Audience    = left loop with feathered wisps (image 1)
+   Omnichannel = diagonal sweep across viewport  (image 2)
+   AI Agents   = right loop ring with diagonal ribbon (image 3) */
+.hero[data-active="audience"]    .bg-video {transform: translate(-28%, -42%) scale(0.7) rotate(0deg);filter: saturate(1.10) hue-rotate(0deg);ero[data-active="omnichannel"] .bg-video { transform: translate(-35%, -29%) scale(2.6) rotate(0deg);  filter: saturate(1.15) hue-rotate(-8deg); }
+.hero[data-active="ai"]          .bg-video {transform: translate(-35%, -29%) scale(2.6) rotate(
+359deg);filter: saturate(1.15) hue-rotate(-8deg);
+
+/* Vignette + readability overlays */
+.bg-overlay-left {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--bg-deep) 0%, rgba(2, 6, 26, 0.85) 25%, rgba(2, 6, 26, 0.35) 45%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
+}
+.bg-overlay-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(2, 6, 26, 0.6) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.bg-overlay-bottom {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 200px;
+  background: linear-gradient(180deg, transparent, var(--bg-deep));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Subtle grain */
+.bg-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============ TOP NAV BAR ============ */
+.topnav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 56px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.logo-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--bg-deep);
+  font-weight: 800;
+  box-shadow: 0 0 20px rgba(74, 158, 255, 0.4);
+}
+
+.topnav-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.topnav-right a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.topnav-right a:hover { color: var(--text); }
+
+.btn-nav-primary {
+  padding: 10px 20px;
+  background: var(--text);
+  color: var(--bg-deep);
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-nav-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+}
+
+/* ============ TAB BAR ============ */
+.tabbar-wrap {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 0 24px;
+}
+
+.tabbar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: var(--tab-bar-bg);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 6px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.tab-pill {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  height: calc(100% - 12px);
+  background: var(--pill-bg);
+  border-radius: 100px;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15),
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 1;
+}
+
+.tab {
+  position: relative;
+  z-index: 2;
+  padding: 12px 22px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: color 0.4s ease;
+  letter-spacing: -0.005em;
+}
+
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--pill-text); }
+
+/* ============ MAIN CONTENT GRID ============ */
+.hero-content {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 56px 120px;
+  min-height: calc(100vh - 200px);
+  align-items: center;
+}
+
+/* ====== LEFT — TEXT BLOCK ====== */
+.text-block {
+  position: relative;
+  max-width: 540px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-cyan);
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 12px var(--accent-cyan);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: 22px;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s,
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+}
+
+.heading .accent {
+  background: linear-gradient(120deg, var(--accent-cyan), var(--accent-glow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtext {
+  font-size: 16.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-bottom: 36px;
+  max-width: 460px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  color: var(--bg-deep);
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 44px;
+  letter-spacing: -0.005em;
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s,
+              transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.5);
+}
+
+.text-block.is-active .cta-btn {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s,
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s,
+              box-shadow 0.25s ease;
+}
+.text-block.is-active .cta-btn:hover {
+  transform: translateY(-2px);
+}
+
+.cta-btn .arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s;
+}
+.cta-btn:hover .arrow { transform: translateX(3px); }
+
+.bullet-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.bullet-item .arrow-icon {
+  color: var(--accent-cyan);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.05em;
+}
+
+/* Reveal on tab activation */
+.text-block.is-active .eyebrow,
+.text-block.is-active .heading,
+.text-block.is-active .subtext,
+.text-block.is-active .cta-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-block.is-active .bullet-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+.text-block.is-active .bullet-item:nth-child(1) { transition-delay: 0.25s; }
+.text-block.is-active .bullet-item:nth-child(2) { transition-delay: 0.32s; }
+.text-block.is-active .bullet-item:nth-child(3) { transition-delay: 0.39s; }
+.text-block.is-active .bullet-item:nth-child(4) { transition-delay: 0.46s; }
+
+/* ====== RIGHT — FLOATING CARD CLUSTER ====== */
+.card-cluster {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+}
+
+.float-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background: rgba(8, 14, 40, 0.55);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.card-cluster.is-active .float-card { opacity: 1; transform: translateY(0) scale(1); }
+
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(74, 158, 255, 0.15);
+  color: var(--accent-glow);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 100px;
+  border: 1px solid rgba(74, 158, 255, 0.25);
+  margin-bottom: 14px;
+  letter-spacing: -0.005em;
+}
+
+.card-tag .sparkle {
+  width: 10px;
+  height: 10px;
+  fill: var(--accent-cyan);
+}
+
+.card-body {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.card-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.card-row:last-child { margin-bottom: 0; }
+
+.card-row-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(74, 158, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-glow);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.card-row-text { flex: 1; min-width: 0; }
+.card-row-title { font-size: 12.5px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.card-row-sub { font-size: 11.5px; color: var(--text-subtle); line-height: 1.4; }
+
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(74, 158, 255, 0.10));
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+.action-row:last-of-type { margin-bottom: 0; }
+.action-row .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+.action-row.muted {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+.action-row.muted .dot { background: var(--text-muted); box-shadow: none; }
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card-footer-icons {
+  display: flex;
+  gap: 14px;
+  color: var(--text-subtle);
+  font-size: 14px;
+}
+
+.card-footer-cta {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--accent-glow);
+  cursor: pointer;
+}
+
+/* ====== AVATAR BUBBLE ====== */
+.avatar-bubble {
+  position: absolute;
+  right: -30px;
+  bottom: 30px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.card-cluster.is-active .avatar-bubble {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.avatar-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ====== FLOATING SIDE BUTTONS (right edge) ====== */
+.side-btns {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 20;
+}
+
+.side-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.9), rgba(74, 158, 255, 0.9));
+  color: var(--bg-deep);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+  transition: transform 0.2s;
+}
+.side-btn:hover { transform: translateX(-3px); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 980px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding: 60px 24px 100px;
+    gap: 60px;
+  }
+  .topnav { padding: 20px 24px; }
+  .tab { padding: 10px 14px; font-size: 12px; }
+  .heading { font-size: clamp(32px, 8vw, 44px); }
+  .card-cluster { min-height: 400px; }
+  .avatar-bubble { right: 0; bottom: 0; width: 100px; height: 100px; }
+  .side-btns { display: none; }
+  .topnav-right { display: none; }
+}
+
+@media (max-width: 640px) {
+  .tabbar { padding: 5px; flex-wrap: nowrap; overflow-x: auto; max-width: 92vw; }
+  .tab { padding: 9px 12px; font-size: 11.5px; }
+}
+
+/* Hidden state — initial */
+.text-block:not(.is-active) { pointer-events: none; }
+
+/* Stack text blocks on top of each other */
+.text-stack {
+  position: relative;
+  width: 100%;
+}
+.text-stack .text-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.text-stack .text-block.is-active { position: relative; }
+
+.card-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-stack .card-cluster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+}
+.card-stack .card-cluster.is-active {
+  position: relative;
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-active="audience">
+
+  <!-- ===== Background video + overlays ===== -->
+  <div class="bg-video-wrap">
+    <video class="bg-video" autoplay loop muted playsinline preload="auto">
+      <source src="total.mp4" type="video/mp4" />
+    </video>
+    <div class="bg-overlay-left"></div>
+    <div class="bg-overlay-vignette"></div>
+    <div class="bg-overlay-bottom"></div>
+    <div class="bg-grain"></div>
+  </div>
+
+  <!-- ===== Top Nav ===== -->
+  <nav class="topnav">
+    <div class="logo">
+      <div class="logo-mark">R</div>
+      <span>RESULTICKS</span>
+    </div>
+    <div class="topnav-right">
+      <a href="#">Platform</a>
+      <a href="#">Solutions</a>
+      <a href="#">Customers</a>
+      <a href="#">Pricing</a>
+      <button class="btn-nav-primary">Book a demo</button>
+    </div>
+  </nav>
+
+  <!-- ===== Tab Bar ===== -->
+  <div class="tabbar-wrap">
+    <div class="tabbar" id="tabbar">
+      <div class="tab-pill" id="tabPill"></div>
+      <button class="tab active" data-tab="audience">Audience CDP</button>
+      <button class="tab" data-tab="omnichannel">Omnichannel</button>
+      <button class="tab" data-tab="ai">AI Agents</button>
+    </div>
+  </div>
+
+  <!-- ===== Main Content ===== -->
+  <div class="hero-content">
+
+    <!-- LEFT: text content (stacked) -->
+    <div class="text-stack">
+
+      <!-- AUDIENCE CDP -->
+      <div class="text-block is-active" data-tab="audience">
+        <div class="eyebrow">01 · Customer Data Platform</div>
+        <h1 class="heading">Know every customer<br/>before they <span class="accent">raise a hand.</span></h1>
+        <p class="subtext">Unify offline, online and behavioural signals into one real-time profile that powers every campaign you ship — without waiting on IT.</p>
+        <a href="#" class="cta-btn">
+          Build the audience graph
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <ul class="bullet-list">
+          <li class="bullet-item"><span class="arrow-icon">→</span>Identity Resolution across 30+ touchpoints</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>Real-Time Segmentation in milliseconds</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>Unified 360° Customer Profiles</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>Consent &amp; Preference Governance</li>
+        </ul>
+      </div>
+
+      <!-- OMNICHANNEL -->
+      <div class="text-block" data-tab="omnichannel">
+        <div class="eyebrow">02 · Omnichannel Engagement</div>
+        <h1 class="heading">Reach them where<br/>they <span class="accent">already are.</span></h1>
+        <p class="subtext">Email, SMS, WhatsApp, RCS, push and web — orchestrated from a single canvas with channel-aware fallback and global compliance baked in.</p>
+        <a href="#" class="cta-btn">
+          Launch your first journey
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <ul class="bullet-list">
+          <li class="bullet-item"><span class="arrow-icon">→</span>Email &amp; SMS at carrier-grade scale</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>WhatsApp Business &amp; RCS conversational flows</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>Mobile push &amp; in-app messaging</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>Frequency capping &amp; channel orchestration</li>
+        </ul>
+      </div>
+
+      <!-- AI AGENTS -->
+      <div class="text-block" data-tab="ai">
+        <div class="eyebrow">03 · AI · Journeys · Intelligence</div>
+        <h1 class="heading">Let agents do the<br/><span class="accent">heavy lifting.</span></h1>
+        <p class="subtext">Generative agents that draft copy, orchestrate journeys and predict drop-off — fully governed, attribution-ready, and never hallucinating.</p>
+        <a href="#" class="cta-btn">
+          Deploy your first agent
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <ul class="bullet-list">
+          <li class="bullet-item"><span class="arrow-icon">→</span>Generative copy &amp; subject-line agents</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>Real-time journey orchestration</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>Churn, intent &amp; send-time prediction</li>
+          <li class="bullet-item"><span class="arrow-icon">→</span>Multi-touch attribution &amp; revenue lift</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Floating cards (stacked) -->
+    <div class="card-stack">
+
+      <!-- CARD: AUDIENCE -->
+      <div class="card-cluster is-active" data-tab="audience">
+        <div class="float-card">
+          <span class="card-tag">
+            <svg class="sparkle" viewBox="0 0 24 24"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5L12 0z"/></svg>
+            Profile enriched by AI
+          </span>
+          <div class="card-body">
+            <div class="card-row">
+              <div class="card-row-icon">SK</div>
+              <div class="card-row-text">
+                <div class="card-row-title">Sneha K · Tier 2</div>
+                <div class="card-row-sub">High-intent · 8 sessions in last 24h · WhatsApp opt-in</div>
+              </div>
+            </div>
+          </div>
+          <div class="action-row">
+            <span class="dot"></span>
+            Predicted LTV — ₹84,200
+          </div>
+          <div class="action-row muted">
+            <span class="dot"></span>
+            Next best channel — Email at 7:30pm IST
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-icons">♡ ↗ ⤴</div>
+            <span class="card-footer-cta">Send offer →</span>
+          </div>
+        </div>
+        <div class="avatar-bubble">
+          <svg class="avatar-svg" viewBox="0 0 130 130">
+            <defs>
+              <linearGradient id="av1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4A9EFF"/>
+                <stop offset="100%" stop-color="#00D4FF"/>
+              </linearGradient>
+            </defs>
+            <circle cx="65" cy="65" r="65" fill="url(#av1)"/>
+            <text x="65" y="80" text-anchor="middle" font-family="Manrope" font-size="42" font-weight="700" fill="#02061a">SK</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- CARD: OMNICHANNEL -->
+      <div class="card-cluster" data-tab="omnichannel">
+        <div class="float-card">
+          <span class="card-tag">
+            <svg class="sparkle" viewBox="0 0 24 24"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5L12 0z"/></svg>
+            WhatsApp template approved
+          </span>
+          <div class="card-body">
+            <div class="card-row">
+              <div class="card-row-icon" style="background:rgba(37,211,102,0.15);color:#25D366;">W</div>
+              <div class="card-row-text">
+                <div class="card-row-title">Diwali_Offer_v3</div>
+                <div class="card-row-sub">Marketing · Approved by Meta · 2 min ago</div>
+              </div>
+            </div>
+          </div>
+          <div class="action-row">
+            <span class="dot"></span>
+            Reach — 1.2M opted-in users
+          </div>
+          <div class="action-row muted">
+            <span class="dot"></span>
+            Fallback — SMS for non-delivered
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-icons">♡ ↗ ⤴</div>
+            <span class="card-footer-cta">Schedule send →</span>
+          </div>
+        </div>
+        <div class="avatar-bubble">
+          <svg class="avatar-svg" viewBox="0 0 130 130">
+            <defs>
+              <linearGradient id="av2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#25D366"/>
+                <stop offset="100%" stop-color="#4A9EFF"/>
+              </linearGradient>
+            </defs>
+            <circle cx="65" cy="65" r="65" fill="url(#av2)"/>
+            <text x="65" y="80" text-anchor="middle" font-family="Manrope" font-size="42" font-weight="700" fill="#02061a">RB</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- CARD: AI AGENTS -->
+      <div class="card-cluster" data-tab="ai">
+        <div class="float-card">
+          <span class="card-tag">
+            <svg class="sparkle" viewBox="0 0 24 24"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5L12 0z"/></svg>
+            Agent recommended next action
+          </span>
+          <div class="card-body">
+            <div class="card-row">
+              <div class="card-row-icon" style="background:rgba(155,89,255,0.15);color:#B690FF;">AI</div>
+              <div class="card-row-text">
+                <div class="card-row-title">Cart abandonment risk: 84%</div>
+                <div class="card-row-sub">Detected drop-off in checkout · 12,400 users at risk</div>
+              </div>
+            </div>
+          </div>
+          <div class="action-row">
+            <span class="dot"></span>
+            Trigger 10% discount via WhatsApp
+          </div>
+          <div class="action-row muted">
+            <span class="dot"></span>
+            Estimated lift — ₹4.2L this week
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-icons">♡ ↗ ⤴</div>
+            <span class="card-footer-cta">Approve &amp; run →</span>
+          </div>
+        </div>
+        <div class="avatar-bubble">
+          <svg class="avatar-svg" viewBox="0 0 130 130">
+            <defs>
+              <linearGradient id="av3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#9B59FF"/>
+                <stop offset="100%" stop-color="#00D4FF"/>
+              </linearGradient>
+            </defs>
+            <circle cx="65" cy="65" r="65" fill="url(#av3)"/>
+            <text x="65" y="80" text-anchor="middle" font-family="Manrope" font-size="42" font-weight="700" fill="#02061a">AI</text>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ===== Floating right-edge buttons ===== -->
+  <div class="side-btns">
+    <button class="side-btn">💬 Contact</button>
+    <button class="side-btn">▷ Demo</button>
+  </div>
+
+</section>
+
+<script>
+(function() {
+  const hero    = document.getElementById('hero');
+  const tabbar  = document.getElementById('tabbar');
+  const pill    = document.getElementById('tabPill');
+  const tabs    = Array.from(tabbar.querySelectorAll('.tab'));
+  const blocks  = Array.from(document.querySelectorAll('.text-block'));
+  const cards   = Array.from(document.querySelectorAll('.card-cluster'));
+
+  // --- Position the sliding pill behind the active tab ---
+  function movePill(tab) {
+    const r  = tab.getBoundingClientRect();
+    const pr = tabbar.getBoundingClientRect();
+    const x  = r.left - pr.left - 6;          // -6px to account for tabbar padding
+    const w  = r.width;
+    pill.style.transform = `translateX(${x}px)`;
+    pill.style.width = `${w}px`;
+  }
+
+  // --- Activate a tab ---
+  function activate(name, tabEl) {
+    // Tabs
+    tabs.forEach(t => t.classList.toggle('active', t === tabEl));
+    movePill(tabEl);
+
+    // Hero data attr (drives bg-video transform)
+    hero.dataset.active = name;
+
+    // Text blocks — fade-out everyone, then fade-in active
+    blocks.forEach(b => {
+      if (b.dataset.tab === name) {
+        // delay slightly to let outgoing fade finish visually
+        setTimeout(() => b.classList.add('is-active'), 80);
+      } else {
+        b.classList.remove('is-active');
+      }
+    });
+
+    // Cards
+    cards.forEach(c => {
+      if (c.dataset.tab === name) {
+        setTimeout(() => c.classList.add('is-active'), 80);
+      } else {
+        c.classList.remove('is-active');
+      }
+    });
+  }
+
+  // --- Wire up ---
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => activate(tab.dataset.tab, tab));
+  });
+
+  // --- Initial pill position (after layout settles) ---
+  function init() {
+    const active = tabs.find(t => t.classList.contains('active')) || tabs[0];
+    movePill(active);
+  }
+
+  // Wait for fonts to load so pill width is accurate
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(init);
+  } else {
+    window.addEventListener('load', init);
+  }
+
+  // Reposition on resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const active = tabs.find(t => t.classList.contains('active'));
+      if (active) movePill(active);
+    }, 100);
+  });
+
+})();
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>

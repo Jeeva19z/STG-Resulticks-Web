@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resul Partners</title>
+    <meta name="description" content="Resul" />
+    <meta name="keywords" content="Resul" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg">
+
+    <link href="assets/css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/vendor/aos.css" rel="stylesheet">
+    <link href="assets/css/vendor/easy-responsive-tabs.css" rel="stylesheet">
+    <link href="assets/css/header.css" rel="stylesheet">
+    <link href="assets/css/footer.css" rel="stylesheet">
+
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="assets/css/channel.css" rel="stylesheet">
+    <link href="assets/css/dashboard.css" rel="stylesheet">
+
+
+    
+    <link href="assets/css/vendor/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/audience-data.css" rel="stylesheet">
+    <style>
+        /* Internal styling for "Why the Dashboard Is Different" */
+        .section-dashboard-diff .container {
+            max-width: 1260px;
+        }
+        .section-dashboard-diff .heading-gap h2 {
+            letter-spacing: -0.02em;
+        }
+        .dashboard-diff-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            align-items: start;
+            overflow: hidden;
+        }
+        .dashboard-diff-column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .dashboard-diff-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 24px;
+            border: 1px solid #ccd2ff;
+            border-radius: 22px;
+            background: linear-gradient(180deg, #f9faff 0%, #f5f7ff 100%);
+            box-shadow: 0 1px 4px rgba(130, 142, 236, 0.22);
+            transition: height 0.45s ease, box-shadow 0.35s ease;
+        }
+        .dashboard-diff-card h3 {
+            max-width: calc(100% - 52px);
+            margin-bottom: 12px;
+            font-size: clamp(1.05rem, 1.4vw, 1.6rem);
+            line-height: 1.35;
+        }
+        .dashboard-diff-card p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #4b5162;
+        }
+        .dashboard-diff-arrow {
+            position: absolute;
+   
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            display: block;
+            border: 1px solid #aab4ff;
+            border-radius: 50%;
+            background: #eef1ff;
+            color: #5261db;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            line-height: 1;
+        }
+        .dashboard-diff-media {
+            display: none;
+            /* margin-top: auto; */
+            padding-top: 18px;
+        }
+        .dashboard-diff-media img {
+            display: block;
+            width: 100%;
+            max-width: 329px;
+            height: auto;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+        @media (min-width: 1024px) {
+            .dashboard-diff-card {
+                height: 140px;
+            }
+            .dashboard-diff-card.active {
+                height: 249px;
+                box-shadow: 0 12px 28px rgba(103, 119, 230, 0.2);
+            }
+            .dashboard-diff-card:hover {
+                box-shadow: 0 12px 28px rgba(103, 119, 230, 0.2);
+            }
+            .dashboard-diff-card.active .dashboard-diff-media {
+                display: block;
+            }
+        }
+        @media (max-width: 960px) {
+            .dashboard-diff-grid {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-diff-column {
+                gap: 16px;
+            }
+            .dashboard-diff-card {
+                height: auto;
+                padding: 20px;
+            }
+            .dashboard-diff-media {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="dashboard-page">
+<div class="desktop-backdrop position-fixed top-0 start-0 w-100 vh-100"></div>
+<header class="header sticky-top bg-white" id="resul-header"></header>
+
+<main>
+    <section class="d-flex flex-column align-items-center justify-content-center section-gap-medium section--tect-hero">
+        <div class="container">
+           <div class="tech-hero-caption text-center d-flex flex-center flex-column">
+                <div class="text-center mb-4" data-aos="fade-up" data-aos-delay="50">
+                    <span class=" fw-medium d-inline-flex align-items-center px-4 py-2 dashboard-heading">Dashboard</span>
+                </div>
+                <h1 class="text-white fw-900 mb-4 col-md-8" data-aos="fade-up" data-aos-delay="50">Know What Is Working. Know What Needs Attention.</h1>
+                <p class="mb-3 mx-auto" data-aos="fade-up" data-aos-delay="150">An audience engagement dashboard for seeing engagement, conversion, and revenue across every communication and every channel.</p>
+                <div data-aos="fade-up" data-aos-delay="250">
+                    <a href="" class="text-white btn-round-gradient mt-4 text-black d-inline-block rounded-5 px-4 py-2">Request a Meeting</a>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="py-5">
+  <div class="container py-5 mb-5">
+
+   
+    <div class="row">
+      <div class="col-md-8 mx-auto text-center mb-5">
+        <h2 class="fw-bold">Built for the Morning Check</h2>
+      </div>
+    </div>
+
+   
+    <div class="row g-4 justify-content-center" >
+
+     
+      <div class="col-md-5">
+        <div class="p-4 rounded-4 h-100 dashboard-card-left" >
+          
+         
+          <img src="./assets/images/dashboard/notes-icon.webp" alt="icon" class="mb-3">
+
+          <h5 class="fw-bold">At a Glance, Every Day</h5>
+          <p class="mb-0">
+            See engagement health, ROI, and channel performance across the last 
+            30, 90, or 180 days, ready the moment you open the page.
+          </p>
+        </div>
+      </div>
+
+     
+      <div class="col-md-5">
+        <div class="p-4 rounded-4 h-100 border dahboard-card-right">
+          
+         
+          <img src="./assets/images/dashboard/notes-icon.webp" alt="icon" class="mb-3">
+
+          <h5 class="fw-bold">From the Big Picture to the Root Causes</h5>
+          <p class="mb-0">
+            Every widget is a starting point. Click into a top performer to see 
+            what drove results. Zero in on a drop-off to see where momentum was lost.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section-gap-medium section--why-resul position-relative d-flex flex-wrap align-items-center">
+    <div class="container">
+        <div class="position-relative z-1">
+            <div id="whyResulTab" class="whyResulTab">
+                <div>
+                    <div class="heading-gap mb-4 text-center text-md-start" data-aos="fade-right" data-aos-delay="50">
+                        <h2 class="mb-0 fw-bold">Why RESUL Is Different</h2>
+                    </div>
+                    <ul class="resp-tabs-list tab2 ps-md-4">
+                        <li>No middleware between data and delivery
+                            <p class="fw-light pt-2 d-none">Trigger emails the moment behaviour happens — cart abandonment, price drops, milestone events — not on a schedule running hours behind. </p>
+                        </li>
+                        <li>Event-driven, not batch-driven 
+                            <p class="fw-light pt-2 d-none">Trigger emails the moment behaviour happens — cart abandonment, price drops, milestone events — not on a schedule running hours behind. </p>
+                        </li>
+                        <li>AI that accelerates work 
+                            <p class="fw-light pt-2 d-none">Trigger emails the moment behaviour happens — cart abandonment, price drops, milestone events — not on a schedule running hours behind. </p>
+                        </li>
+                        <li>Enterprise-grade scale 
+                            <p class="fw-light pt-2 d-none">Trigger emails the moment behaviour happens — cart abandonment, price drops, milestone events — not on a schedule running hours behind. </p>
+                        </li>
+                        <li>Transparent attribution 
+                            <p class="fw-light pt-2 d-none">Trigger emails the moment behaviour happens — cart abandonment, price drops, milestone events — not on a schedule running hours behind. </p>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+                <div class="resp-tabs-container p-0 tab2 d-flex flex-column align-items-center justify-content-center">  
+                    <div>
+                        <div>
+                            <img src="assets/images/dashboard/messenger-configurable.png" alt="" width="300" height="300" loading="lazy">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                                <img src="assets/images/dashboard/genie-screen.svg" alt="" width="300" height="300" loading="lazy">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="assets/images/dashboard/messenger-configurable.png" alt="" width="300" height="300" loading="lazy">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                                <img src="assets/images/dashboard/genie-screen.svg" alt="" width="300" height="300" loading="lazy">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="assets/images/dashboard/messenger-configurable.png" alt="" width="300" height="300" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-gap-large section-capabilities position-relative">
+    <div class="container">
+        <div class="text-center">
+            <div class="fw-bold text-uppercase caption-title mb-3">Core capabilities</div>
+            <h2 class="fw-bold mb-0">Audience Data Platform Capabilities</h2>
+        </div>
+
+        <div class="capabilities-Swiper">
+            <div class="swiper-wrapper">
+                <div class="slide-col d-flex flex-column">
+                    <div class="swiper-slide">
+                        <div class="capabilities-card border p-4 active">
+                            <div>
+                                <h3 class="fs-6 fw-bold mb-3">100+ pre-built connectors for customer data integration</h3>
+                                <p class="fw-light mb-0">API connectors for CRM, e-commerce, analytics, ad platforms, POS, IoT, and more, plus SFTP, CSV, XML, and streaming ingestion. Built for B2C, B2B, and hybrid models.</p>
+                            </div>
+                            <div class="slide-item-media mt-md-4 d-flex align-items-end justify-content-center mt-auto mb-md-2">
+                                <img src="assets/images/dashboard/pre-built.svg" alt="pre-built connectors" width="300" height="400" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="capabilities-card border p-4">
+                            <h3 class="fs-6 fw-bold mb-3">Real-time identity resolution</h3>
+                            <p class="fw-light mb-0">AI-powered deterministic and probabilistic matching stitches fragmented records into a unified customer 360 in under 50ms. Profiles are updated continuously as new interactions occur.</p>
+                            <div class="slide-item-media mt-md-4 d-flex align-items-end justify-content-center mt-auto mb-md-2">
+                                <img src="assets/images/dashboard/pre-built.svg" alt="pre-built connectors" width="300" height="400" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-col d-flex flex-column">
+                    <div class="swiper-slide">
+                        <div class="capabilities-card border p-4">
+                            <h3 class="fs-6 fw-bold mb-3">Data transformation and cleansing</h3>
+                            <p class="fw-light mb-0">Deduplicate, validate, cleanse, and standardise all ingested data before it enters your audience data platform. Data quality is enforced upfront, not corrected later.</p>
+                            <div class="slide-item-media mt-md-4 d-flex align-items-end justify-content-center mt-auto mb-md-2">
+                                <img src="assets/images/dashboard/pre-built.svg" alt="pre-built connectors" width="300" height="400" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="capabilities-card border p-4 active">
+                            <h3 class="fs-6 fw-bold mb-3">Real-time data ingestion and enrichment</h3>
+                            <p>Customer profiles update in real time with engagement data from mobile, web, beacons, IoT, and every connected channel. RESUL supports thousands of attributes per record and auto-scales based on usage.</p>
+                            <div class="slide-item-media mt-md-4 d-flex align-items-end justify-content-center mt-auto mb-md-2">
+                                <img src="assets/images/dashboard/realtime-data.svg" alt="pre-built connectors" width="300" height="400" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-col d-flex flex-column">
+                    <div class="swiper-slide">
+                        <div class="capabilities-card border p-4 active">
+                            <h3 class="fs-6 fw-bold mb-3">Schemaless, hierarchical attribute model</h3>
+                            <p class="fw-light mb-0">No predefined schema required. RESUL ingests data as-is and organises it into a parent-child attribute hierarchy. This reduces redundancy and supports precise mapping and deduplication. Onboard faster and adapt without re-engineering.</p>
+                            <div class="slide-item-media mt-md-4 d-flex align-items-end justify-content-center mt-auto mb-md-2">
+                                <img src="assets/images/dashboard/realtime-data.svg" alt="pre-built connectors" width="300" height="400" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="capabilities-card border p-4">
+                            <h3 class="fs-6 fw-bold mb-3">Governance, consent, and compliance</h3>
+                            <p class="fw-light mb-0">Client-defined PII attributes, just-in-time PII delivery, consent management, and a private database per tenant. GDPR, CCPA, and HIPAA-ready controls help define and manage sensitive data access.</p>
+                            <div class="slide-item-media mt-md-4 d-flex align-items-end justify-content-center mt-auto mb-md-2">
+                                <img src="assets/images/dashboard/pre-built.svg" alt="pre-built connectors" width="300" height="400" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+    </div>
+</section><!-- card-moable-ani  -->
+
+
+
+
+<section class="section-gap-medium section-dashboard-diff">
+    <div class="container">
+        <div class="text-center heading-gap mb-4">
+            <h2 class="mb-0 fw-bold">Why the Dashboard Is Different</h2>
+        </div>
+
+        <div class="dashboard-diff-grid">
+            <div class="dashboard-diff-column">
+                <article class="dashboard-diff-card active" data-dashboard-col="1">
+                    <span class="dashboard-diff-arrow" aria-hidden="true">&#8599;</span>
+                    <h3>Performance in context, not in isolation</h3>
+                    <p>Every metric is tied to a goal or benchmark. You do not just see numbers. You see whether performance is on track.</p>
+                    <div class="dashboard-diff-media">
+                        <img src="assets/images/dashboard/data-processs.png" alt="Dashboard performance flow" loading="lazy">
+                    </div>
+                </article>
+
+                <article class="dashboard-diff-card" data-dashboard-col="1">
+                    <span class="dashboard-diff-arrow" aria-hidden="true">&#8599;</span>
+                    <h3>Click any number and go deeper</h3>
+                    <p>Every widget leads into the full analytics experience. Drill into a communication, a channel, or an individual profile.</p>
+                </article>
+            </div>
+
+            <div class="dashboard-diff-column">
+                <article class="dashboard-diff-card" data-dashboard-col="2">
+                    <span class="dashboard-diff-arrow" aria-hidden="true">&#8599;</span>
+                    <h3>One page, not ten reports</h3>
+                    <p>This dashboard brings together audience engagement, ROI, channel performance, audience behavior, and communication performance in one view.</p>
+                </article>
+
+                <article class="dashboard-diff-card active" data-dashboard-col="2">
+                    <span class="dashboard-diff-arrow" aria-hidden="true">&#8599;</span>
+                    <h3>Updated continuously</h3>
+                    <p>Numbers refresh as activity happens, so what you see this morning reflects what happened overnight.</p>
+                    <div class="dashboard-diff-media">
+                        <img src="assets/images/dashboard/data-processs.png" alt="Real-time update flow" loading="lazy">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="section-gap-medium section--footer-cta">
+        <div class="container">
+            <div class="footer-cta-inner d-flex flex-column align-items-center section-gap-medium text-white text-center px-4 px-md-0">
+                <h2 class="mb-0 mx-auto text-balance fw-bold">Know your audience in the moment.</h2>
+                <p>See how Real-time Analytics gives you a live view of every visitor and every user.</p>
+                <a href="book-a-meeting.html" class="btn-white rounded-pill aos-init aos-animate">Request a Meeting</a>
+            </div>
+        </div>
+    </section>
+
+
+      <section class="section-gap-medium">
+        <div class="container">
+            <div class="text-center heading-gap">
+                <h2 class="mb-0 fw-bold">Frequently Asked Questions </h2>
+            </div>
+
+            <div class="accordion accordion-flush" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button fw-medium px-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        What makes RESUL different from a traditional ESP?
+                    </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body px-0 pt-0 pb-4">
+                       <p>RESUL combines customer data, decisioning, and email delivery in one platform. There’s no separate CDP piping data to an ESP — identity resolution, content selection, send-time optimisation, and SMTP all live in the same system. </p>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button fw-medium collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Does RESUL support send-time optimisation? 
+                    </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body px-0 pt-0 pb-4">
+                        <p>RESUL combines customer data, decisioning, and email delivery in one platform. There’s no separate CDP piping data to an ESP — identity resolution, content selection, send-time optimisation, and SMTP all live in the same system. </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button fw-medium collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Can I A/B test email content and subject lines? 
+                    </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body px-0 pt-0 pb-4">
+                        <p>RESUL combines customer data, decisioning, and email delivery in one platform. There’s no separate CDP piping data to an ESP — identity resolution, content selection, send-time optimisation, and SMTP all live in the same system. </p>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button fw-medium collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        How does RESUL handle email deliverability? 
+                    </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body px-0 pt-0 pb-4">
+                        <p>RESUL combines customer data, decisioning, and email delivery in one platform. There’s no separate CDP piping data to an ESP — identity resolution, content selection, send-time optimisation, and SMTP all live in the same system. </p>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button fw-medium collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Does RESUL support transactional and service emails? 
+                    </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body px-0 pt-0 pb-4">
+                        <p>RESUL combines customer data, decisioning, and email delivery in one platform. There’s no separate CDP piping data to an ESP — identity resolution, content selection, send-time optimisation, and SMTP all live in the same system. </p>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button fw-medium collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        How does Genie improve email performance?
+                    </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body px-0 pt-0 pb-4">
+                        <p>RESUL combines customer data, decisioning, and email delivery in one platform. There’s no separate CDP piping data to an ESP — identity resolution, content selection, send-time optimisation, and SMTP all live in the same system. </p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer id="resul-footer"></footer>
+
+<!-- Vendor js -->
+<script src="assets/js/vendor/jquery.min.js"></script>
+<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+
+<!-- <script src="assets/js/header.js"></script> -->
+<script src="assets/js/resul-header.js"></script>
+<script src="assets/js/resul-footer.js"></script>
+
+<script src="assets/js/vendor/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000})
+</script>
+
+<!-- tab js code -->
+
+
+<script src="assets/js/vendor/easyResponsiveTabs.js"></script>
+<script>
+(function ($) {
+  $('#whyResulTab').easyResponsiveTabs({
+    tabidentify: 'tab2',
+    type: 'vertical'
+  });
+
+  var i = 0;
+  var DURATION = 5000;
+  var started = false;
+  var timer = null;
+  var $wrap = $('#whyResulTab');
+  var $tabs = $wrap.find('.resp-tab-item');
+  var total = $tabs.length;
+
+  $wrap.prepend('<div class="progress-track"><div class="progress-fill"></div></div>');
+  var $fill = $wrap.find('.progress-fill');
+
+  function setTrack() {
+    var $first = $tabs.eq(0);
+    var $last = $tabs.eq(total - 1);
+    var top = $first.position().top;
+    var height = ($last.position().top + $last.outerHeight(true)) - top;
+    $wrap.find('.progress-track').css({ top: top, height: height });
+  }
+
+  function update() {
+    var $first = $tabs.eq(0);
+    var $last = $tabs.eq(total - 1);
+    var $active = $tabs.eq(i);
+    var start = $first.position().top;
+    var end = $last.position().top + $last.outerHeight(true);
+    var totalH = end - start;
+    var activeBottom = $active.position().top + $active.outerHeight(true) - start;
+    var percent = (activeBottom / totalH) * 100;
+    $fill.css({ height: percent + '%', transition: '0.5s' });
+  }
+
+  function start() {
+    if (started) return;
+    started = true;
+    update();
+    timer = setInterval(function () {
+      if (i < total - 1) {
+        i++;
+        $tabs.eq(i).click();
+        update();
+      } else {
+        clearInterval(timer);
+      }
+    }, DURATION);
+  }
+
+  $tabs.on('click', function () {
+    i = $(this).index();
+    update();
+  });
+
+  function layoutProgress() {
+    setTrack();
+    update();
+  }
+  setTimeout(layoutProgress, 50);
+  $(window).on('resize', function () {
+    setTimeout(layoutProgress, 0);
+  });
+
+  var el = document.querySelector('#whyResulTab');
+  if (el && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting) start();
+    }, { threshold: 0.4 }).observe(el);
+  } else {
+    start();
+  }
+})(jQuery);
+</script>
+
+
+
+  
+
+
+
+<!-- expandable cards with swipper js -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiperEl = document.querySelector('.capabilities-Swiper');
+        const wrapper = swiperEl.querySelector('.swiper-wrapper');
+        const isMobile = window.innerWidth < 960;
+
+        if (isMobile) {
+            // Add overflow hidden
+            swiperEl.style.overflow = 'hidden';
+
+            wrapper.querySelectorAll('.slide-col .swiper-slide').forEach(slide => {
+                slide.classList.remove('swiper-slide');
+            });
+
+            wrapper.querySelectorAll('.slide-col').forEach(col => {
+                [...col.children].forEach(child => {
+                    wrapper.appendChild(child);
+                });
+                col.remove();
+            });
+
+            [...wrapper.children].forEach(child => {
+                child.classList.add('swiper-slide');
+            });
+
+            setTimeout(function () {
+                new Swiper(".capabilities-Swiper", {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                });
+            }, 100);
+
+        } else {
+            wrapper.querySelectorAll('.slide-col').forEach(col => {
+                col.classList.add('swiper-slide');
+            });
+
+            new Swiper(".capabilities-Swiper", {
+                slidesPerView: 3,
+                spaceBetween: 0,
+                enabled: false,
+            });
+        }
+    });
+
+
+ document
+    .querySelectorAll(".capabilities-Swiper .swiper-slide")
+    .forEach((slide, i) => {
+      const card = slide.querySelector(".capabilities-card");
+
+      card.addEventListener("mouseenter", () => {
+        const rowIndex = Math.floor(i / 2);
+
+        document
+          .querySelectorAll(".capabilities-Swiper .swiper-slide")
+          .forEach((s, j) => {
+            if (Math.floor(j / 3) === rowIndex) {
+              s.querySelector(".capabilities-card").classList.remove("active");
+            }
+          });
+
+        card.classList.add("active");
+      });
+    });
+
+  const diffCards = document.querySelectorAll(".dashboard-diff-card");
+  const hoverEnabled = window.matchMedia("(min-width: 960px)");
+
+  function resetDashboardDiffState() {
+    if (hoverEnabled.matches) return;
+    diffCards.forEach((card) => card.classList.remove("active"));
+  }
+
+  if (diffCards.length) {
+    diffCards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        if (!hoverEnabled.matches) return;
+        const col = card.dataset.dashboardCol;
+        diffCards.forEach((targetCard) => {
+          if (targetCard.dataset.dashboardCol === col) {
+            targetCard.classList.remove("active");
+          }
+        });
+        card.classList.add("active");
+      });
+    });
+
+    if (typeof hoverEnabled.addEventListener === "function") {
+      hoverEnabled.addEventListener("change", resetDashboardDiffState);
+    } else if (typeof hoverEnabled.addListener === "function") {
+      hoverEnabled.addListener(resetDashboardDiffState);
+    }
+    resetDashboardDiffState();
+  }
+</script>
+
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>

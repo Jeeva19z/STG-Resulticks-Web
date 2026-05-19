@@ -361,7 +361,7 @@ function subscribeNewsletterForm() {
 				"cid": CID_,
 				"pagetitle": getpagetitle(),
 				"ProfileID": getProfileId()
-            }
+            } 
 
             let url = "https://formapiv5.resul.io/Subscription/IndexInsertAPI";
             let options = {
