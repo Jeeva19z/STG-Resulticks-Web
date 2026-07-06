@@ -1164,9 +1164,71 @@ body {
 
 .form-elements {
   margin-bottom: 15px;
+  position: relative;
+
+  // hide the native control but keep it accessible / clickable over the box
+  [type=checkbox] {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+
   [type=checkbox] + label, [type=radio] + label {
-    padding: 0;
+    position: relative;
+    display: inline-block;
+    padding: 0 0 0 30px;
     font-size: 15px;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  // custom box
+  [type=checkbox] + label::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #c4c4c4;
+    border-radius: 4px;
+    background: $white;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  // checkmark
+  [type=checkbox] + label::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 5px;
+    height: 10px;
+    border: solid $white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transform-origin: center;
+    transition: transform 0.2s ease;
+  }
+
+  // checked
+  [type=checkbox]:checked + label::before {
+    background: $tick-color;
+    border-color: $tick-color;
+  }
+  [type=checkbox]:checked + label::after {
+    transform: rotate(45deg) scale(1);
+  }
+
+  // focus ring
+  [type=checkbox]:focus-visible + label::before {
+    box-shadow: 0 0 0 3px rgba($tick-color, 0.25);
   }
 }
 

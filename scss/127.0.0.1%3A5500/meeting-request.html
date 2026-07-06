@@ -21,8 +21,22 @@
 	<script type="text/javascript" src="js/sdk.js"></script>
 
     <style>
-  
-
+        [type=checkbox] + label::after {
+    background-color: transparent;
+    top: 29%;
+    left: 4px;
+    width: 8px;
+    height: 3.2px;
+    margin-top: -4px;
+    border-style: solid;
+    border-color: #40abaf;
+    border-width: 0 0 3px 3px;
+    border-radius: 0;
+    -o-border-image: none;
+    border-image: none;
+    transform: rotate(-45deg) scale(0);
+    transition: none;
+}
     </style>
 	<!-- Google Tag Manager -->
 	<script>
@@ -403,13 +417,11 @@
                         <div class="receive-updates">
                             <div class="form-elements">
                                 <input id="rcheckbox1" name="rcheckbox1" type="checkbox" /> 
-                                <label for="rcheckbox1" id="rcheckbox1-label">By submitting this form, you consent to receive promotional and personalized marketing messages from RESUL. Message and data rates may apply.  Message frequency may vary. Reply STOP to opt out at any time.</label>
+                                <label for="rcheckbox1">By submitting this form, you consent to receive promotional and personalized marketing messages from RESUL.<br> Message and data rates may apply.  Message frequency may vary. Reply STOP to opt out at any time.</label>
                             </div>
-
-                            
                             <div class="form-elements">
                                 <input id="rcheckbox2" name="rcheckbox2" type="checkbox" /> 
-                                <label for="rcheckbox2" id="rcheckbox2-label">I agree to the <a href="terms-and-conditions.html">terms and conditions</a></label>  
+                                <label for="rcheckbox2">I agree to the <a href="terms-and-conditions.html">terms and conditions</a></label>  
                             </div>
                             <div id="error_rcheckbox2" class="rinput-error"></div>
                         </div>
@@ -461,6 +473,44 @@
   src="https://challenges.cloudflare.com/turnstile/v0/api.js"
   async
   defer>
+</script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
 </script>
 </body>
 </html>

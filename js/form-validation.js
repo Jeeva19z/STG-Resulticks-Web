@@ -960,7 +960,8 @@ function partnerProgramForm() {
       PageReferrerURL: "",
       Rid: RID_,
       Cid: CID_,
-      PageTitle: getpagetitle()
+      PageTitle: getpagetitle(),
+      notifyStatus:true,
     };
 
 
@@ -1359,6 +1360,7 @@ function reqMeetingForm() {
                                 rid: RID_ || "",
                                 cid: CID_ || "",
                                 pagetitle: getpagetitle(),
+                                notifyStatus: true,
                                 };
 
                 let url = document.querySelector("#rsubscribe_newsletter").getAttribute('apiUrl');
@@ -1737,7 +1739,8 @@ function contactFormValidation() {
                         Comments: "",
                         rid: RID_ || "",
                         cid: CID_ || "",
-                        pagetitle: getpagetitle()
+                        pagetitle: getpagetitle(),
+                        notifyStatus: true,
             }
 
             // console.log(reqPayload)
