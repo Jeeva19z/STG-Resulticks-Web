@@ -2,7 +2,7 @@ var vbody = document.querySelector('body');
 var header = document.querySelector("#rs-header");
 
 function rsHeader(y) {
-    if (y > 111150) {
+    if (y > 50) {
         header.classList.add("header-fixed");
         vbody.classList.add('scroll-enabled');
         // header.classList.add('fadeOutUpDown');
