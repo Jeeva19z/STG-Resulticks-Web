@@ -1,5 +1,5 @@
 function headerComponent(){ 
-var resulticksHeader = `<nav class="navbar fixed-top white-theme navbar-expand-lg animated navigation flex-column" id="rs-header" >
+var resulticksHeader = `   <nav class="navbar fixed-top white-theme navbar-expand-lg animated navigation flex-column" id="rs-header" >
        
 <div class="container-fluid band-heading-container">
     <p class="band-heading">Resulticks Signs Amended and Restated Sale and Purchase Agreement with Diginex, Marking a Major Step Toward a Nasdaq-Listed Future <a class="band-heading-link" href="https://www.go.resul.io/newsroom/diginex-and-resulticks-sign-amended-definitive-agreement-to-create-a-global-ai-powered-group-spanning-customer-engagement-and-trusted-sustainability-data.html" target="_blank"  style="text-decoration: underline;">Know More</a></p>
